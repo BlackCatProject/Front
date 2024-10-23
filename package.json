@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "blackcat-front",
   "version": "0.0.0",
   "scripts": {
@@ -40,3 +41,13 @@
     "typescript": "~5.5.2"
   }
 }
+=======
+  "name": "demo-repo",
+  "version": "0.2.0",
+  "description": "A sample package.json",
+  "dependencies": {
+    "@primer/css": "17.0.1"
+  },
+  "license": "MIT"
+}
+>>>>>>> 7a022f304418cb2d728e6c33339b74d83a932b29
