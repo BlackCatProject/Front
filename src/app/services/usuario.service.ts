@@ -22,45 +22,12 @@ export class UsuarioService {
     return this.usuarioAtual?.role === 'GESTOR';
   }
 
-  private usuarios: Usuario[] = [
-    {
-      id: 1,
-      nome: 'Usuário Administrador',
-      login: 'admin',
-      senha: 'admin',
-      role: 'GESTOR',
-      ativo: true,
-    },
-    {
-      id: 2,
-      nome: 'Usuário Funcionário',
-      login: 'funcionario',
-      senha: 'funcionario',
-      role: 'FUNCIONARIO',
-      ativo: true,
-    },
-    {
-      id: 3,
-      nome: 'Usuário Gestor',
-      login: 'gestor',
-      senha: 'gestor',
-      role: 'GESTOR',
-      ativo: true,
-    },
-    {
-      id: 4,
-      nome: 'Usuário Desativado',
-      login: 'desativado',
-      senha: 'desativado',
-      role: 'FUNCIONARIO',
-      ativo: false,
-    },
-  ];
+  private usuarios: Usuario[] = [];
 
   constructor() {}
 
   findAll(ativo: boolean): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(`${this.API}/findAll`);
+    return this.http.get<Usuario[]>(`${this.API}/findAll?ativo=${ativo}`);
   }
 
   findById(id: number): Observable<Usuario> {

@@ -27,15 +27,13 @@ export class UsuarioListComponent implements OnInit {
   listarUsuarios(): void {
     this.usuarioService.findAll(true).subscribe(
       (usuarios: Usuario[]) => {
-        next: (usuarios: Usuario[]) => {
-          this.listaAtiva = usuarios;
-        };
+        this.listaAtiva = usuarios; // Corrigido
       },
       (error) => {
         console.error('Erro ao listar usuários ativos:', error);
       }
     );
-  }
+  }  
 
   findById(id: number): void {
     this.usuarioService.findById(id).subscribe({
@@ -72,31 +70,6 @@ export class UsuarioListComponent implements OnInit {
       },
       error: (error) => {
         console.error('Erro ao desativar usuário:', error);
-        if (error.status === 404) {
-          Swal.fire({
-            title: 'Usuário não encontrado',
-            icon: 'error',
-            timer: 1500,
-            confirmButtonText: 'Ok',
-          });
-        }
-      },
-    });
-  }
-
-  atualizarUsuario(id: number): void {
-    this.usuarioService.findById(id).subscribe({
-      next: (mensagem) => {
-        Swal.fire({
-          title: mensagem,
-          icon: 'success',
-          timer: 1500,
-          confirmButtonText: 'Ok',
-        });
-        this.listarUsuarios();
-      },
-      error: (error) => {
-        console.error('Erro ao atualizar usuário:', error);
         if (error.status === 404) {
           Swal.fire({
             title: 'Usuário não encontrado',
