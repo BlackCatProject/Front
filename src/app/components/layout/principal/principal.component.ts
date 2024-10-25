@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
+import { HeaderComponent } from '../header/header.component'; // Ajuste o caminho conforme necessário
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-principal',
   standalone: true,
-  imports: [],
+  imports: [HeaderComponent, RouterModule],
   templateUrl: './principal.component.html',
-  styleUrl: './principal.component.scss'
+  styleUrls: ['./principal.component.scss']
 })
-export class PrincipalComponent {
-
-}
+export class PrincipalComponent {}

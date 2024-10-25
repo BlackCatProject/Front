@@ -1,1 +1,18 @@
-<p>login works!</p>
+<div class="login-container">
+
+    <div class="image-section">
+      <img src="" alt="Ilustração de login" />
+    </div>
+  
+    <div class="form-section">
+      <h5>Login</h5>
+      <p>seja bem vindo, realize o login para entrar.</p>
+      
+      <input type="text" placeholder="Usuario" [(ngModel)]="login.username">
+      <input type="password" placeholder="Senha" [(ngModel)]="login.senha">
+    
+      <button type="button" (click)="autenticar()">Entrar</button>
+  
+      
+    </div>
+  </div>
