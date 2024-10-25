@@ -9,8 +9,8 @@
 }
 
 .image-section {
-  flex: 1.5; /* Aumenta a proporção da seção da imagem */
-  background-color: #ffffff;
+  flex: 1.5; 
+  background-color: #F8F3FC;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,8 +24,8 @@
 }
 
 .form-section {
-  flex: 1; /* Diminui a proporção da seção do formulário */
-  padding: 30px; /* Diminui o preenchimento interno do formulário */
+  flex: 1; 
+  padding: 30px; 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,7 +33,7 @@
   text-align: center;
 }
 
-.form-section h5 {
+.form-section h6 {
   font-size: 24px;
   margin-bottom: 20px;
   color: #30DEAC;
@@ -48,12 +48,12 @@
 .form-section input {
   margin-bottom: 25px; 
   padding: 12px; 
-  border: 1px solid #c2b7b7;
-  border-radius: 5px;
+  border-radius: 15px;
   width: 80%; 
-  margin: 2% auto;
-  background-color: #b6c5dd; /* Cor de fundo do input */
-  color: #fffdfd; /* Cor do texto no input */
+  margin:  auto;
+  background-color: #F8F3FC; 
+  color: #000000; 
+  border: none; 
 }
 
 .form-section button {
@@ -61,7 +61,7 @@
   background-color: #30DEAC;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 25px;
   cursor: pointer;
   width: 50%; 
   margin: 0 auto;
@@ -87,37 +87,38 @@
 }
 
 .form-section input:focus {
-  outline: none; /* Remove o contorno padrão */
-  border: 1px solid #889de0; /* Define uma nova borda ao focar */
-  box-shadow: 0 0 5px #a3c1d5; /* Adiciona uma leve sombra de foco */
+  outline: none;
+  border: 1px solid #889de0; 
+  box-shadow: 0 0 5px #a3c1d5; 
 }
 .input-container {
   position: relative;
-  width: 80%; /* Ajuste para alinhar com os inputs */
-  margin: 2% auto; /* Espaçamento entre os inputs */
+  width: 80%; 
+  margin: 2% auto; 
 }
 
 .input-container input {
-  padding-left: 40px; /* Adiciona espaço para o ícone */
-  margin-bottom: 15px; /* Espaço entre inputs */
-  border: 1px solid #000000; /* Borda do input */
-  border-radius: 5px; /* Bordas arredondadas */
-  width: 100%; /* Ajuste a largura conforme necessário */
-  transition: border-color 0.3s; /* Transição suave */
+  padding-left: 40px; 
+  margin-bottom: 15px; 
+  
+  border-radius: 5px; 
+  width: 100%; 
+  transition: border-color 0.3s; 
+  border: none; // Remove a borda
 }
 
 .input-container i {
   position: absolute;
-  left: 10px; /* Espaçamento do ícone */
+  left: 10px; 
   top: 50%;
   transform: translateY(-50%);
-  color: #000000; /* Cor do ícone */
-  font-size: 15px; /* Tamanho do ícone */
-  pointer-events: none; /* Ignora eventos de mouse no ícone */
+  color: #000000; 
+  font-size: 15px; 
+  pointer-events: none; 
 }
 
 .input-container input:focus {
-  outline: none; /* Remove o contorno padrão */
-  border: 1px solid #30DEAC; /* Borda ao focar */
-  box-shadow: 0 0 5px rgba(48, 222, 172, 0.5); /* Sombra ao focar */
+  outline: none; 
+  border: 1px solid #30DEAC; 
+  box-shadow: 0 0 5px rgba(48, 222, 172, 0.5); 
 }
