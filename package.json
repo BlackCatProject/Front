@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "name": "blackcat-front",
   "version": "0.0.0",
   "scripts": {
@@ -24,7 +23,8 @@
     "chart.js": "^3.1.1",
     "mdb-angular-ui-kit": "^7.0.0",
     "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
+    "sweetalert2": "^11.6.13",
+    "tslib": "^2.8.0",
     "zone.js": "~0.14.10"
   },
   "devDependencies": {
@@ -41,13 +41,3 @@
     "typescript": "~5.5.2"
   }
 }
-=======
-  "name": "demo-repo",
-  "version": "0.2.0",
-  "description": "A sample package.json",
-  "dependencies": {
-    "@primer/css": "17.0.1"
-  },
-  "license": "MIT"
-}
->>>>>>> 7a022f304418cb2d728e6c33339b74d83a932b29

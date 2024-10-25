@@ -1,1 +1,54 @@
-<p>usuario-list works!</p>
+<div class="container mt-4">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h2 class="mb-0 fw-bold">Lista de Usuários</h2>
+        @if (isGestor) {
+          <button type="button" class="btn btn-success btn-rounded" mdbRipple (click)="abrirFormulario()">
+            Cadastrar Novo Usuário
+          </button>
+        }
+      </div>
+      <div class="card-body" style="display: flex; justify-content: center; align-items: center;">
+        <div class="table-responsive">
+          <table class="table table-hover table-striped">
+            <thead class="table-light">
+              <tr>
+                <th>id</th>
+                <th>nome</th>
+                <th>login</th>
+                <th>role</th>
+                @if (isGestor) {
+                  <th class="text-center fw-bold">Ações</th>
+                }
+              </tr>
+            </thead>
+            <tbody>
+              @for (usuario of listaAtiva; track usuario.id) {
+                <tr>
+                  @if (isGestor) {<td>{{ usuario.id }}</td>}
+                  <td>{{ usuario.nome }}</td>
+                  @if (isGestor) {<td>{{ usuario.login }}</td>}
+                  <td>{{ usuario.role }}</td>
+                  @if (isGestor) {
+                    <td class="text-center">
+                      <button type="button" class="btn btn-sm btn-primary btn-rounded me-2" (click)="atualizarUsuario(usuario.id)">
+                        Alterar
+                      </button>
+                      <button type="button" class="btn btn-sm btn-danger btn-rounded" (click)="desativarUsuario(usuario.id)">
+                        Desativar
+                      </button>
+                    </td>
+                  }
+                </tr>
+              } @empty {
+                <tr>
+                    <td colspan="{{ isGestor ? 5 : 3 }}" class="text-center">Nenhum Usuário encontrado.</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  
