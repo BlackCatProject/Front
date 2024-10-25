@@ -1,90 +1,123 @@
 .login-container {
-    width: 80%;
-    height: 80vh;
-    margin: 7vh auto;
-    display: flex;
-    background-color: #888888;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
-  }
-  
-  .image-section {
-    flex: 1;
-    background-color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 15px 0 0 15px;
-  }
-  
-  .image-section img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 15px 0 0 15px;
-  }
-  
-  .form-section {
-    flex: 1;
-    padding: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .form-section h5 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .form-section p {
-    color: #d1cece;
-    font-size: 14px;
-    margin-bottom: 30px;
-  }
-  
-  .form-section input {
-    margin-bottom: 25px; 
-    padding: 12px; 
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 80%; 
-    margin: 2% auto;
-  }
-  
-  .form-section button {
-    padding: 12px; 
-    background-color: #d8d6d4;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 50%; 
-    margin: 0 auto;
-    margin-bottom: 20px; 
-  }
-  
-  .form-section button:hover {
-    background-color: #d8d6d4;
-  }
-  
-  .form-section .signup {
-    margin-top: 25px; 
-    font-size: 14px;
-  }
-  
-  .form-section .signup a {
-    color: #A0D8B3;
-    text-decoration: none;
-  }
-  
-  .form-section .signup a:hover {
-    text-decoration: underline;
-  }
-  .form-section input:focus {
-    outline: none; /* Remove o contorno padrão */
-    border: 1px solid #889de0; /* Define uma nova borda ao focar, com a cor que desejar */
-    box-shadow: 0 0 5px #a3c1d5; /* Adiciona uma leve sombra de foco opcional */
-  }
-  
+  width: 70%;
+  height: 80vh;
+  margin: 7vh auto;
+  display: flex;
+  background-color: #2F3855;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+}
+
+.image-section {
+  flex: 1.5; /* Aumenta a proporção da seção da imagem */
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px 0 0 15px;
+}
+
+.image-section img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px 0 0 15px;
+}
+
+.form-section {
+  flex: 1; /* Diminui a proporção da seção do formulário */
+  padding: 30px; /* Diminui o preenchimento interno do formulário */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.form-section h5 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #30DEAC;
+}
+
+.form-section p {
+  color: #ffffff;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.form-section input {
+  margin-bottom: 25px; 
+  padding: 12px; 
+  border: 1px solid #c2b7b7;
+  border-radius: 5px;
+  width: 80%; 
+  margin: 2% auto;
+  background-color: #b6c5dd; /* Cor de fundo do input */
+  color: #fffdfd; /* Cor do texto no input */
+}
+
+.form-section button {
+  padding: 12px; 
+  background-color: #30DEAC;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 50%; 
+  margin: 0 auto;
+  margin-bottom: 20px; 
+}
+
+.form-section button:hover {
+  background-color: #30DEAC;
+}
+
+.form-section .signup {
+  margin-top: 25px; 
+  font-size: 14px;
+}
+
+.form-section .signup a {
+  color: #A0D8B3;
+  text-decoration: none;
+}
+
+.form-section .signup a:hover {
+  text-decoration: underline;
+}
+
+.form-section input:focus {
+  outline: none; /* Remove o contorno padrão */
+  border: 1px solid #889de0; /* Define uma nova borda ao focar */
+  box-shadow: 0 0 5px #a3c1d5; /* Adiciona uma leve sombra de foco */
+}
+.input-container {
+  position: relative;
+  width: 80%; /* Ajuste para alinhar com os inputs */
+  margin: 2% auto; /* Espaçamento entre os inputs */
+}
+
+.input-container input {
+  padding-left: 40px; /* Adiciona espaço para o ícone */
+  margin-bottom: 15px; /* Espaço entre inputs */
+  border: 1px solid #000000; /* Borda do input */
+  border-radius: 5px; /* Bordas arredondadas */
+  width: 100%; /* Ajuste a largura conforme necessário */
+  transition: border-color 0.3s; /* Transição suave */
+}
+
+.input-container i {
+  position: absolute;
+  left: 10px; /* Espaçamento do ícone */
+  top: 50%;
+  transform: translateY(-50%);
+  color: #000000; /* Cor do ícone */
+  font-size: 15px; /* Tamanho do ícone */
+  pointer-events: none; /* Ignora eventos de mouse no ícone */
+}
+
+.input-container input:focus {
+  outline: none; /* Remove o contorno padrão */
+  border: 1px solid #30DEAC; /* Borda ao focar */
+  box-shadow: 0 0 5px rgba(48, 222, 172, 0.5); /* Sombra ao focar */
+}
