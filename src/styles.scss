@@ -1,5 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
 @import '@fortawesome/fontawesome-free/css/all.css';
 @import 'mdb-angular-ui-kit/assets/scss/mdb.scss';
-@import '@fortawesome/fontawesome-free/css/all.css';
-@import 'mdb-angular-ui-kit/assets/scss/mdb.scss';
+
+.right-aligned{
+    text-align: right;
+}
+.center-aligned{
+    text-align: center;
+}
+.left-aligned{
+    text-align: left;
+}
+.table td:first-child {
+  text-align: left;
+}
+body{
+    background-color: #d3d3da;
+}
+
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .status-card {
+      margin-bottom: 10px;
+    }
+  
+    .table {
+      font-size: 14px;
+    }
+  
+    .table td {
+      padding: 12px;
+    }
+  }
+  
+  .btn btn-primary{
+    background-color: #E39966;
+  }
