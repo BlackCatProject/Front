@@ -23,14 +23,14 @@ export class HeaderComponent {
   // Método que retorna os itens do menu
   getMenuItems() {
     const menuItems = [
-      { name: 'Home', link: 'admin/Dashboard' },
-      { name: 'Produtos', link: 'admin/Produtos' },
-      { name: 'Venda', link: 'admin/Venda' },
+      { name: 'Home', link: 'admin/dashboard' },
+      { name: 'Produtos', link: 'admin/produtos' },
+      { name: 'Venda', link: 'admin/venda' },
     ];
 
     // Adiciona o item "Usuários" se o usuário for admin
     if (this.isAdmin()) {
-      menuItems.push({ name: 'Usuários', link: 'admin/Usuarios' });
+      menuItems.push({ name: 'Usuários', link: 'admin/usuarios' });
     }
 
     return menuItems;

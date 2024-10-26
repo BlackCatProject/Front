@@ -39,7 +39,7 @@ export class LoginComponent {
           icon: "success",
           title: "Você logou como administrador com sucesso!"
         });
-        this.router.navigate(['admin/Dashboard']);
+        this.router.navigate(['admin/dashboard']);
       } else if (this.login.username === 'funcionario' && this.login.senha === 'funcionario') {
         // Login como funcionário
         Toast.fire({
