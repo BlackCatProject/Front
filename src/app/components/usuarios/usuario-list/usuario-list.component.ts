@@ -1,84 +1,104 @@
-import { booleanAttribute, Component, OnInit } from '@angular/core';
+import { booleanAttribute, Component, inject, OnInit } from '@angular/core';
 import { Usuario } from '../../../models/usuario';
 import { UsuarioService } from '../../../services/usuario.service';
 import Swal from 'sweetalert2';
+import { Router, RouterLink } from '@angular/router';
+import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 @Component({
   selector: 'app-usuario-list',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './usuario-list.component.html',
   styleUrls: ['./usuario-list.component.scss'],
 })
-export class UsuarioListComponent implements OnInit {
-  listaAtiva: Usuario[] = [];
-  isGestor: boolean = false; //vindo do login
+export class UsuarioListComponent {
+  lista: Usuario[] = [];
 
-  constructor(private usuarioService: UsuarioService) {}
+  usuarioService = inject(UsuarioService);
+  router = inject(Router);
 
-  ngOnInit(): void {
-    this.listarUsuarios();
-    this.checkIsGestor();
+  constructor() {
+    this.findAll();
   }
 
-  checkIsGestor(): void {
-    this.isGestor = this.usuarioService.isGestor(); //vindo do login;
-  }
-
-  listarUsuarios(): void {
-    this.usuarioService.findAll(true).subscribe(
-      (usuarios: Usuario[]) => {
-        this.listaAtiva = usuarios; // Corrigido
+  ngOnInit(): void {      //ao inicializar puxa o findall em ordem decrescente
+    this.usuarioService.findAll().subscribe(
+      data => {
+        this.lista = data;
+        this.ordenarUsuariosPorId();
       },
-      (error) => {
-        console.error('Erro ao listar usuários ativos:', error);
-      }
+      error => console.error('Erro ao buscar usuários', error)
     );
-  }  
+  }
+  ordenarUsuariosPorId() {       //logica da ordem descerescente
+    this.lista.sort((a, b) => b.id - a.id);
+  }
 
-  findById(id: number): void {
-    this.usuarioService.findById(id).subscribe({
-      next: (mensagem) => {
+
+
+  findAll() {
+    this.usuarioService.findAll().subscribe({
+      next: (lista) => {
+        this.lista = lista;
+      },
+      error: (error) => {
         Swal.fire({
-          title: mensagem,
-          icon: 'success',
-          timer: 1500,
+          title: 'Erro ao buscar usuários',
+          icon: 'error',
           confirmButtonText: 'Ok',
         });
-        this.usuarioService.findById(id);
-      }, 
-      error: (error) => {
-        console.error('Erro ao buscar usuário:', error);
-        if (error.status === 404) {
-          Swal.fire({
-            title: 'Usuário não encontrado',
-        })
-      }
-    }
+      },
     });
   }
 
-  desativarUsuario(id: number): void {
-    this.usuarioService.desativarUsuario(id).subscribe({
-      next: (mensagem) => {
-        Swal.fire({
-          title: mensagem,
-          icon: 'success',
-          timer: 1500,
-          confirmButtonText: 'Ok',
-        });
-        this.listarUsuarios();
+  findById(id: number) {
+    this.usuarioService.findById(id).subscribe({
+      next: (usuario) => {
+        this.lista = [usuario];
       },
       error: (error) => {
-        console.error('Erro ao desativar usuário:', error);
-        if (error.status === 404) {
-          Swal.fire({
-            title: 'Usuário não encontrado',
-            icon: 'error',
-            timer: 1500,
-            confirmButtonText: 'Ok',
-          });
-        }
+        Swal.fire({
+          title: 'Erro ao buscar usuário',
+          icon: 'error',
+          confirmButtonText: 'Ok',
+        });
       },
+    });
+  }
+
+
+  desativarUsuario(usuario: Usuario) {
+    Swal.fire({
+      title: 'Atenção',
+      text: `Tem certeza que deseja desativar o usuário ${usuario.login}?`,
+      icon: 'warning',
+      showConfirmButton: true,
+      showDenyButton: true,
+      confirmButtonText: 'Sim',
+      cancelButtonText: 'Não',
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+
+        this.usuarioService.desativarUsuario(usuario.id).subscribe({
+          next: mensagem => {
+            Swal.fire({
+              title: mensagem,
+              icon: 'success',
+              confirmButtonText: 'Ok',
+            });
+            this.findAll();
+          },
+          error: erro => {
+            Swal.fire({
+              title: 'Erro ao buscar usuário',
+              icon: 'error',
+              confirmButtonText: 'Ok',
+            });
+          },
+        });
+         
+      }
     });
   }
 }

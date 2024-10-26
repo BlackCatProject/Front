@@ -7,48 +7,42 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class UsuarioService {
-  http = inject(HttpClient);
   API = 'http://localhost:8080/api/usuario';
 
-  //metodo login para armazenar o usuário logado
-  private usuarioAtual: Usuario | null = null;
-  login(usuario: Usuario): void {
-    this.usuarioAtual = usuario;
-  }
-  logout(): void {
-    this.usuarioAtual = null;
-  }
+  constructor(private http: HttpClient) {}
 
-  isGestor(): boolean {
-    return this.usuarioAtual?.role === 'GESTOR';
+  //CRUD - Create - save
+  saveUsuario(usuario: Usuario): Observable<string> {
+    return this.http.post<string>(`${this.API}/save`, usuario, {
+      responseType: 'text' as 'json'
+    });
   }
 
-  private usuarios: Usuario[] = [];
-
-  constructor() {}
-
-  findAll(ativo: boolean): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(`${this.API}/findAll?ativo=${ativo}`);
+  //CRUD - Read - findAll
+  findAll(): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(this.API + `/findAll?ativo=true`); //API + /metodo + parametro Boolean
   }
 
+  //CRUD - Read - findById
   findById(id: number): Observable<Usuario> {
-    return this.http.get<Usuario>(`${this.API}/findById/${id}`);
+    return this.http.get<Usuario>(`${this.API}/findById/${id}`); //API dentro do metodo
   }
 
-  salvarUsuario(usuario: Usuario): Observable<Usuario> {
-    return this.http.post<Usuario>(`${this.API}/save`, usuario);
+  //CRUD - Update - update
+  updateUsuario(id: number, usuario: Usuario): Observable<string> {
+    return this.http.put<string>(`${this.API}/update/${id}`, usuario, {
+      responseType: 'text' as 'json'
+    });
   }
 
-  atualizarUsuario(id: number, usuario: Usuario): Observable<Usuario> {
-    return this.http.put<Usuario>(`${this.API}/update/${id}`, usuario);
-  }
-
-  deletarUsuario(id: number): Observable<string> {
+  //CRUD - Delete - delete
+  deleteUsuario(id: number): Observable<string> {
     return this.http.delete<string>(`${this.API}/delete/${id}`, {
       responseType: 'text' as 'json',
     });
   }
 
+  //CRUD - Desativar - disable
   desativarUsuario(id: number): Observable<string> {
     return this.http.put<string>(
       `${this.API}/disable/${id}`,
@@ -59,6 +53,7 @@ export class UsuarioService {
     );
   }
 
+  //CRUD - Ativar - enable
   ativarUsuario(id: number): Observable<string> {
     return this.http.put<string>(
       `${this.API}/enable/${id}`,
