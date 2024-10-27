@@ -37,12 +37,30 @@ export class VendaService {
     return this.http.get<Venda[]>(this.api+"/findByData", {params: datas});
   }
 
-  findByMonth(mes : number, ano : number): Observable<Venda[]>{
-    return this.http.get<Venda[]>(`${this.api}/findByMonth/${mes}/${ano}`)
-  }
+  findByMonth(mes: number, ano: number): Observable<Venda[]> {
+    return this.http.get<Venda[]>(`${this.api}/findByMonth/${mes}/${ano}`);
+}
+
 
   findByUsuario(id : number) : Observable<Venda[]>{
     return this.http.get<Venda[]>(`${this.api}/findByMonth/${id}`)
   }
+
+
+  // Método para vendas mensais
+  getVendasMensais(ano: number, mes: number): Observable<number> {
+    return this.http.get<number>(`${this.api}/mensal/${ano}/${mes}`);
+  }
+
+  // Método para vendas semanais
+  getVendasSemanais(): Observable<number> {
+    return this.http.get<number>(`${this.api}/semanal`);
+  }
+
+  // Método para vendas anuais
+  getVendasAnuais(ano: number): Observable<number> {
+    return this.http.get<number>(`${this.api}/anual/${ano}`);
+  }
+
 
 }

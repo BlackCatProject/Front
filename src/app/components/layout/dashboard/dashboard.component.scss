@@ -1,0 +1,140 @@
+/* Reset */
+* {
+    margin-top: 5px;
+    box-sizing: border-box; /* Facilitar o controle de largura */
+}
+
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f8fb;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinhamento flexível no topo */
+    min-height: 100vh;
+    padding: 20px; /* Espaçamento interno */
+}
+
+/* Dashboard */
+.dashboard {
+    display: grid;
+    gap: 10px; /* Espaçamento entre as seções */
+    grid-template-areas:
+        "welcome historico"
+        "sales sales";
+    max-width: 1200px; /* Limitar largura total da dashboard */
+    width: 100%; /* Usar 100% do espaço disponível */
+}
+
+/* Seção de boas-vindas */
+.welcome-section {
+    grid-area: welcome;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px; /* Aumentar o padding para mais espaço interno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: 380px; /* Definir altura fixa  */
+    width: 300px; /* Ajustar para a largura desejada */
+    max-width: 100%; /* Limitar a largura máxima em 90% da tela */
+    overflow: hidden; /* Impedir o transbordo */
+}
+.mascot-image {
+    width: 80px; /* Tamanho reduzido */
+    margin-bottom: 20px; /* Margem ajustada */
+}
+
+.welcome-section h1 {
+    font-size: 1.2em; /* Tamanho da fonte reduzido */
+    color: #333;
+}
+
+.welcome-section button {
+    margin: 3px; /* Margem reduzida */
+    padding: 8px 15px; /* Padding reduzido */
+}
+
+//* Seção de histórico */
+.historico-section {
+    grid-area: historico;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px; /* Aumentar o padding para mais espaço interno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 900px; /* Definir largura fixa para histórico */
+    max-width: 100%; /* Limitar a largura máxima em 90% da tela */
+    overflow: auto; /* Adiciona barra de rolagem se necessário */
+}
+
+/* Painéis de vendas */
+.sales-panels {
+    grid-area: sales; /* Define onde os painéis de vendas vão */
+    display: flex; /* Usar flexbox para alinhamento horizontal */
+    gap: 1rem; /* Espaço entre os cartões */
+    padding: 1rem;
+    justify-content: flex-start; /* Começar do início */
+    flex-wrap: wrap; /* Permitir que os cartões quebrem se o espaço for pequeno */
+}
+/* Ajustando os cartões */
+.card {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    flex: 0 0 auto; /* Impedir que os cartões encolham, mas ainda são responsivos */
+    width: 382px; /* Definir uma largura fixa de 200px para os cartões */
+    text-align: center;
+    display: flex; /* Tornar o cartão um contêiner flexível */
+    flex-direction: column; /* Alinhar os filhos verticalmente */
+    justify-content: space-between; /* Distribuir espaço uniformemente dentro do cartão */
+    height: 200px; /* Definir uma altura fixa para os cartões */
+}
+
+/* Ajustes nos Inputs */
+.input-small {
+    border: none; /* Remover borda */
+    padding: 5px; /* Diminuir padding */
+    width: 80%; /* Diminuir largura */
+    margin: 0 auto; /* Centralizar no cartão */
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.icon {
+    font-size: 1.5rem;
+    color: #4a90e2;
+}
+
+.percentage {
+    font-size: 0.9rem;
+    color: #28a745;
+    background-color: #e5f5e5;
+    border-radius: 50%;
+    padding: 0.3rem 0.5rem;
+    font-weight: bold;
+}
+
+.card-body {
+    font-size: 1.2rem;
+}
+
+.total {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.quantity {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.select {
+    border: none;
+}

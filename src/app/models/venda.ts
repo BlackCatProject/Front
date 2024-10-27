@@ -12,5 +12,6 @@ export class Venda{
     usuario!: Usuario;
 
 	produtosVenda!: ProdutoVenda[];
- 
+
+  
 }
