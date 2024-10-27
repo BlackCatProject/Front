@@ -1,23 +1,71 @@
-<form [formGroup]="produtoForm" (ngSubmit)="onSubmit()">
-    <div>
-    <label for="nome">Nome:</label>
-    <input id="nome" formControlName="nome" />
-      <div *@if="produtoForm.get('nome')?.invalid && produtoForm.get('nome')?.touched">
-        <small *@if="produtoForm.get('nome')?.errors?.required">Nome é obrigatório.</small>
-        <small *@if="produtoForm.get('nome')?.errors?.minlength">Nome deve ter pelo menos 3 caracteres.</small>
+<div class="container">
+  <div class="row">
+    <div class="col" style="display: flex; justify-content: center">
+      <div class="card-body">
+        <form [formGroup]="produtoForm" (ngSubmit)="onSubmit()">
+          <br />
+          
+          <!-- Campo Nome -->
+          <mdb-form-control>
+            <input
+              mdbInput
+              type="text"
+              id="nome"
+              class="form-control"
+              formControlName="nome"
+              required
+              minlength="3"
+            />
+            <label mdbLabel class="form-label" for="nome">Nome</label>
+           
+          </mdb-form-control>
+
+          <br />
+
+          <!-- Campo Descrição -->
+          <mdb-form-control>
+            <input
+              mdbInput
+              type="text"
+              id="descricao"
+              class="form-control"
+              formControlName="descricao"
+            />
+            <label mdbLabel class="form-label" for="descricao">Descrição</label>
+          </mdb-form-control>
+
+          <br />
+
+          <!-- Campo Preço -->
+          <mdb-form-control>
+            <input
+              mdbInput
+              type="number"
+              id="preco"
+              class="form-control"
+              formControlName="preco"
+              required
+              min=0
+            />
+            <label mdbLabel class="form-label" for="preco">Preço</label>
+          
+          </mdb-form-control>
+
+          <br />
+
+          <!-- Botão Salvar -->
+          <div class="d-flex justify-content-end">
+            <button
+              type="submit"
+              class="btn btn-success btn-rounded"
+              [disabled]="produtoForm.invalid"
+              mdbRipple
+            >
+              Salvar
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-    </div>
-    <div>
-    <label for="descricao">Descrição:</label>
-    <input id="descricao" formControlName="descricao" />
-    </div> 
-    <div>
-    <label for="preco">Preço:</label>
-    <input id="preco" type="number" formControlName="preco" />
-      <div *@if="produtoForm.get('preco')?.invalid && produtoForm.get('valor')?.touched">
-        <small *@if="produtoForm.get('preco')?.errors?.required">Valor é obrigatório.</small>
-        <small *@if="produtoForm.get('preco')?.errors?.min">Valor não pode ser menor que 0.</small>
-    </div>
-    </div>
-    <button type="submit" [disabled]="produtoForm.invalid">Salvar</button>
-</form>
+  </div>
+</div>

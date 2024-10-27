@@ -1,13 +1,14 @@
 import { Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { ProdutoService } from '../../../services/produto.service';
 import { Produto } from '../../../models/produto';
+import { MdbFormControlComponent, MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 
 @Component({
   selector: 'app-produto-form',
   standalone: true,
-  imports:[ReactiveFormsModule],
+  imports:[ReactiveFormsModule, MdbFormsModule, FormsModule],
   templateUrl: './produtos-form.component.html',
   styleUrls: ['./produtos-form.component.scss'],
 })
@@ -27,7 +28,7 @@ export class ProdutosFormComponent {
       ativo: [true],
       nome: ['', [Validators.required, Validators.minLength(3)]],
       descricao: [''],
-      preco: [0, [Validators.required, Validators.min(0)]],
+      preco: 0,
     });
   }
 
@@ -100,4 +101,3 @@ export class ProdutosFormComponent {
     });
   }
 }
-
