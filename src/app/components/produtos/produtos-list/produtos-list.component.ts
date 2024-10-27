@@ -1,23 +1,30 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, ViewChild, TemplateRef, OnInit, NgModule } from '@angular/core';
 import { Produto } from '../../../models/produto';
 import { ProdutoService } from '../../../services/produto.service';
 import Swal from 'sweetalert2';
 import { Router, RouterLink } from '@angular/router';
+import { MdbModalModule, MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { ProdutosFormComponent } from '../produtos-form/produtos-form.component';
 
 @Component({
   selector: 'app-produtos-list',
   standalone: true,
-  imports: [RouterLink],
+  imports:[MdbModalModule, ProdutosFormComponent],
   templateUrl: './produtos-list.component.html',
   styleUrls: ['./produtos-list.component.scss'],
 })
 export class ProdutosListComponent implements OnInit {
   lista: Produto[] = [];
+  produtoEdit: Produto = new Produto(); // Inicialize o produto com valores padrão
 
-  produtoService = inject(ProdutoService);
-  router = inject(Router);
+  @ViewChild("modalProdutoDetalhe") modalProdutoDetalhe!: TemplateRef<any>;
+  modalRef!: MdbModalRef<any>;
 
-  constructor() {}
+  constructor(
+    private produtoService: ProdutoService,
+    private modalService: MdbModalService, // Armazene a instância do modalService aqui
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.findAllAtivos();
@@ -43,8 +50,19 @@ export class ProdutosListComponent implements OnInit {
     this.lista.sort((a, b) => b.id - a.id);
   }
 
-  novoProduto() {
-    this.router.navigate(['/admin/produto/new']);
+  new() {
+    this.produtoEdit = new Produto(); // Crie um novo produto
+    this.modalRef = this.modalService.open(this.modalProdutoDetalhe);
+  }
+
+  edit(produto: Produto) {
+    this.produtoEdit = Object.assign({}, produto); // Clonando para evitar referência de objeto
+    this.modalRef = this.modalService.open(this.modalProdutoDetalhe);
+  }
+
+  retornoDetalhe(produto: Produto) {
+    this.findAllAtivos();
+    this.modalRef.close();
   }
 
   desativarProduto(produto: Produto) {
@@ -79,3 +97,5 @@ export class ProdutosListComponent implements OnInit {
     });
   }
 }
+
+

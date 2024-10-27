@@ -1,0 +1,23 @@
+<form [formGroup]="produtoForm" (ngSubmit)="onSubmit()">
+    <div>
+    <label for="nome">Nome:</label>
+    <input id="nome" formControlName="nome" />
+      <div *@if="produtoForm.get('nome')?.invalid && produtoForm.get('nome')?.touched">
+        <small *@if="produtoForm.get('nome')?.errors?.required">Nome é obrigatório.</small>
+        <small *@if="produtoForm.get('nome')?.errors?.minlength">Nome deve ter pelo menos 3 caracteres.</small>
+    </div>
+    </div>
+    <div>
+    <label for="descricao">Descrição:</label>
+    <input id="descricao" formControlName="descricao" />
+    </div> 
+    <div>
+    <label for="preco">Preço:</label>
+    <input id="preco" type="number" formControlName="preco" />
+      <div *@if="produtoForm.get('preco')?.invalid && produtoForm.get('valor')?.touched">
+        <small *@if="produtoForm.get('preco')?.errors?.required">Valor é obrigatório.</small>
+        <small *@if="produtoForm.get('preco')?.errors?.min">Valor não pode ser menor que 0.</small>
+    </div>
+    </div>
+    <button type="submit" [disabled]="produtoForm.invalid">Salvar</button>
+</form>
