@@ -20,7 +20,6 @@
         <table class="table table-hover table-striped">
           <thead class="table-light">
             <tr>
-              <th>Id</th>
               <th>Nome</th>
               <th>Login</th>
               <th>Função</th>
@@ -30,7 +29,6 @@
           <tbody>
             @for (usuario of lista; track $index) {
             <tr>
-              <td>{{ usuario.id }}</td>
               <td>{{ usuario.nome }}</td>
               <td>{{ usuario.login }}</td>
               <td>{{ usuario.role }}</td>
