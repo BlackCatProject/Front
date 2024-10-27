@@ -29,7 +29,7 @@ export class UsuarioService {
   }
 
   //CRUD - Update - update
-  updateUsuario(id: number, usuario: Usuario): Observable<string> {
+  updateUsuario( usuario: Usuario, id: number): Observable<string> {
     return this.http.put<string>(`${this.API}/update/${id}`, usuario, {
       responseType: 'text' as 'json'
     });

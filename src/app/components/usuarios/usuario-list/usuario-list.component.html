@@ -5,9 +5,9 @@
 
       <button
         type="button"
-        class="btn btn-success btn-rounded"
+        class="btn btn-success btn-rounded mt-2"
         mdbRipple
-        click="novo(usuario)"
+        (click)="new()"
       >
         Cadastrar Novo Usuário
       </button>
@@ -39,7 +39,7 @@
                   type="button"
                   class="btn btn-sm btn-primary btn-rounded me-2"
                   mdbRipple
-                  routerLink="/admin/usuario/edit/{{ usuario.id }}"
+                  (click)="edit(usuario)"
                 >
                   Alterar
                 </button>
@@ -53,14 +53,43 @@
                 </button>
               </td>
             </tr>
-            } @empty {
-            <tr>
-              <td class="text-center">Nenhum Usuário encontrado.</td>
-            </tr>
             }
           </tbody>
         </table>
+        @if (lista.length == 0) {
+        <div
+          class="d-flex justify-content-center align-items-center text-center"
+          style="height: 200px"
+        >
+          <div>
+            <h3>Nenhum Usuário encontrado...</h3>
+            <button
+              type="button"
+              class="btn btn-md btn-warning btn-rounded mt-2"
+              mdbRipple
+              (click)="findAll()"
+            >
+              Atualizar lista
+            </button>
+          </div>
+        </div>
+        }
       </div>
     </div>
   </div>
 </div>
+
+<ng-template #modalUsuarioForm>
+  <div class="modal-header">
+    <h3 class="modal-title" id="modal-basic-title">Cadastrar Usuário</h3>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modalRef.close()"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <app-usuario-form [usuario]="usuarioEdit" (retorno)="retornoForm($event)"></app-usuario-form>
+  </div>
+</ng-template>

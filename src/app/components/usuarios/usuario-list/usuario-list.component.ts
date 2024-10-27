@@ -1,39 +1,39 @@
-import { booleanAttribute, Component, inject, OnInit } from '@angular/core';
+import { booleanAttribute, Component, inject, OnInit, TemplateRef, ViewChild, viewChild } from '@angular/core';
 import { Usuario } from '../../../models/usuario';
 import { UsuarioService } from '../../../services/usuario.service';
 import Swal from 'sweetalert2';
 import { Router, RouterLink } from '@angular/router';
-import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
+import { MdbModalModule, MdbModalRef } from 'mdb-angular-ui-kit/modal';
+import { MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { UsuarioFormComponent } from '../usuario-form/usuario-form.component';
+
 @Component({
   selector: 'app-usuario-list',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink , MdbModalModule, UsuarioFormComponent],
   templateUrl: './usuario-list.component.html',
   styleUrls: ['./usuario-list.component.scss'],
 })
 export class UsuarioListComponent {
   lista: Usuario[] = [];
+  usuarioEdit: Usuario = new Usuario();
 
+  //SERVICES
   usuarioService = inject(UsuarioService);
   router = inject(Router);
 
-  constructor() {
+
+  //ELEMENTOS DE MODAL
+  modalService = inject(MdbModalService);
+  @ViewChild("modalUsuarioForm") modalUsuarioForm!: TemplateRef<any>;
+  modalRef!: MdbModalRef<any>;
+  
+
+
+
+  constructor( ) {
     this.findAll();
   }
-
-  ngOnInit(): void {      //ao inicializar puxa o findall em ordem decrescente
-    this.usuarioService.findAll().subscribe(
-      data => {
-        this.lista = data;
-        this.ordenarUsuariosPorId();
-      },
-      error => console.error('Erro ao buscar usuários', error)
-    );
-  }
-  ordenarUsuariosPorId() {       //logica da ordem descerescente
-    this.lista.sort((a, b) => b.id - a.id);
-  }
-
 
 
   findAll() {
@@ -50,6 +50,7 @@ export class UsuarioListComponent {
       },
     });
   }
+
 
   findById(id: number) {
     this.usuarioService.findById(id).subscribe({
@@ -78,8 +79,6 @@ export class UsuarioListComponent {
       cancelButtonText: 'Não',
     }).then((result) => {
       if (result.isConfirmed) {
-
-
         this.usuarioService.desativarUsuario(usuario.id).subscribe({
           next: mensagem => {
             Swal.fire({
@@ -101,4 +100,21 @@ export class UsuarioListComponent {
       }
     });
   }
+
+
+  new() {
+    this.usuarioEdit = new Usuario();
+    this.modalRef = this.modalService.open(this.modalUsuarioForm);
+  } 
+  
+  edit( usuario: Usuario) {
+    this.usuarioEdit = Object.assign ({}, usuario); //clonando pra evitar ref de obj
+    this.modalRef = this.modalService.open(this.modalUsuarioForm);
+  }
+
+  retornoForm( usuario : Usuario) {
+    this.modalRef.close();
+    this.findAll();
+  }
+
 }
