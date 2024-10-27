@@ -1,1 +1,66 @@
-<p>dashboard wodddddddddddddddddrks!</p>
+<div class="container">
+  <div class="dashboard">
+    <!-- Seção de Boas-Vindas -->
+    <div class="welcome-section">
+      <img src="https://i.pinimg.com/originals/b7/86/d7/b786d7a1f70be0ec7f595ecdab66bc99.gif" alt="Mascote" class="mascot-image">
+      <h1>Olá, Bem vindo!</h1>
+      <p>O que vamos fazer hoje?</p>
+
+      <button>Realizar Vendas</button>
+      <button>...</button>
+    </div>
+
+    <!-- Seção de Histórico -->
+    <div class="historico-section">
+      <h3><i class="fas fa-shopping-cart"></i>
+        Histórico de Vendas</h3>
+      <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Data</th>
+                <th scope="col">total</th>
+                <th scope="col">formaPagamento</th>
+                <th scope="col">usuario</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (venda of historicoVendas; track $index) {
+                <tr>
+                    <td> {{ venda.data }}</td>
+                    <td>{{ venda.total }}</td>
+                    <td>{{ venda.formaPagamento }}</td>
+                    <td>{{ venda.usuario.nome }}</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    </div>
+  <!-- Seção de Painéis de Vendas -->
+  <div class="sales-panels">
+    <!-- Vendas Mensais -->
+    <div class="card">
+      <h5><i class="fas fa-calendar-alt"></i> Vendas Mensais</h5>
+      <div class="input-group">
+        <label for="mes">Mês:</label>
+        <input type="number" id="mes" [(ngModel)]="mes" (change)="getVendasMensais()" min="1" max="12" class="input-small">
+        <label for="ano">Ano:</label>
+        <input type="number" id="ano" [(ngModel)]="ano" (change)="getVendasMensais()" class="input-small">
+      </div>
+      <p>Total: {{ vendasPorMes | currency:'BRL' }}</p>
+    </div>
+
+    <!-- Vendas Anuais -->
+    <div class="card">
+      <h5><i class="fas fa-calendar-alt"></i> Vendas Anuais</h5>
+      <input type="number" [(ngModel)]="ano" (change)="getVendasAnuais()" class="input-small">
+      <p>Total: {{ vendasAnuais | currency:'BRL' }}</p>
+    </div>
+
+    <!-- Vendas Semanais -->
+    <div class="card">
+      <h5><i class="fas fa-money-bill-wave"></i> Vendas Semanais</h5>
+      <p>Total: {{ vendasSemanais | currency:'BRL' }}</p>
+    </div>
+  </div>
+</div>
+</div>
