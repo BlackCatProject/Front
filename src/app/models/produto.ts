@@ -3,6 +3,6 @@ export class Produto {
     ativo!: boolean;
     nome!: string;
     descricao!: string;
-    valor!:number;
+    preco!:number;
     
 }
