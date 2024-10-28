@@ -22,7 +22,6 @@ export class UsuarioListComponent {
   usuarioService = inject(UsuarioService);
   router = inject(Router);
 
-
   //ELEMENTOS DE MODAL
   modalService = inject(MdbModalService);
   @ViewChild("modalUsuarioForm") modalUsuarioForm!: TemplateRef<any>;
