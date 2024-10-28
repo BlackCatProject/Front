@@ -1,4 +1,4 @@
-import { booleanAttribute, Component, inject, OnInit, TemplateRef, ViewChild, viewChild } from '@angular/core';
+import { booleanAttribute, Component, EventEmitter, inject, Input, OnInit, Output, TemplateRef, ViewChild, viewChild } from '@angular/core';
 import { Usuario } from '../../../models/usuario';
 import { UsuarioService } from '../../../services/usuario.service';
 import Swal from 'sweetalert2';
@@ -15,6 +15,10 @@ import { UsuarioFormComponent } from '../usuario-form/usuario-form.component';
   styleUrls: ['./usuario-list.component.scss'],
 })
 export class UsuarioListComponent {
+
+  @Input() modoAddUser: boolean = false;
+  @Output() retorno = new EventEmitter<any>;
+
   lista: Usuario[] = [];
   usuarioEdit: Usuario = new Usuario();
 
@@ -114,6 +118,10 @@ export class UsuarioListComponent {
   retornoForm( usuario : Usuario) {
     this.modalRef.close();
     this.findAll();
+  }
+
+  retornarUsuario(user : Usuario){
+    this.retorno.emit(user);
   }
 
 }

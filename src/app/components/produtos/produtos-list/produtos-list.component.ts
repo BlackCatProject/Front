@@ -1,10 +1,11 @@
-import { Component, ViewChild, TemplateRef, OnInit, NgModule } from '@angular/core';
+import { Component, ViewChild, TemplateRef, OnInit, NgModule, Input, inject, Output, EventEmitter, input, SimpleChanges } from '@angular/core';
 import { Produto } from '../../../models/produto';
 import { ProdutoService } from '../../../services/produto.service';
 import Swal from 'sweetalert2';
 import { Router, RouterLink } from '@angular/router';
 import { MdbModalModule, MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { ProdutosFormComponent } from '../produtos-form/produtos-form.component';
+import { ProdutoVenda } from '../../../models/produto-venda';
 
 @Component({
   selector: 'app-produtos-list',
@@ -13,21 +14,51 @@ import { ProdutosFormComponent } from '../produtos-form/produtos-form.component'
   templateUrl: './produtos-list.component.html',
   styleUrls: ['./produtos-list.component.scss'],
 })
-export class ProdutosListComponent implements OnInit {
+export class ProdutosListComponent {
+
+  @Input() nomePesquisa: string = '';
+  @Input() modoAddProduct : boolean = false;
+  @Output() retorno = new EventEmitter();
+
   lista: Produto[] = [];
   produtoEdit: Produto = new Produto(); // Inicialize o produto com valores padrão
 
   @ViewChild("modalProdutoDetalhe") modalProdutoDetalhe!: TemplateRef<any>;
   modalRef!: MdbModalRef<any>;
 
-  constructor(
-    private produtoService: ProdutoService,
-    private modalService: MdbModalService, // Armazene a instância do modalService aqui
-    private router: Router
-  ) {}
+  produtoService = inject(ProdutoService);
+  modalService = inject(MdbModalService);
+  router = inject(Router);
 
-  ngOnInit(): void {
-    this.findAllAtivos();
+  constructor() {
+      this.findAllAtivos();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['nomePesquisa']) {
+      if (this.nomePesquisa) {
+        this.findByNome();
+      } else {
+        this.findAllAtivos();
+      }
+    }
+  }
+
+  findByNome() {
+    console.log(this.nomePesquisa)
+    this.produtoService.findByNome(this.nomePesquisa).subscribe({
+      next: (lista) => {
+        this.lista = lista;
+        this.ordenarProdutosPorId();
+      },
+      error: () => {
+        Swal.fire({
+          title: 'Erro ao buscar produtos',
+          icon: 'error',
+          confirmButtonText: 'Ok',
+        });
+      },
+    });
   }
 
   findAllAtivos() {
@@ -95,6 +126,11 @@ export class ProdutosListComponent implements OnInit {
         });
       }
     });
+  }
+
+
+  retornarProduto(produto : Produto){
+    this.retorno.emit(produto);
   }
 }
 
