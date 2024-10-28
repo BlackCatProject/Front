@@ -1,3 +1,5 @@
+import { Venda } from "./venda";
+
 export class Usuario {
     id!: number;
     nome!: string;
@@ -5,4 +7,5 @@ export class Usuario {
     senha!: string;
     role!: 'GESTOR' | 'FUNCIONARIO';
     ativo!: boolean;
+    vendas!: Venda[];
 }
