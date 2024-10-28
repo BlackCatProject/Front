@@ -1,1 +1,122 @@
-<p>venda works!</p>
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="inputs-container">
+                        <div class="input-group center-aligned">
+                                <input [(ngModel)]="nomeSearch" (keyup)="onSearch()" mdbInput type="text" name="product-search" #searchInput class="form-control search-field" placeholder="Adicionar produto" />
+                            <button type="button" class="btn btn-primary btn-search" data-mdb-ripple-init (click)="adicionarProduto()">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <div class="select-container">
+                            <!-- "Cartão de Débito", "Cartão de Crédito", "Dinheiro", "Pix" -->
+                            <select (change)="setFormaPagamento()" name="forma-pagamento" class="form-select" [(ngModel)]="formaPagamento">
+                                <option value="formaPagamento" hidden selected>Forma de Pagamento</option>
+                                <option value="Cartão de Débito">Cartão de Débito</option>
+                                <option value="Cartão de Crédito">Cartão de Crédito</option>
+                                <option value="Dinheiro">Dinheiro</option>
+                                <option value="Pix">Pix</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    @if(showResult){
+                        <div class="result-list" click>
+                            <div class="right-aligned">
+                                <button (click)="closeList()" class="close"><i class="fas fa-x"></i></button>
+                            </div>
+                            <app-produtos-list [modoAddProduct]="true" (retorno)="addProduct($event)" [nomePesquisa]="nomeSearch"></app-produtos-list>
+                        </div>
+                    }
+                    <div class="container table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th class="center-aligned">Quantidade</th>
+                                    <th class="center-aligned">Valor Unitário</th>
+                                    <th>Total</th>
+                                    <th>Remover</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (prodVenda of venda.produtosVenda; track $index) {
+                                    <tr>
+                                        <td>{{prodVenda.produto.nome}}</td>
+                                        <td class="qnt-td">
+                                            <button class="btn btn-primary" (click)="subtrairQuantidade(prodVenda)"><i class="fas fa-minus"></i></button>
+                                            <input (keyup)="calcularTotal()" [(ngModel)]="prodVenda.quantidade" type="number" min="0" class="qnt-field"> 
+                                            <button class="btn btn-primary" (click)="addQuantidade(prodVenda)"><i class="fas fa-plus"></i></button>
+                                        </td>
+                                        <td class="center-aligned">R$ {{prodVenda.produto.preco.toFixed(2)}}</td>
+                                        <td>R$ {{(prodVenda.produto.preco * prodVenda.quantidade).toFixed(2)}}</td>
+                                        <td>
+                                            <button class="btn btn-danger" (click)="removerProdVenda(prodVenda)"><i class="fas fa-minus"></i></button>
+                                        </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="container cards-container center-aligned">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="user-container">
+                                    <h5>Usuario: </h5>
+                                    <button class="btn btn-success" (click)="adicionarUser()"><i class="fas fa-user-plus"></i></button>
+                                </div>
+                                <p>{{userName}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>Desconto (%): </h5>
+                                <div class="discount-container">
+                                    <button class="btn btn-primary" (click)="subtrairDesconto()"><i class="fas fa-minus"></i></button>
+                                    <input [(ngModel)]="venda.desconto" (keyup)="calcularTotal()" min="0" max="100" type="number" class="form-control desconto-field">
+                                    <button class="btn btn-primary" (click)="addDesconto()"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>Total:</h5>
+                                <p>{{totalVendaText}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <button [disabled]="!vendaValida" (click)="save()" class="btn btn-primary">Finalizar Venda</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #userList>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="modalRef.close()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <app-usuario-list [modoAddUser]="true" (retorno)="addUser($event)"></app-usuario-list>
+      </div>
+</ng-template>

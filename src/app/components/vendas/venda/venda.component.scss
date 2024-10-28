@@ -1,0 +1,70 @@
+.input-group{
+    max-width: 50vw;
+}
+.search-field{
+    height: 5vh;
+}
+.btn-search{
+    height: 5vh;
+}
+.select-container{
+    width: 30vw;
+}
+.inputs-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.table-container{
+    width: 76vw;
+    height: 60vh;
+    overflow-y: auto;
+}
+
+.discount-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-self: center;
+    justify-content: space-between;
+
+}
+
+.qnt-td{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+
+.qnt-field{
+    height: 5vh;
+    width: 5vw;
+    text-align: center;
+}
+
+.desconto-field{
+    text-align: center;
+    height: 6vh;
+    width: 6vw;
+}
+
+.user-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.result-list {
+    position: absolute;
+    z-index: 1000; 
+    background-color: #ffffff; 
+    border: 1px solid #ddd; 
+    width: 73vw;
+    max-height: 80vh; 
+    overflow-y: auto; 
+    border-radius: 10px;
+    
+  }
+  

@@ -23,6 +23,11 @@ export class ProdutoService {
     return this.http.get<Produto[]>(`${this.API}/findAll?ativo=${ativo}`);
   }
 
+  // CRUD - Read - findAll
+  findByNome(nome: string): Observable<Produto[]> {
+    return this.http.get<Produto[]>(`${this.API}/findByNome?nome=${nome}`);
+  }
+
   // CRUD - Read - findById
   findById(id: number): Observable<Produto> {
     return this.http.get<Produto>(`${this.API}/findById/${id}`);
