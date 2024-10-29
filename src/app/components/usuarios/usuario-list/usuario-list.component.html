@@ -110,25 +110,17 @@
             }
           </tbody>
         </table>
-
+        
         @if (lista.length === 0) {
-        <div
-          class="d-flex justify-content-center align-items-center text-center"
-          style="height: 200px"
-        >
-          <div>
+          <div
+            class="d-flex flex-column justify-content-center align-items-center text-center"
+            style="height: 200px"
+          >
             <h3>Nenhum Usuário encontrado...</h3>
-            <button
-              type="button"
-              class="btn btn-md btn-warning btn-rounded mt-2"
-              mdbRipple
-              (click)="findAll(true)"
-            >
-              <i class="fas fa-rotate"></i> Atualizar
-            </button>
+            <h6>Cheque a conexão com o banco de dados.</h6>
           </div>
-        </div>
         }
+        
       </div>
     </div>
   </div>
