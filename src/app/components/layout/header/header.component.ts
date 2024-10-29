@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
 import Swal from 'sweetalert2';
+import { AlertService } from '../../../services/alert.service';
 
 
 @Component({
@@ -14,6 +15,7 @@ import Swal from 'sweetalert2';
 
 export class HeaderComponent {
   router = inject(Router);
+alertService = inject(AlertService)
 
   // Método para verificar se o usuário é um admin
   isAdmin(): boolean {
@@ -39,16 +41,7 @@ export class HeaderComponent {
   confirmLogout(event: Event) {
     event.preventDefault();
 
-    Swal.fire({
-      title: 'Tem certeza que deseja sair?',
-      text: "Você será redirecionado para a página de login.",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Sim, quero sair',
-      cancelButtonText: 'Cancelar'
-    }).then((result) => {
+    this.alertService.showConfirmDialog("Tem certeza que deseja sair?", "Voce ser redirecionando para tela de login","Sim, quero sair", "warning").then((result) => {
       if (result.isConfirmed) {
         // Remover o papel do usuário do localStorage antes de redirecionar
         localStorage.removeItem('userRole');
