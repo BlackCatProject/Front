@@ -6,15 +6,16 @@ import Swal, { SweetAlertIcon } from 'sweetalert2';
 })
 export class AlertService {
 
-  showConfirmDialog(message: string, confirmButtonText: string) {
-    Swal.fire({
+  showConfirmDialog(message: string, confirmButtonText: string, icon : SweetAlertIcon) {
+    return Swal.fire({
       title: message,
       showCancelButton: true,
       confirmButtonColor: "#40a55e",
       cancelButtonColor: "#d33",
       confirmButtonText: confirmButtonText,
-      cancelButtonText: `Cancelar`
-    }).then((result) => {return result});
+      cancelButtonText: "Cancelar",
+      icon: icon
+    })
   }
 
   showAlert(message: string, icon : SweetAlertIcon){
