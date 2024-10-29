@@ -19,8 +19,10 @@ export class UsuarioListComponent {
   @Input() modoAddUser: boolean = false;
   @Output() retorno = new EventEmitter<any>;
 
+  //VARIAVEIS DE CONTEXTO
   lista: Usuario[] = [];
   usuarioEdit: Usuario = new Usuario();
+  ativo: boolean = true;
 
   //SERVICES
   usuarioService = inject(UsuarioService);
@@ -39,8 +41,8 @@ export class UsuarioListComponent {
   }
 
 
-  findAll() {
-    this.usuarioService.findAll().subscribe({
+  findAll(ativo: boolean = true) {
+    this.usuarioService.findAll(ativo).subscribe({
       next: (lista) => {
         this.lista = lista;
       },
@@ -90,6 +92,39 @@ export class UsuarioListComponent {
               confirmButtonText: 'Ok',
             });
             this.findAll();
+          },
+          error: erro => {
+            Swal.fire({
+              title: 'Erro ao buscar usuário',
+              icon: 'error',
+              confirmButtonText: 'Ok',
+            });
+          },
+        });
+         
+      }
+    });
+  }
+
+  ativarUsuario(usuario: Usuario) {
+    Swal.fire({
+      title: 'Atenção',
+      text: `Tem certeza que deseja ativar o usuário ${usuario.login}?`,
+      icon: 'warning',
+      showConfirmButton: true,
+      showDenyButton: true,
+      confirmButtonText: 'Sim',
+      cancelButtonText: 'Não',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.usuarioService.ativarUsuario(usuario.id).subscribe({
+          next: mensagem => {
+            this.findAll(false);
+            Swal.fire({
+              title: mensagem,
+              icon: 'success',
+              confirmButtonText: 'Ok',
+            });
           },
           error: erro => {
             Swal.fire({

@@ -19,9 +19,9 @@ export class UsuarioService {
   }
 
   //CRUD - Read - findAll
-  findAll(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(this.API + `/findAll?ativo=true`); //API + /metodo + parametro Boolean
-  }
+  findAll(ativo: boolean = true): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(`${this.API}/findAll?ativo=${ativo}`);
+  }  
 
   //CRUD - Read - findById
   findById(id: number): Observable<Usuario> {
