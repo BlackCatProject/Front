@@ -63,4 +63,8 @@ export class UsuarioService {
       }
     );
   }
+
+  verificarUsuarioExistente(usuario: Usuario): Observable<boolean> {
+    return this.http.post<boolean>(`${this.API}/verificar`, usuario);
+  }
 }
