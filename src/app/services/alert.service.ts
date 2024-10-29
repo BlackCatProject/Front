@@ -5,25 +5,30 @@ import Swal, { SweetAlertIcon } from 'sweetalert2';
   providedIn: 'root',
 })
 export class AlertService {
-
-  showConfirmDialog(message: string, txt : string, confirmButtonText: string, icon : SweetAlertIcon) {
+  
+  showConfirmDialog(
+    message: string,
+    txt: string,
+    confirmButtonText: string,
+    icon: SweetAlertIcon
+  ) {
     return Swal.fire({
       title: message,
       text: txt,
       showCancelButton: true,
-      confirmButtonColor: "#40a55e",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: '#40a55e',
+      cancelButtonColor: '#d33',
       confirmButtonText: confirmButtonText,
-      cancelButtonText: "Cancelar",
-      icon: icon
-    })
+      cancelButtonText: 'Cancelar',
+      icon: icon,
+    });
   }
 
-  showAlert(message: string, icon : SweetAlertIcon){
-    Swal.fire(message, "", icon);
+  showAlert(message: string, icon: SweetAlertIcon) {
+    Swal.fire(message, '', icon);
   }
 
-  showToast(message: string, icon : SweetAlertIcon) {
+  showToast(message: string, icon: SweetAlertIcon) {
     const Toast = Swal.mixin({
       toast: true,
       position: 'top-end',

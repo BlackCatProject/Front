@@ -73,18 +73,18 @@ export class VendaComponent {
 
   save() {
 
-    // this.venda.usuario.vendas = [];
-
     this.vendaService.save(this.venda).subscribe({
       next: (msg) => {
         this.venda = new Venda();
         this.venda.produtosVenda = [];
         this.venda.desconto = 0;
         this.alertService.showToast(msg, 'success');
+        this.formaPagamento == "";
+        this.setFormaPagamento();
+        this.totalVendaText = "R$ 0,00"
       },
       error: (erro) => {
         this.alertService.showToast(erro.error, 'error');
-        console.log(erro);
       },
     });
   }
@@ -104,7 +104,7 @@ export class VendaComponent {
       this.venda.usuario = user;
       this.userName = user.nome;
     } else {
-      Swal.fire({ icon: 'error', text: 'Usuário Nulo' });
+      this.alertService.showToast('Usuário Nulo', "error");
     }
     this.verificarVenda();
     this.modalRef.close();
@@ -125,13 +125,10 @@ export class VendaComponent {
         this.venda.produtosVenda.push(prodVenda);
         this.calcularTotal();
       } else {
-        Swal.fire({
-          icon: 'error',
-          text: `O produto ${produto.nome} já está presente na venda`,
-        });
+        this.alertService.showToast(`O produto ${produto.nome} já está presente na venda`, "warning")
       }
     } else {
-      Swal.fire({ icon: 'error', text: 'Produto Nulo' });
+      this.alertService.showAlert("Produto nulo", "error")
     }
     this.showResult = false;
     this.verificarVenda();
@@ -168,7 +165,6 @@ export class VendaComponent {
         this.venda.formaPagamento &&
         this.venda.formaPagamento !== 'Forma de pagamento'
     );
-    console.log(this.venda, this.vendaValida);
   }
 
   setFormaPagamento() {
@@ -201,6 +197,9 @@ export class VendaComponent {
       prodVenda.quantidade--;
       this.calcularTotal();
       this.verificarVenda();
+    }
+    if(prodVenda.quantidade == 0){
+      this.removerProdVenda(prodVenda);
     }
   }
 }
