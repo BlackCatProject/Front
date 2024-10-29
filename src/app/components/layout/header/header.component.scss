@@ -15,7 +15,7 @@
 }
 
 .navbar .nav-link:hover {
-  color: #30DEAC; 
+  color: #84AADC; 
   border-radius: 0%;
 }
 
@@ -50,7 +50,7 @@
 }
 
 .navbar-toggler {
-  background-color: #30DEAC;
+  background-color: #84AADC;
 }
 
 .navbar-nav.ms-auto .nav-item .nav-link {
@@ -59,4 +59,13 @@
 
 .navbar-nav.ms-auto .nav-item .nav-link:hover {
   color: #EC4A5C; 
+}
+@media screen and (max-width: 800px) {
+  .buttons-td {
+    flex-direction: column;
+  }
+
+  .btn-edit, .btn-disable {
+    margin-bottom: 10px;
+  }
 }

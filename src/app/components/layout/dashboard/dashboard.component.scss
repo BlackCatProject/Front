@@ -1,4 +1,3 @@
-/* Reset */
 * {
     margin-top: 5px;
     box-sizing: border-box; 
@@ -10,20 +9,20 @@ body {
     background-color: #f5f8fb;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Alinhamento flexível no topo */
+    align-items: flex-start; 
     min-height: 100vh;
-    padding: 20px; /* Espaçamento interno */
+    padding: 20px; 
 }
 
 /* Dashboard */
 .dashboard {
     display: grid;
-    gap: 10px; /* Espaçamento entre as seções */
+    gap: 10px; 
     grid-template-areas:
         "welcome historico"
         "sales sales";
-    max-width: 1200px; /* Limitar largura total da dashboard */
-    width: 100%; /* Usar 100% do espaço disponível */
+    max-width: 1200px;
+    width: 100%; 
 }
 
 /* Seção de boas-vindas */
@@ -35,18 +34,19 @@ body {
     padding: 20px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    height: 380px; /* Definir altura fixa  */
-    width: 300px; /* Ajustar para a largura desejada */
-    max-width: 100%; /* Limitar a largura máxima em 90% da tela */
-    overflow: hidden; /* Impedir o transbordo */
+    height: 385px; 
+    width: 300px; 
+    max-width: 100%; 
+    overflow: hidden; 
 }
+
 .mascot-image {
-    width: 180px; 
+    width: 195px; 
     margin-bottom: 20px; 
 }
 
 .welcome-section h1 {
-    font-size: 1.2em; /* Tamanho da fonte  */
+    font-size: 1.2em; 
     color: #333;
 }
 
@@ -55,127 +55,157 @@ body {
     padding: 8px 15px; 
 }
 
-//* Seção de histórico */
+/* Seção de histórico */
 .historico-section {
     grid-area: historico;
-    background: #fff;
-    background-color: #2F3855;
-    color: #e5f5e5;
+    background: #F8F3FC;
+    color: #000000;
     border-radius: 10px;
     padding: 20px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 900px; /* Definir largura fixa para histórico */
-    max-width: 100%; /* Limitar a largura máxima em 90% da tela */
-    overflow: auto; /* Adiciona barra de rolagem se necessário */
+    width: 900px; 
+    max-width: 100%; 
+}
+
+/* Tabela */
+.historico-section table {
+    width: 100%; /* Garante que a tabela ocupe a largura total */
+    border-collapse: collapse;
+}
+
+/* Células da tabela */
+.historico-section th, .historico-section td {
+    padding: 10px;
+    text-align: left;
+    color: #000000; /* Cor do texto preta */
 }
 
 /* Painéis de vendas */
 .sales-panels {
-    grid-area: sales; /* Define onde os painéis de vendas vão */
+    grid-area: sales; 
     display: flex;
-    gap: 1rem; /* Espaço entre os cartões */
+    gap: 1rem; 
     padding: 1rem;
-    justify-content: flex-start; /* Começar do início */
-    flex-wrap: wrap; /* Permitir que os cartões quebrem se o espaço for pequeno */
+    justify-content: flex-start;
+    flex-wrap: wrap; 
 }
 
 /* Ajustando os cartões */
 .card {
-    background: #ffffff;
+    background: #F8F3FC; 
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 1rem;
-    flex: 0 0 auto; /* Impedir que os cartões encolham, mas ainda são responsivos */
-    width: 382px; /* Definir uma largura fixa de 200px para os cartões */
+    flex: 0 0 auto;
+    width: 382px;
     text-align: center;
-    display: flex; /* Tornar o cartão um contêiner flexível */
-    flex-direction: column; /* Alinhar os filhos verticalmente */
-    justify-content: space-between; /* Distribuir espaço uniformemente dentro do cartão */
-    height: 200px; /* Definir uma altura fixa para os cartões */
-    background-color: #2F3855;
-    color: #e5f5e5;
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between; 
+    height: 200px; 
+    color: #000000;
 }
 
 .input-group {
     display: flex;
-    gap: 10px; /* Espaço entre os inputs */
-    flex-wrap: wrap; /* Permitir que os inputs fiquem em linhas diferentes em telas menores */
+    gap: 5px; 
+    flex-wrap: wrap; 
     justify-content: center;
 }
 
 .input-small {
     border: 1px solid #ccc;
-    padding: 5px 8px; /* Ajuste o padding para manter as bordas consistentes */
-    width: 80px; /* Tamanho fixo para controlar o layout */
+    padding: 5px 8px; 
+    width: 80px; 
     margin: 5px;
     border-radius: 20px;
     text-align: center;
     font-size: 0.9em;
     background-color: #f9f9f9;
-    transition: box-shadow 0.3s ease; /* Suavizar o foco */
+    transition: box-shadow 0.3s ease; 
 }
 
 .input-small:focus {
     outline: none;
-    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5); /* Destaque em azul ao focar */
+    box-shadow: 0 0 5px rgba(3, 22, 44, 0.5); 
 }
 
-
-
-.card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-weight: bold;
-    margin-bottom: 1rem;
-}
-
-
-.icon-color {
-    color: #4a90e2; 
-}
-
-
-.percentage {
-    font-size: 0.9rem;
-    color: #28a745;
-    background-color: #e5f5e5;
-    border-radius: 50%;
-    padding: 0.3rem 0.5rem;
-    font-weight: bold;
-}
-
-.card-body {
-    font-size: 1.2rem;
-}
-
-.total {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #333;
-}
-
-.quantity {
-    font-size: 0.9rem;
-    color: #888;
-}
-
-.select {
-    border: none;
-}
-
-/* Títulos (h1, h3) */
+/* Títulos (h1, h3, h5) */
 h1, h3, h5 {
-    color: #e9885b; /* Altere para a cor desejada, como laranja, por exemplo */
+    color: #2F3855; 
 }
 
 /* Título de boas-vindas específico */
 .welcome-section h1 {
-    color: #e9885b; /* Cor de destaque */
+    color: #ebebeb; 
 }
 
 /* Cor do texto da tabela */
 .historico-section table th,
 .historico-section table td {
-    color: #ffffff; /* Altere para a cor desejada, como cinza claro para contraste */
+    color: #000000; 
+}
+
+/* Estilos para os botões */
+.btn {
+    display: inline-flex; 
+    justify-content: center; 
+    align-items: center;
+    margin: 5px; 
+    padding: 8px 12px;
+    background-color: #84AADC; 
+    color: white;
+    border: none;
+    border-radius: 5px; 
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-size: 0.9em;
+}
+
+/* Efeito de hover para os botões */
+.btn:hover {
+    background-color: #F8F3FC;
+    color: #000000;
+}
+
+/* Estilos do contêiner de botões */
+.btn-container {
+    display: flex;
+    justify-content: center; 
+    gap: 10px; 
+}
+
+/* Seção de histórico */
+.historico-header {
+    display: flex;            
+    justify-content: space-between;
+    align-items: center;      
+}
+
+.historico-header h3 {
+    margin: 0;                 
+}
+
+.historico-header .btn {
+    margin-left: 15px;       
+}
+
+.historico-section h3 {
+    margin-bottom: 1px; 
+}
+
+.historico-section table {
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 0; 
+}
+
+.historico-section th, .historico-section td {
+    padding: 10px; 
+    text-align: left;
+    color: #000000; 
+}
+
+.icon-color {
+    color: #84AADC; 
 }

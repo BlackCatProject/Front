@@ -20,7 +20,38 @@ body{
     background-color: #d3d3da;
 }
 
+  /* Classe para contêiner de tabela com rolagem */
+.table-scroll {
+  max-height: 300px; /* Altura máxima da área de rolagem */
+  overflow-y: auto; /* Habilita rolagem vertical */
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+}
+
+/* Estilo básico da tabela */
+.table {
+  width: 100%; /* Garante que a tabela ocupe a largura total */
+  border-collapse: collapse; 
+}
+
+/* Estilo para cabeçalhos da tabela */
+.table th {
+  position: sticky; /* Permite que o cabeçalho seja fixo */
+  top: 0; /* Fixa o cabeçalho no topo do contêiner de rolagem */
+  background-color: #84AADC; 
+
+  padding: 10px; 
+}
+
+/* Estilo para células da tabela */
+.table th,
+.table td {
+  padding: 10px; /* Espaçamento interno */
+  text-align: left; /* Alinhamento à esquerda */
+  color: #000000; /* Cor do texto */
   
+}
+
   /* Responsividade */
   @media (max-width: 768px) {
     .status-card {
