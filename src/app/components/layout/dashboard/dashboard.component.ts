@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
+  styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
   vendasPorMes: number | null = null;
@@ -75,6 +75,8 @@ export class DashboardComponent {
     });
   }
 
-
+openModal(venda:Venda){
+  
+}
 
 }

@@ -6,6 +6,7 @@ import { UsuarioFormComponent } from './components/usuarios/usuario-form/usuario
 import { UsuarioListComponent } from './components/usuarios/usuario-list/usuario-list.component';
 import { ProdutosListComponent } from './components/produtos/produtos-list/produtos-list.component';
 import { VendaComponent } from './components/vendas/venda/venda.component';
+import { VendaListComponent } from './components/vendas/venda-list/venda-list.component';
 
 
 export const routes: Routes = [
@@ -13,13 +14,15 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'admin', component: PrincipalComponent, children: [
             { path: 'dashboard', component: DashboardComponent },
+            
             { path: 'usuarios', component: UsuarioListComponent },
             { path: 'usuarios/new', component: UsuarioFormComponent },
             { path: 'usuarios/edit/:id', component: UsuarioFormComponent },
             { path: 'produtos', component: ProdutosListComponent },
             { path: 'produtos/new', component: ProdutosListComponent },
             { path: 'produtos/edit/:id', component: ProdutosListComponent },
-            { path: 'venda', component: VendaComponent }
+            { path: 'venda', component: VendaComponent },
+            { path: 'venda/historico', component: VendaListComponent }
         ]
     },
     { 
