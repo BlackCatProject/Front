@@ -1,5 +1,5 @@
 * {
-    margin-top: 5px;
+    margin-top: 7px;
     box-sizing: border-box; 
 }
 
@@ -31,11 +31,11 @@ body {
     background-color: #2F3855;
     color: #e5f5e5;
     border-radius: 10px;
-    padding: 20px; 
+    padding: 25px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    height: 385px; 
-    width: 300px; 
+    height: 410px; 
+    width: 315px; 
     max-width: 100%; 
     overflow: hidden; 
 }
@@ -58,7 +58,7 @@ body {
 /* Seção de histórico */
 .historico-section {
     grid-area: historico;
-    background: #F8F3FC;
+    background: #fcfcfc;
     color: #000000;
     border-radius: 10px;
     padding: 20px; 
@@ -69,7 +69,7 @@ body {
 
 /* Tabela */
 .historico-section table {
-    width: 100%; /* Garante que a tabela ocupe a largura total */
+    width: 100%; 
     border-collapse: collapse;
 }
 
@@ -77,32 +77,33 @@ body {
 .historico-section th, .historico-section td {
     padding: 10px;
     text-align: left;
-    color: #000000; /* Cor do texto preta */
+    color: #000000; 
 }
 
 /* Painéis de vendas */
 .sales-panels {
     grid-area: sales; 
     display: flex;
-    gap: 1rem; 
+    gap: 20px;
     padding: 1rem;
-    justify-content: flex-start;
+    justify-content: space-between; 
     flex-wrap: wrap; 
 }
 
 /* Ajustando os cartões */
 .card {
-    background: #F8F3FC; 
-    border-radius: 15px;
+    background: #ffffff; 
+    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 1rem;
-    flex: 0 0 auto;
-    width: 382px;
+    flex: 1 1 30%; 
+    min-width: 250px; /* Define a largura mínima para dispositivos menores */
+    max-width: 400px; /* Define a largura máxima */
     text-align: center;
     display: flex; 
     flex-direction: column;
     justify-content: space-between; 
-    height: 200px; 
+    height: 150px; 
     color: #000000;
 }
 
@@ -111,6 +112,7 @@ body {
     gap: 5px; 
     flex-wrap: wrap; 
     justify-content: center;
+    align-items: center;
 }
 
 .input-small {
@@ -121,16 +123,40 @@ body {
     border-radius: 20px;
     text-align: center;
     font-size: 0.9em;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     transition: box-shadow 0.3s ease; 
+    border: 1px solid rgb(201, 216, 226); 
+    background-color: #84AADC; 
+    
+}
+.card.weekly-sales p {
+    font-size: 1.5em; 
+    text-align: center; 
+    margin-top: 10px; 
+}
+.card.weekly-sales {
+    display: flex;
+    flex-direction: column;
 }
 
 .input-small:focus {
     outline: none;
-    box-shadow: 0 0 5px rgba(3, 22, 44, 0.5); 
+    box-shadow: 0 0 5px #84AADC; 
+    align-items: center;
 }
 
-/* Títulos (h1, h3, h5) */
+/* Estilo específico para o cartão de Vendas Anuais */
+.annual-sales-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.annual-sales-card .input-small {
+    margin-top: 10px; 
+}
+
 h1, h3, h5 {
     color: #2F3855; 
 }
@@ -144,6 +170,10 @@ h1, h3, h5 {
 .historico-section table th,
 .historico-section table td {
     color: #000000; 
+    
+}
+.historico-section table th{
+    background-color: #84AADC;
 }
 
 /* Estilos para os botões */
