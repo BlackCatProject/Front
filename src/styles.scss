@@ -1,23 +1,23 @@
-@import '@fortawesome/fontawesome-free/css/all.css';
-@import 'mdb-angular-ui-kit/assets/scss/mdb.scss';
+@import "@fortawesome/fontawesome-free/css/all.css";
+@import "mdb-angular-ui-kit/assets/scss/mdb.scss";
 
-.right-aligned{
-    text-align: right;
-    justify-content: right;
+.right-aligned {
+  text-align: right;
+  justify-content: right;
 }
-.center-aligned{
-    text-align: center;
-    justify-content: center;
+.center-aligned {
+  text-align: center;
+  justify-content: center;
 }
-.left-aligned{
-    text-align: left;
-    justify-content: left;
+.left-aligned {
+  text-align: left;
+  justify-content: left;
 }
 .table td:first-child {
   text-align: left;
 }
-body{
-    background-color: #d3d3da;
+body {
+  background-color: #d3d3da;
 }
 
 .table-scroll {
@@ -30,11 +30,9 @@ body{
 .table-scroll-grande {
   max-height: 550px; /* Altura máxima para a tabela grande */
   overflow-y: auto;
-  background-color: #F8F3FC;
+  background-color: #f8f3fc;
   border-radius: 5px;
 }
-
-
 
 .table-scroll::-webkit-scrollbar {
   width: 4px; /* Reduz a largura da barra vertical */
@@ -42,7 +40,7 @@ body{
 }
 
 .table-scroll::-webkit-scrollbar-thumb {
-  background-color: #84AADC; 
+  background-color: #84aadc;
   border-radius: 2px;
 }
 
@@ -50,40 +48,43 @@ body{
   background: #ffffff;
 }
 
-
 /* Estilo para cabeçalhos da tabela */
 .table th {
   position: sticky; /* Permite que o cabeçalho seja fixo */
   top: 0; /* Fixa o cabeçalho no topo do contêiner de rolagem */
- 
 
-  padding: 10px; 
+  padding: 10px;
 }
 
 /* Estilo para células da tabela */
 .table th,
 .table td {
-  padding: 10px; 
-  text-align: left; 
-  color: #000000; 
-  
+  padding: 10px;
+  text-align: left;
+  color: #000000;
 }
 
-  /* Responsividade */
-  @media (max-width: 768px) {
-    .status-card {
-      margin-bottom: 10px;
-    }
-  
-    .table {
-      font-size: 14px;
-    }
-  
-    .table td {
-      padding: 12px;
-    }
+/* Responsividade */
+@media (max-width: 768px) {
+  .status-card {
+    margin-bottom: 10px;
   }
-  
-  .btn btn-primary{
-    background-color: #E39966;
+
+  .table {
+    font-size: 14px;
   }
+
+  .table td {
+    padding: 12px;
+  }
+}
+
+.btn btn-primary {
+  background-color: #e39966;
+}
+
+.no-spin-input::-webkit-outer-spin-button,
+.no-spin-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
