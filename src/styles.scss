@@ -25,7 +25,13 @@ body {
   overflow-y: auto;
   background-color: #ffffff;
   border-radius: 5px;
-  
+
+}
+.table th {
+  position: sticky;
+ 
+  background-color: #e98a7f;
+  color: #ffffff !important; 
 }
 
 .table-scroll-grande {
@@ -41,7 +47,7 @@ body {
 
 .table-scroll::-webkit-scrollbar-thumb {
 
-  background-color: #6990c4; 
+  background-color: #e98a7f; 
 
   border-radius: 2px;
 }
