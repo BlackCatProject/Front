@@ -2,7 +2,7 @@
   <div class="dashboard">
     <!-- Seção de Boas-Vindas -->
     <div class="welcome-section">
-      <img src="https://i.pinimg.com/originals/37/64/bb/3764bbd40bc58c1dcecce505bef42c3c.gif" alt="Mascote" class="mascot-image">
+      <img src="https://i.pinimg.com/originals/31/a7/2a/31a72afda250825d993400c3ef28c55c.gif" alt="Mascote" class="mascot-image">
       <h1>Bem-vindo!</h1>
       <div class="btn-container"> <!-- Novo contêiner flexível -->
         <a href="admin/venda" class="btn">Realizar Vendas</a>
@@ -57,7 +57,7 @@
         <h5><i class="fas fa-calendar-alt icon-color"></i> Vendas Mensais</h5>
         <div class="input-group">
           <div><input type="number" id="mes" [(ngModel)]="mes" (change)="getVendasMensais()" min="1" max="12" class="input-small no-spin-input"></div>
-          <div><input type="number" id="ano" [(ngModel)]="ano" (change)="getVendasMensais()" class="input-small no-spin-input"></div>
+          <div><input type="number" id="ano" [(ngModel)]="ano" (change)="getVendasMensais()" class="input-small no-spin-input "></div>
         </div>
         <p>Total: {{ vendasPorMes | currency:'BRL' }}</p>
       </div>

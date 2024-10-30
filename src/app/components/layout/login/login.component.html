@@ -1,22 +1,36 @@
 <div class="login-container">
   <div class="image-section">
-      <img src="https://i.pinimg.com/originals/ee/ab/00/eeab009c82c074366e54e4e0622e736c.gif" alt="Ilustração de login" />
+    <div>
+      <img
+        src="imagens/eeab009c82c074366e54e4e0622e736c.gif"
+        alt="Ilustração de login"
+      />
+    </div>
+    <div>
+      <h6 class="brackcat">
+        <i class="fas fa-paw logo-icon"></i>
+        <!-- Ícone de gato -->
+        BlackCat
+      </h6>
+    </div>
   </div>
 
   <div class="form-section">
-      <h6>Login</h6>
-      <p>Seja bem-vindo de volta ao BlackCat, realize o login para entrar.</p>
-      
-      <div class="input-container">
-          <input type="text" placeholder="Usuário" [(ngModel)]="login.username">
-          <i class="fas fa-user"></i> <!-- Ícone de usuário dentro do input -->
-      </div>
-      
-      <div class="input-container">
-          <input type="password" placeholder="Senha" [(ngModel)]="login.senha">
-          <i class="fas fa-lock"></i> <!-- Ícone de cadeado dentro do input -->
-      </div>
-      
-      <button type="button" (click)="autenticar()">Entrar</button>
+    <h6>Login</h6>
+    <p>Seja bem-vindo de volta ao BlackCat, realize o login para entrar.</p>
+
+    <div class="input-container">
+      <input type="text" placeholder="Usuário" [(ngModel)]="login.username" />
+      <i class="fas fa-user"></i>
+      <!-- Ícone de usuário dentro do input -->
+    </div>
+
+    <div class="input-container">
+      <input type="password" placeholder="Senha" [(ngModel)]="login.senha" />
+      <i class="fas fa-lock"></i>
+      <!-- Ícone de cadeado dentro do input -->
+    </div>
+
+    <button type="button" (click)="autenticar()">Entrar</button>
   </div>
 </div>
