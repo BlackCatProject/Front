@@ -5,7 +5,6 @@
         <form [formGroup]="produtoForm" (ngSubmit)="onSubmit()">
           <br />
           
-          <!-- Campo Nome -->
           <mdb-form-control>
             <input
               mdbInput
@@ -19,10 +18,7 @@
             <label mdbLabel class="form-label" for="nome">Nome</label>
           
           </mdb-form-control>
-
           <br />
-
-          <!-- Campo Descrição -->
           <mdb-form-control>
             <input
               mdbInput
@@ -33,10 +29,7 @@
             />
             <label mdbLabel class="form-label" for="descricao">Descrição</label>
           </mdb-form-control>
-
           <br />
-
-          <!-- Campo Preço -->
           <mdb-form-control>
             <input
               mdbInput
@@ -45,15 +38,12 @@
               class="form-control"
               formControlName="preco"
               required
-              min=0
+              min="0"
             />
             <label mdbLabel class="form-label" for="preco">Preço</label>
           
           </mdb-form-control>
-
           <br />
-
-          <!-- Botão Salvar -->
           <div class="d-flex justify-content-end">
             <button
               type="submit"

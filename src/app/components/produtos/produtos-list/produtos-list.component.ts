@@ -21,16 +21,14 @@ export class ProdutosListComponent {
   @Output() retorno = new EventEmitter();
 
   lista: Produto[] = [];
-  produtoEdit: Produto = new Produto(); // Inicialize o produto com valores padrão
+  produtoEdit: Produto = new Produto(); 
   ativo: boolean = true;
-  
   @ViewChild("modalProdutoDetalhe") modalProdutoDetalhe!: TemplateRef<any>;
   modalRef!: MdbModalRef<any>;
-
   produtoService = inject(ProdutoService);
   modalService = inject(MdbModalService);
   router = inject(Router);
-
+  
   constructor() {
       this.findAllAtivos();
       this.findAll();
@@ -45,7 +43,6 @@ export class ProdutosListComponent {
       }
     }
   }
-
   findByNome() {
     console.log(this.nomePesquisa)
     this.produtoService.findByNome(this.nomePesquisa).subscribe({
@@ -91,8 +88,6 @@ export class ProdutosListComponent {
       },
     });
   }
- 
-
   ativarProduto(produto: Produto) {
     Swal.fire({
       title: 'Atenção',
@@ -127,22 +122,18 @@ export class ProdutosListComponent {
   ordenarProdutosPorId() {
     this.lista.sort((a, b) => b.id - a.id);
   }
-
   new() {
-    this.produtoEdit = new Produto(); // Crie um novo produto
+    this.produtoEdit = new Produto(); 
     this.modalRef = this.modalService.open(this.modalProdutoDetalhe);
   }
-
   edit(produto: Produto) {
-    this.produtoEdit = Object.assign({}, produto); // Clonando para evitar referência de objeto
+    this.produtoEdit = Object.assign({}, produto); 
     this.modalRef = this.modalService.open(this.modalProdutoDetalhe);
   }
-
   retornoDetalhe(produto: Produto) {
     this.findAllAtivos();
     this.modalRef.close();
   }
-
   desativarProduto(produto: Produto) {
     Swal.fire({
       title: 'Atenção',
@@ -174,8 +165,6 @@ export class ProdutosListComponent {
       }
     });
   }
-
-
   retornarProduto(produto : Produto){
     this.retorno.emit(produto);
   }

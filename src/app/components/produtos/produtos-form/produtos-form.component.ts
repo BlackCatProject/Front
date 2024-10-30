@@ -67,18 +67,22 @@ export class ProdutosFormComponent {
         this.retorno.emit(this.produtoForm.value);
         this.produtoForm.reset();
       },
-      error: () => {
+      error: (erro) => {
         Swal.fire({
           title: 'Erro!',
-          text: 'Não foi possível salvar o produto.',
+          text: erro.error,
           icon: 'error',
           confirmButtonText: 'Ok',
         });
+        this.retorno.emit();
       },
     });
   }
 
   private updateProduto() {
+
+    console.log(this.produtoForm.value);
+
     const id = this.produtoForm.value.id;
     this.produtoService.updateProduto(id, this.produtoForm.value).subscribe({
       next: (mensagem) => {
@@ -90,13 +94,15 @@ export class ProdutosFormComponent {
         });
         this.retorno.emit(this.produtoForm.value);
       },
-      error: () => {
+      error: (erro) => {
+        console.log (erro);
         Swal.fire({
           title: 'Erro!',
-          text: 'Não foi possível atualizar o produto.',
+          text: erro.error,
           icon: 'error',
           confirmButtonText: 'Ok',
         });
+        this.retorno.emit();
       },
     });
   }
