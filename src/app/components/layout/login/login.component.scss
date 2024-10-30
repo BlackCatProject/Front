@@ -3,28 +3,21 @@
   height: 80vh;
   margin: 7vh auto;
   display: flex;
-  background-color: #2F3855;
+  background-color: #2f3855;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
 }
-.brackcat{
-  color: #000000;
-  font-size: 30px;
-  margin-top: 140px;
-}
 
 .image-section {
-  flex: 1.5; 
+  flex: 1.5;
   background-color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 15px 0 0 15px;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
 }
-
-
 
 .image-section img {
   max-width: 100%;
@@ -32,10 +25,9 @@
   border-radius: 15px 0 0 15px;
 }
 
-
 .form-section {
-  flex: 1; 
-  padding: 30px; 
+  flex: 1;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -56,26 +48,26 @@
 }
 
 .form-section input {
-  margin-bottom: 25px; 
-  padding: 12px; 
+  margin-bottom: 25px;
+  padding: 12px;
   border-radius: 15px;
-  width: 80%; 
-  margin:  auto;
-  background-color: #ffffff; 
-  color: #000000; 
-  border: none; 
+  width: 80%;
+  margin: auto;
+  background-color: #ffffff;
+  color: #000000;
+  border: none;
 }
 
 .form-section button {
-  padding: 12px; 
-  background-color: #84AADC;
+  padding: 12px;
+  background-color: #84aadc;
   color: white;
   border: none;
   border-radius: 25px;
   cursor: pointer;
-  width: 50%; 
+  width: 50%;
   margin: 0 auto;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
 .form-section button:hover {
@@ -83,12 +75,12 @@
 }
 
 .form-section .signup {
-  margin-top: 25px; 
+  margin-top: 25px;
   font-size: 14px;
 }
 
 .form-section .signup a {
-  color: #84AADC;
+  color: #84aadc;
   text-decoration: none;
 }
 
@@ -98,37 +90,37 @@
 
 .form-section input:focus {
   outline: none;
-  border: 1px solid #889de0; 
-  box-shadow: 0 0 5px #a3c1d5; 
+  border: 1px solid #889de0;
+  box-shadow: 0 0 5px #a3c1d5;
 }
 .input-container {
   position: relative;
-  width: 80%; 
-  margin: 2% auto; 
+  width: 80%;
+  margin: 2% auto;
 }
 
 .input-container input {
-  padding-left: 40px; 
-  margin-bottom: 15px; 
-  
-  border-radius: 5px; 
-  width: 100%; 
-  transition: border-color 0.3s; 
-  border: none; 
+  padding-left: 40px;
+  margin-bottom: 15px;
+
+  border-radius: 5px;
+  width: 100%;
+  transition: border-color 0.3s;
+  border: none;
 }
 
 .input-container i {
   position: absolute;
-  left: 10px; 
+  left: 10px;
   top: 50%;
   transform: translateY(-50%);
-  color: #000000; 
-  font-size: 15px; 
-  pointer-events: none; 
+  color: #000000;
+  font-size: 15px;
+  pointer-events: none;
 }
 
 .input-container input:focus {
-  outline: none; 
-  border: 1px solid #84AADC; 
-  box-shadow: 0 0 5px rgba(48, 222, 172, 0.5); 
+  outline: none;
+  border: 1px solid #84aadc;
+  box-shadow: 0 0 5px rgba(48, 222, 172, 0.5);
 }
