@@ -86,6 +86,11 @@ body {
   color: #000000;
 }
 
+
+.table th:last-child {
+  border-top-right-radius: 10px; /* Arredonda o canto superior direito */
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
   .status-card {

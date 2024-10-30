@@ -33,7 +33,9 @@ export class DashboardComponent {
   valorMedioVendas: number | null = null;
   selectVenda: Venda | null = null;
   mes: number = new Date().getMonth() + 1;
-  ano: number = new Date().getFullYear();
+  anoMensal: number = new Date().getFullYear();
+  anoAnual: number= new Date().getFullYear();
+  
   usuarioId: number = 0;
 
   vendaService = inject(VendaService);
@@ -59,7 +61,7 @@ export class DashboardComponent {
   }
 
   getVendasMensais(): void {
-    this.vendaService.getVendasMensais(this.ano, this.mes).subscribe({
+    this.vendaService.getVendasMensais(this.anoMensal, this.mes).subscribe({
       next: (total) => (this.vendasPorMes = total),
       error: (erro) => {
         console.error('Erro ao buscar vendas mensais', erro);
@@ -79,7 +81,7 @@ export class DashboardComponent {
   }
 
   getVendasAnuais(): void {
-    this.vendaService.getVendasAnuais(this.ano).subscribe({
+    this.vendaService.getVendasAnuais(this.anoAnual).subscribe({
       next: (total) => (this.vendasAnuais = total),
       error: (erro) => {
         console.error('Erro ao buscar vendas anuais', erro);
