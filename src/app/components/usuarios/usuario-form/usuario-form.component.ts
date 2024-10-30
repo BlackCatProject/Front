@@ -4,7 +4,7 @@ import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { Usuario } from '../../../models/usuario';
 import { UsuarioService } from '../../../services/usuario.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import Swal from 'sweetalert2';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
   selector: 'app-usuario-form',
@@ -13,7 +13,6 @@ import Swal from 'sweetalert2';
   templateUrl: './usuario-form.component.html',
   styleUrls: ['./usuario-form.component.scss']
 })
-
 export class UsuarioFormComponent {
 
   @Input("usuario") usuario: Usuario = new Usuario();
@@ -21,6 +20,7 @@ export class UsuarioFormComponent {
   router = inject(ActivatedRoute);
   router2 = inject(Router);
   usuarioService = inject(UsuarioService);
+  alertService = inject(AlertService);
 
   constructor () { 
    let id = this.router.snapshot.params['id'];
@@ -35,11 +35,8 @@ export class UsuarioFormComponent {
         this.usuario = retorno;
       },
       error: error => {
-        Swal.fire({
-          title: 'Erro ao buscar usuário',
-          icon: 'error',
-          confirmButtonText: 'Ok',
-        });
+        this.alertService.showToast('Erro ao buscar usuário', 'error');
+        this.retorno.emit();
       },
     });
   }
@@ -54,39 +51,26 @@ export class UsuarioFormComponent {
     if (this.usuario.id > 0) {
       this.usuarioService.updateUsuario(this.usuario, this.usuario.id).subscribe({
         next: mensagem => {
-          Swal.fire({
-            title: mensagem,
-            icon: 'success',
-            confirmButtonText: 'Ok',
-          });
+          this.alertService.showToast(mensagem, 'success');
           this.router2.navigate(['/usuarios'], {state: {usuarioEditado: this.usuario}});
           this.retorno.emit(this.usuario);
         },
         error: error => {
-          Swal.fire({
-            title: 'Erro ao buscar usuário',
-            icon: 'error',
-            confirmButtonText: 'Ok',
-          });
+          this.alertService.showToast('Erro ao salvar usuário', 'error');
+          this.retorno.emit();
         },
       });
     } else {
       this.usuarioService.saveUsuario(this.usuario).subscribe({
         next: mensagem => {
-          Swal.fire({
-            title: mensagem,
-            icon: 'success',
-            confirmButtonText: 'Ok',
-          });
+          this.alertService.showToast(mensagem, 'success');
           this.router2.navigate(['/usuarios'], {state: {usuarioNovo: this.usuario}});
           this.retorno.emit(this.usuario);
         },
-        error: error => {
-          Swal.fire({
-            title: 'Erro ao buscar usuário',
-            icon: 'error',
-            confirmButtonText: 'Ok',
-          });
+        error: error => { //nessa parte, o toast exibe escurecido por causa do modal
+          console.log(error);
+          this.alertService.showToast('Erro ao salvar usuário', 'error');
+          this.retorno.emit();
         },
       });
     }
@@ -101,50 +85,22 @@ export class UsuarioFormComponent {
 
   showValidationAlerts() {
     if (!this.usuario.nome) {
-      Swal.fire({
-        title: 'Nome é obrigatório',
-        icon: 'warning',
-        confirmButtonText: 'Ok',
-      });
+      this.alertService.showToast('Nome é obrigatório', 'warning');
     }
     if (!this.usuario.login) {
-      Swal.fire({
-        title: 'Login é obrigatório',
-        icon: 'warning',
-        confirmButtonText: 'Ok',
-      });
+      this.alertService.showToast('Login é obrigatório', 'warning');
     } else if (this.usuario.login.length < 3) {
-      Swal.fire({
-        title: 'Login deve ter no mínimo 3 caracteres',
-        icon: 'warning',
-        confirmButtonText: 'Ok',
-      });
+      this.alertService.showToast('Login deve ter no mínimo 3 caracteres', 'warning');
     } else if (this.usuario.login.length > 20) {
-      Swal.fire({
-        title: 'Login deve ter no máximo 20 caracteres',
-        icon: 'warning',
-        confirmButtonText: 'Ok',
-      });
+      this.alertService.showToast('Login deve ter no máximo 20 caracteres', 'warning');
     }
     if (!this.usuario.senha) {
-      Swal.fire({
-        title: 'Senha é obrigatória',
-        icon: 'warning',
-        confirmButtonText: 'Ok',
-      });
+      this.alertService.showToast('Senha é obrigatória', 'warning');
     } else if (this.usuario.senha.length < 8) {
-      Swal.fire({
-        title: 'Senha deve ter no mínimo 8 caracteres',
-        icon: 'warning',
-        confirmButtonText: 'Ok',
-      });
+      this.alertService.showToast('Senha deve ter no mínimo 8 caracteres', 'warning');
     }
     if (!this.usuario.role) {
-      Swal.fire({
-        title: 'Role é obrigatória',
-        icon: 'warning',
-        confirmButtonText: 'Ok',
-      });
+      this.alertService.showToast('Role é obrigatória', 'warning');
     }
   }
 }
