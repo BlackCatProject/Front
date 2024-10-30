@@ -22,7 +22,8 @@ export class ProdutosListComponent {
 
   lista: Produto[] = [];
   produtoEdit: Produto = new Produto(); // Inicialize o produto com valores padrão
-
+  ativo: boolean = true;
+  
   @ViewChild("modalProdutoDetalhe") modalProdutoDetalhe!: TemplateRef<any>;
   modalRef!: MdbModalRef<any>;
 
@@ -32,6 +33,7 @@ export class ProdutosListComponent {
 
   constructor() {
       this.findAllAtivos();
+      this.findAll();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -60,7 +62,20 @@ export class ProdutosListComponent {
       },
     });
   }
-
+  findAll(ativo: boolean = true) {
+    this.produtoService.findAll(ativo).subscribe({
+      next: (lista) => {
+        this.lista = lista;
+      },
+      error: () => {
+        Swal.fire({
+          title: 'Erro ao buscar produtos',
+          icon: 'error',
+          confirmButtonText: 'Ok',
+        });
+      },
+    });
+  }
   findAllAtivos() {
     this.produtoService.findAll(true).subscribe({
       next: (lista) => {
@@ -76,7 +91,39 @@ export class ProdutosListComponent {
       },
     });
   }
+ 
 
+  ativarProduto(produto: Produto) {
+    Swal.fire({
+      title: 'Atenção',
+      text: `Tem certeza que deseja ativar o produto ${produto.nome}?`,
+      icon: 'warning',
+      showConfirmButton: true,
+      showDenyButton: true,
+      confirmButtonText: 'Sim',
+      cancelButtonText: 'Não',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.produtoService.enableProduto(produto.id).subscribe({
+          next: (mensagem) => {
+            Swal.fire({
+              title: mensagem,
+              icon: 'success',
+              confirmButtonText: 'Ok',
+            });
+            this.findAll(false);
+          },
+          error: () => {
+            Swal.fire({
+              title: 'Erro ao ativar produto',
+              icon: 'error',
+              confirmButtonText: 'Ok',
+            });
+          },
+        });
+      }
+    });
+  }
   ordenarProdutosPorId() {
     this.lista.sort((a, b) => b.id - a.id);
   }
