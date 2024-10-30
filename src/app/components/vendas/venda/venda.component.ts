@@ -21,23 +21,25 @@ import Swal from 'sweetalert2';
 import { Produto } from '../../../models/produto';
 import { ProdutoVenda } from '../../../models/produto-venda';
 import { AlertService } from '../../../services/alert.service';
+import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-venda',
   standalone: true,
   imports: [
+    MdbDropdownModule,
     MdbFormsModule,
     ProdutosListComponent,
     MdbModalModule,
     FormsModule,
     UsuarioListComponent,
+    CommonModule
   ],
   templateUrl: './venda.component.html',
   styleUrl: './venda.component.scss',
 })
 export class VendaComponent {
-  formaPagamento = 'formaPagamento';
-
   vendaValida: boolean = false;
 
   modalService = inject(MdbModalService);
@@ -79,8 +81,7 @@ export class VendaComponent {
         this.venda.produtosVenda = [];
         this.venda.desconto = 0;
         this.alertService.showToast(msg, 'success');
-        this.formaPagamento == "";
-        this.setFormaPagamento();
+        this.setFormaPagamento("");
         this.totalVendaText = "R$ 0,00"
       },
       error: (erro) => {
@@ -167,8 +168,8 @@ export class VendaComponent {
     );
   }
 
-  setFormaPagamento() {
-    this.venda.formaPagamento = this.formaPagamento;
+  setFormaPagamento(formaPagamento : string) {
+    this.venda.formaPagamento = formaPagamento;
     this.verificarVenda();
   }
 

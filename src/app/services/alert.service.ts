@@ -5,7 +5,6 @@ import Swal, { SweetAlertIcon } from 'sweetalert2';
   providedIn: 'root',
 })
 export class AlertService {
-  
   showConfirmDialog(
     message: string,
     txt: string,
@@ -16,11 +15,30 @@ export class AlertService {
       title: message,
       text: txt,
       showCancelButton: true,
-      confirmButtonColor: '#40a55e',
+      confirmButtonColor: '#84aadc',
       cancelButtonColor: '#d33',
       confirmButtonText: confirmButtonText,
       cancelButtonText: 'Cancelar',
       icon: icon,
+    });
+  }
+  showConfirmDialogWithImg(
+    message: string,
+    txt: string,
+    confirmButtonText: string,
+    img : string
+  ) {
+    return Swal.fire({
+      imageUrl: 'https://unsplash.it/400/200',
+      imageWidth: 400,
+      imageHeight: 200,
+      title: message,
+      text: txt,
+      showCancelButton: true,
+      confirmButtonColor: '#84aadc',
+      cancelButtonColor: '#d33',
+      confirmButtonText: confirmButtonText,
+      cancelButtonText: 'Cancelar'
     });
   }
 

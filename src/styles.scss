@@ -29,9 +29,8 @@ body {
 }
 
 .table-scroll-grande {
-  max-height: 550px; /* Altura máxima para a tabela grande */
   overflow-y: auto;
-  background-color: #f8f3fc;
+  background-color: #ffffff;
   border-radius: 5px;
 }
 
@@ -48,6 +47,21 @@ body {
 }
 
 .table-scroll::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+.table-scroll-grande::-webkit-scrollbar {
+  width: 4px; /* Reduz a largura da barra vertical */
+  height: 1px; /* Reduz a altura da barra horizontal */
+}
+
+.table-scroll-grande::-webkit-scrollbar-thumb {
+
+  background-color: #6990c4; 
+
+  border-radius: 2px;
+}
+
+.table-scroll-grande::-webkit-scrollbar-track {
   background: #ffffff;
 }
 
