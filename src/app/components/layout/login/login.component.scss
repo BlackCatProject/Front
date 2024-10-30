@@ -7,6 +7,11 @@
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
 }
+.brackcat{
+  color: #000000;
+  font-size: 30px;
+  margin-top: 140px;
+}
 
 .image-section {
   flex: 1.5; 
@@ -15,13 +20,18 @@
   justify-content: center;
   align-items: center;
   border-radius: 15px 0 0 15px;
+  flex-direction: column;
+  align-items: center; /* Centraliza no meio */
 }
+
+
 
 .image-section img {
   max-width: 100%;
   height: auto;
   border-radius: 15px 0 0 15px;
 }
+
 
 .form-section {
   flex: 1; 
@@ -36,7 +46,7 @@
 .form-section h6 {
   font-size: 24px;
   margin-bottom: 20px;
-  color: #30DEAC;
+  color: #ffffff;
 }
 
 .form-section p {
@@ -69,7 +79,7 @@
 }
 
 .form-section button:hover {
-  background-color: #de4730;
+  background-color: #e27569;
 }
 
 .form-section .signup {
