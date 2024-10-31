@@ -28,7 +28,6 @@ export class ProdutosListComponent {
   produtoService = inject(ProdutoService);
   modalService = inject(MdbModalService);
   router = inject(Router);
-  
   constructor() {
       this.findAllAtivos();
       this.findAll();
