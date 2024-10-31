@@ -30,8 +30,9 @@
           <label class="btn btn-secondary" for="findDisabled">INATIVOS</label>
         </div>
       </div>
-      <button type="button" class="btn btn-success btn-rounded" mdbRipple (click)="new()">
-        Cadastrar Novo Produto
+      <button type="button" class="btn btn-success " mdbRipple (click)="new()">
+        Novo
+        <i class="fas fa-user-plus ms-1"></i>
       </button>
     </div>
     }
@@ -54,19 +55,19 @@
               <td>R$ {{ produto.preco.toFixed(2) }}</td>
               <td class="text-center">
                 @if (modoAddProduct) {
-                <button class="btn btn-primary" (click)="retornarProduto(produto)">
+                <button class="btn btn-sm btn-primary" (click)="retornarProduto(produto)">
                   <i class="fas fa-plus"></i>
                 </button>
                 } @else {
                 @if (produto.ativo) {
-                <button type="button" class="btn btn-sm btn-primary btn-rounded me-2" mdbRipple (click)="edit(produto)">
+                <button type="button" class="btn btn-sm btn-primary  me-2" mdbRipple (click)="edit(produto)">
                   <i class="fas fa-pen-to-square"></i>
                 </button>
-                <button type="button" class="btn btn-sm btn-danger btn-rounded" mdbRipple (click)="desativarProduto(produto)">
+                <button type="button" class="btn btn-sm btn-danger" mdbRipple (click)="desativarProduto(produto)">
                   <i class="fas fa-ban"></i>
                 </button>
                 } @else {
-                <button type="button" class="btn btn-sm btn-success btn-rounded" mdbRipple (click)="ativarProduto(produto)">
+                <button type="button" class="btn btn-sm btn-success " mdbRipple (click)="ativarProduto(produto)">
                   <i class="fas fa-plus"></i>
                 </button>
                 } }
@@ -83,6 +84,7 @@
     </div>
   </div>
 </div>
+
 <ng-template #modalProdutoDetalhe>
   <div class="modal-header">
     <h5 class="modal-title" id="exampleModalLabel">Cadastro de Produto</h5>
