@@ -39,7 +39,20 @@
   width: 20vw;
 }
 
+.btn-dropdown:focus{
+  background-color: #6284b0;
+  color: #ffffff;
+  height: 100%;
+  width: 20vw;
+}
+
 .btn-dropdown-selected{
+  height: 100%;
+  width: 20vw;
+  background-color: #84aadc;
+  color: #ffffff;
+}
+.btn-dropdown-selected:focus{
   height: 100%;
   width: 20vw;
   background-color: #84aadc;
@@ -63,6 +76,7 @@
   height: 52vh;
   margin-top: 3vh;
 }
+
 
 .discount-container {
   display: flex;

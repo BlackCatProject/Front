@@ -61,7 +61,7 @@ body {
 
 .table-scroll-grande::-webkit-scrollbar-thumb {
 
-  background-color: #6990c4; 
+  background-color: #e98a7f; 
 
   border-radius: 2px;
 }
@@ -86,6 +86,9 @@ body {
   color: #000000;
 }
 
+.table th:first-child {
+  border-top-left-radius: 10px; /* Arredonda o canto superior esquerdo */
+}
 
 .table th:last-child {
   border-top-right-radius: 10px; /* Arredonda o canto superior direito */
