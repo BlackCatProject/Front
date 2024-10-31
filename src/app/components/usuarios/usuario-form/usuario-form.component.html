@@ -2,7 +2,7 @@
     <div class="col d-flex center-aligned">
       <div class="card-body">
         <div class="center-aligned mb-3">
-          <label for="role" style="font-size: smaller">Função:</label>
+          <label for="role" text-sm>Função:</label>
           <div class="d-flex center-aligned">
             <div class="btn-group">
               <input
@@ -59,7 +59,7 @@
             minlength="3"
             maxlength="20"
           />
-          <label mdbLabel class="form-label" for="login">Login</label>
+          <label mdbLabel class="form-label" for="login">Login (3-20 caracteres)</label>
         </mdb-form-control>
 
         <br />
@@ -73,7 +73,7 @@
             required
             minlength="8"
           />
-          <label mdbLabel class="form-label" for="senha">Senha</label>
+          <label mdbLabel class="form-label" for="senha">Senha (min 8 caracteres)</label>
         </mdb-form-control>
 
         <div class="form-group">
@@ -82,7 +82,7 @@
             <div class="d-flex justify-content-end">
               <button
                 type="button"
-                class="btn btn-success btn-rounded"
+                class="btn btn-success"
                 mbdRipple
                 (click)="save()"
               >
