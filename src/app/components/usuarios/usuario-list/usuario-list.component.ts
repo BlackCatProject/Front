@@ -6,6 +6,7 @@ import { Router, RouterLink } from '@angular/router';
 import { MdbModalModule, MdbModalRef } from 'mdb-angular-ui-kit/modal';
 import { MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { UsuarioFormComponent } from '../usuario-form/usuario-form.component';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
   selector: 'app-usuario-list',
@@ -36,7 +37,7 @@ export class UsuarioListComponent {
 
 
 
-  constructor( ) {
+  constructor( private alertService: AlertService) {
     this.findAll();
   }
 
@@ -74,67 +75,44 @@ export class UsuarioListComponent {
 
 
   desativarUsuario(usuario: Usuario) {
-    Swal.fire({
-      title: 'Atenção',
-      text: `Tem certeza que deseja desativar o usuário ${usuario.login}?`,
-      icon: 'warning',
-      showConfirmButton: true,
-      showDenyButton: true,
-      confirmButtonText: 'Sim',
-      cancelButtonText: 'Não',
-    }).then((result) => {
+    this.alertService.showConfirmDialog(
+      'Atenção',
+      `Tem certeza que deseja desativar o usuário ${usuario.login}?`,
+      'Sim',
+      'warning'
+    ).then((result) => {
       if (result.isConfirmed) {
         this.usuarioService.desativarUsuario(usuario.id).subscribe({
           next: mensagem => {
-            Swal.fire({
-              title: mensagem,
-              icon: 'success',
-              confirmButtonText: 'Ok',
-            });
+            this.alertService.showToast(mensagem, 'success'); // Toast de sucesso
             this.findAll();
           },
           error: erro => {
-            Swal.fire({
-              title: 'Erro ao buscar usuário',
-              icon: 'error',
-              confirmButtonText: 'Ok',
-            });
+            this.alertService.showAlert('Erro ao desativar usuário', 'error'); // Alerta de erro
           },
         });
-         
       }
     });
   }
+  
 
   ativarUsuario(usuario: Usuario) {
-    Swal.fire({
-      title: 'Atenção',
-      text: `Tem certeza que deseja ativar o usuário ${usuario.login}?`,
-      icon: 'warning',
-      showConfirmButton: true,
-      showDenyButton: true,
-      confirmButtonText: 'Sim',
-      cancelButtonText: 'Não',
-    }).then((result) => {
+    this.alertService.showConfirmDialog(
+      'Atenção',
+      `Tem certeza que deseja ativar o usuário ${usuario.login}?`,
+      'Sim',
+      'warning'
+    ).then((result) => {
       if (result.isConfirmed) {
         this.usuarioService.ativarUsuario(usuario.id).subscribe({
           next: mensagem => {
+            this.alertService.showToast(mensagem, 'success'); // Toast de sucesso
             this.findAll(false);
-            Swal.fire({
-              title: mensagem,
-              icon: 'success',
-              confirmButtonText: 'Ok',
-            });
           },
           error: erro => {
-            Swal.fire({
-              title: 'Erro ao buscar usuário',
-              icon: 'error',
-              confirmButtonText: 'Ok',
-            });
+            this.alertService.showAlert('Erro ao ativar usuário', 'error'); // Alerta de erro
           },
         });
-         
       }
     });
   }

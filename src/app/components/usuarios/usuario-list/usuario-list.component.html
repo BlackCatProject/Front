@@ -3,7 +3,9 @@
     @if (!modoAddUser) {
     <div class="card-header d-flex align-items-center justify-content-between">
       <div class="d-flex align-items-center">
-        <h2 class="mb-0 fw-bold">Usuários</h2>
+        <h2 class="mb-0 fw-bold">
+          <i class="fas fa-users me-2 icon-color"></i>
+          Usuários</h2>
         <div class="btn-group ms-3">
           <input
             mdbRadio
@@ -114,11 +116,10 @@
         
         @if (lista.length === 0) {
           <div
-            class="d-flex flex-column justify-content-center align-items-center text-center"
-            style="height: 200px"
+            class="d-flex flex-column  center-aligned mt-5"
           >
-            <h3>Nenhum Usuário encontrado...</h3>
-            <h6>Cheque a conexão com o banco de dados.</h6>
+            <h4>Nenhum Usuário encontrado...</h4>
+            <p>Cheque a conexão com o banco de dados.</p>
           </div>
         }
         
