@@ -94,13 +94,17 @@ body {
   border-top-right-radius: 10px; /* Arredonda o canto superior direito */
 }
 
+.no-spin-input::-webkit-outer-spin-button,
+.no-spin-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
   .status-card {
     margin-bottom: 10px;
   }
-
-
   .table {
     font-size: 14px;
   }
@@ -110,10 +114,4 @@ body {
   }
 }
 
-
-.no-spin-input::-webkit-outer-spin-button,
-.no-spin-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
 

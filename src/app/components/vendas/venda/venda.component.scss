@@ -8,7 +8,7 @@
 
 
 .input-group {
-  max-width: 50vw;
+  width: 50vw;
 }
 
 .search-field {
@@ -19,12 +19,25 @@
   background-color: #6284b0;
   height: 100%;
 }
+.fa-cart-plus{
+  font-size: 18px;
+}
 .btn-primary {
   background-color: #84aadc;
 }
 
 .btn-add-user {
   background-color: #60ae70;
+  color: white;
+}
+
+.btn-add-user:focus {
+  background-color: #60ae70;
+  color: white;
+}
+
+.btn-add-user:hover {
+  background-color: #579e66;
   color: white;
 }
 
@@ -42,8 +55,6 @@
 .btn-dropdown:focus{
   background-color: #6284b0;
   color: #ffffff;
-  height: 100%;
-  width: 20vw;
 }
 
 .btn-dropdown-selected{
@@ -53,8 +64,6 @@
   color: #ffffff;
 }
 .btn-dropdown-selected:focus{
-  height: 100%;
-  width: 20vw;
   background-color: #84aadc;
   color: #ffffff;
 }
@@ -77,6 +86,11 @@
   margin-top: 3vh;
 }
 
+.table-produtos td {
+  vertical-align: middle;
+  white-space: nowrap; 
+  overflow-x: auto;
+}
 
 .discount-container {
   display: flex;
@@ -103,7 +117,7 @@
   text-align: center;
 }
 
-.desconto-field {
+.number-field {
   width: 5vw;
   text-align: center;
 }
@@ -181,6 +195,48 @@
 }
 
 @media screen and (max-width: 800px) {
+
+  
+  .inputs-container{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .btn-dropdown{
+    width: 65vw;
+  }
+  
+  .input-group{
+    margin-top: 2vh;
+    width: 65vw !important;
+  }
+  
+  
+  .btn-dropdown-selected{
+    width: 65vw;
+  }
+  
+  .container-venda{
+    width: 100%;
+    padding: 0;
+    margin: 2vh 1vw 2vh 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .table-produtos{
+    width: 80vw;
+  }
+  .venda-card{
+    width: 85vw;
+  }
+
+  .number-field{
+    width: 20vw;
+  }
+
   .cards-container {
     flex-direction: column;
     justify-content: space-between;
@@ -189,5 +245,9 @@
   .col-3 {
     width: 90%;
     margin: 15px;
+  }
+
+  .btn-finalizar-venda{
+    width: 60vw;
   }
 }
