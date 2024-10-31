@@ -20,6 +20,10 @@ body {
   background-color: #d3d3da;
 }
 
+.btn-success{
+  background-color: #60ae70;
+}
+
 .table-scroll {
   max-height: 300px;
   overflow-y: auto;
@@ -40,8 +44,8 @@ body {
 }
 
 .table-scroll::-webkit-scrollbar {
-  width: 4px; /* Reduz a largura da barra vertical */
-  height: 1px; /* Reduz a altura da barra horizontal */
+  width: 4px; 
+  height: 1px; 
 }
 
 .table-scroll::-webkit-scrollbar-thumb {
