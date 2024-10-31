@@ -6,7 +6,6 @@
   border-color: #84aadc;
 }
 
-
 .input-group {
   width: 50vw;
 }
@@ -19,7 +18,7 @@
   background-color: #6284b0;
   height: 100%;
 }
-.fa-cart-plus{
+.fa-cart-plus {
   font-size: 18px;
 }
 .btn-primary {
@@ -45,30 +44,30 @@
   width: 30vw;
 }
 
-.btn-dropdown{
+.btn-dropdown {
   background-color: #6284b0;
   color: #ffffff;
   height: 100%;
   width: 20vw;
 }
 
-.btn-dropdown:focus{
+.btn-dropdown:focus {
   background-color: #6284b0;
   color: #ffffff;
 }
 
-.btn-dropdown-selected{
+.btn-dropdown-selected {
   height: 100%;
   width: 20vw;
   background-color: #84aadc;
   color: #ffffff;
 }
-.btn-dropdown-selected:focus{
+.btn-dropdown-selected:focus {
   background-color: #84aadc;
   color: #ffffff;
 }
 
-.dropdown-menu{
+.dropdown-menu {
   width: 20vw;
 }
 
@@ -88,7 +87,7 @@
 
 .table-produtos td {
   vertical-align: middle;
-  white-space: nowrap; 
+  white-space: nowrap;
   overflow-x: auto;
 }
 
@@ -194,60 +193,87 @@
   background-color: #2f3855;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 992px) {
+  .btn-dropdown{
+    width: 25vw;
+  }
+  .btn-dropdown-selected{
 
-  
-  .inputs-container{
+  }
+  .small-card {
+    margin-bottom: 15px;
+    height: 150px;
+  }
+  .table-container {
+    width: 100%;
+  }
+
+  .btn-finalizar-venda {
+    width: 30vw;
+    margin-bottom: 50px;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .container-sm,
+  .container {
+    max-width: 100% !important;
+  }
+  .inputs-container {
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
     justify-content: center;
   }
-  
-  .btn-dropdown{
+
+  .btn-dropdown {
     width: 65vw;
   }
-  
-  .input-group{
+
+  .input-group {
     margin-top: 2vh;
     width: 65vw !important;
   }
-  
-  
-  .btn-dropdown-selected{
+
+  .btn-dropdown-selected {
     width: 65vw;
   }
-  
-  .container-venda{
+
+  .container-venda {
     width: 100%;
     padding: 0;
-    margin: 2vh 1vw 2vh 1vw;
+    margin: 0;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
   }
-  .table-produtos{
+  .table-produtos {
     width: 80vw;
   }
-  .venda-card{
+  .venda-card {
     width: 85vw;
   }
 
-  .number-field{
+  .number-field {
+    margin: 0 10px 0 10px;
     width: 20vw;
   }
 
   .cards-container {
     flex-direction: column;
-    justify-content: space-between;
     text-align: center;
+    align-items: center;
+    justify-content: center;
   }
-  .col-3 {
-    width: 90%;
+  .small-card-column {
     margin: 15px;
+    width: 90%;
   }
 
-  .btn-finalizar-venda{
-    width: 60vw;
+  .table-produtos th,
+  .table-produtos td {
+    font-size: 0.9em;
+    white-space: nowrap;
   }
 }
