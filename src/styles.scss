@@ -104,6 +104,10 @@ body {
   margin: 0;
 }
 
+.swal2-container {
+  z-index: 10000;
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
   .status-card {
