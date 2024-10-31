@@ -3,7 +3,7 @@
     @if (!modoAddUser) {
     <div class="card-header d-flex align-items-center justify-content-between">
       <div class="d-flex align-items-center">
-        <h2 class="mb-0 fw-bold">Lista de Usuários</h2>
+        <h2 class="mb-0 fw-bold">Usuários</h2>
         <div class="btn-group ms-3">
           <input
             mdbRadio
@@ -15,7 +15,7 @@
             [checked]="ativo === true"
             (change)="findAll(true)"
           />
-          <label class="btn btn-secondary" for="findEnabled">ATIVOS</label>
+          <label class="btn btn-secondary btn-sm" for="findEnabled">ATIVOS</label>
           <input
             mdbRadio
             type="radio"
@@ -26,17 +26,18 @@
             [checked]="ativo === false"
             (change)="findAll(false)"
           />
-          <label class="btn btn-secondary" for="findDisabled">INATIVOS</label>
+          <label class="btn btn-secondary btn-sm" for="findDisabled">INATIVOS</label>
         </div>
       </div>
 
       <button
         type="button"
-        class="btn btn-success btn-rounded mt-2"
+        class="btn btn-sm btn-success mt-2"
         mdbRipple
         (click)="new()"
       >
-        Cadastrar Novo Usuário
+      Novo
+      <i class="fas fa-user-plus ms-1"></i>
       </button>
     </div>
     }
@@ -81,7 +82,7 @@
                 @if (usuario.ativo === true) {
                 <button
                   type="button"
-                  class="btn btn-sm btn-primary btn-rounded"
+                  class="btn btn-sm btn-primary"
                   mdbRipple
                   (click)="edit(usuario)"
                 >
@@ -89,7 +90,7 @@
                 </button>
                 <button
                   type="button"
-                  class="btn btn-sm btn-danger btn-rounded"
+                  class="btn btn-sm btn-danger"
                   mdbRipple
                   (click)="desativarUsuario(usuario)"
                 >
@@ -98,7 +99,7 @@
                 } @else {
                 <button
                   type="button"
-                  class="btn btn-sm btn-success btn-rounded"
+                  class="btn btn-sm btn-success"
                   mdbRipple
                   (click)="ativarUsuario(usuario)"
                 >
