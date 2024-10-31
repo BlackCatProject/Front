@@ -6,6 +6,8 @@ import { Router, RouterLink } from '@angular/router';
 import { MdbModalModule, MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { ProdutosFormComponent } from '../produtos-form/produtos-form.component';
 import { ProdutoVenda } from '../../../models/produto-venda';
+import { AlertService } from '../../../services/alert.service';
+import { M } from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'app-produtos-list',
@@ -19,6 +21,8 @@ export class ProdutosListComponent {
   @Input() nomePesquisa: string = '';
   @Input() modoAddProduct : boolean = false;
   @Output() retorno = new EventEmitter();
+
+  alertService = inject(AlertService);
 
   lista: Produto[] = [];
   produtoEdit: Produto = new Produto(); 
@@ -49,12 +53,8 @@ export class ProdutosListComponent {
         this.lista = lista;
         this.ordenarProdutosPorId();
       },
-      error: () => {
-        Swal.fire({
-          title: 'Erro ao buscar produtos',
-          icon: 'error',
-          confirmButtonText: 'Ok',
-        });
+      error: (erro) => {
+        this.alertService.showToast(erro.error, "error");
       },
     });
   }
@@ -63,12 +63,8 @@ export class ProdutosListComponent {
       next: (lista) => {
         this.lista = lista;
       },
-      error: () => {
-        Swal.fire({
-          title: 'Erro ao buscar produtos',
-          icon: 'error',
-          confirmButtonText: 'Ok',
-        });
+      error: (erro) => {
+        this.alertService.showToast(erro.error, "error");
       },
     });
   }
@@ -78,41 +74,21 @@ export class ProdutosListComponent {
         this.lista = lista;
         this.ordenarProdutosPorId();
       },
-      error: () => {
-        Swal.fire({
-          title: 'Erro ao buscar produtos',
-          icon: 'error',
-          confirmButtonText: 'Ok',
-        });
+      error: (erro) => {
+        this.alertService.showToast(erro.error, "error");
       },
     });
   }
   ativarProduto(produto: Produto) {
-    Swal.fire({
-      title: 'Atenção',
-      text: `Tem certeza que deseja ativar o produto ${produto.nome}?`,
-      icon: 'warning',
-      showConfirmButton: true,
-      showDenyButton: true,
-      confirmButtonText: 'Sim',
-      cancelButtonText: 'Não',
-    }).then((result) => {
+    this.alertService.showConfirmDialog ("Atenção", `Tem certeza que deseja ativar o produto ${produto.nome}?`,"Sim", "warning").then((result) => {
       if (result.isConfirmed) {
         this.produtoService.enableProduto(produto.id).subscribe({
           next: (mensagem) => {
-            Swal.fire({
-              title: mensagem,
-              icon: 'success',
-              confirmButtonText: 'Ok',
-            });
+            this.alertService.showToast(mensagem, "success");
             this.findAll(false);
           },
-          error: () => {
-            Swal.fire({
-              title: 'Erro ao ativar produto',
-              icon: 'error',
-              confirmButtonText: 'Ok',
-            });
+          error: (erro) => {
+            this.alertService.showToast(erro.error, "error");
           },
         });
       }
@@ -121,6 +97,7 @@ export class ProdutosListComponent {
   ordenarProdutosPorId() {
     this.lista.sort((a, b) => b.id - a.id);
   }
+
   new() {
     this.produtoEdit = new Produto(); 
     this.modalRef = this.modalService.open(this.modalProdutoDetalhe);
@@ -134,31 +111,15 @@ export class ProdutosListComponent {
     this.modalRef.close();
   }
   desativarProduto(produto: Produto) {
-    Swal.fire({
-      title: 'Atenção',
-      text: `Tem certeza que deseja desativar o produto ${produto.nome}?`,
-      icon: 'warning',
-      showConfirmButton: true,
-      showDenyButton: true,
-      confirmButtonText: 'Sim',
-      cancelButtonText: 'Não',
-    }).then((result) => {
+    this.alertService.showConfirmDialog("Atenção!", `Tem certeza que deseja desativar o produto ${produto.nome}?`, "Sim", "warning").then((result) => {
       if (result.isConfirmed) {
         this.produtoService.disableProduto(produto.id).subscribe({
           next: (mensagem) => {
-            Swal.fire({
-              title: mensagem,
-              icon: 'success',
-              confirmButtonText: 'Ok',
-            });
+            this.alertService.showToast(mensagem, "success");
             this.findAllAtivos();
           },
-          error: () => {
-            Swal.fire({
-              title: 'Erro ao desativar produto',
-              icon: 'error',
-              confirmButtonText: 'Ok',
-            });
+          error: (erro) => {
+            this.alertService.showToast(erro.error, "error");
           },
         });
       }

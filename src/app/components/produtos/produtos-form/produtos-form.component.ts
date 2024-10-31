@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, NgModule, Output } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { ProdutoService } from '../../../services/produto.service';
 import { Produto } from '../../../models/produto';
 import { MdbFormControlComponent, MdbFormsModule } from 'mdb-angular-ui-kit/forms';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
   selector: 'app-produto-form',
@@ -15,6 +16,8 @@ import { MdbFormControlComponent, MdbFormsModule } from 'mdb-angular-ui-kit/form
 export class ProdutosFormComponent {
   @Input() produto!: Produto;
   @Output() retorno = new EventEmitter<Produto>();
+
+  alertService = inject (AlertService);
 
   produtoForm!: FormGroup;
 
