@@ -1,7 +1,6 @@
 import { booleanAttribute, Component, EventEmitter, inject, Input, OnInit, Output, TemplateRef, ViewChild, viewChild } from '@angular/core';
 import { Usuario } from '../../../models/usuario';
 import { UsuarioService } from '../../../services/usuario.service';
-import Swal from 'sweetalert2';
 import { Router, RouterLink } from '@angular/router';
 import { MdbModalModule, MdbModalRef } from 'mdb-angular-ui-kit/modal';
 import { MdbModalService } from 'mdb-angular-ui-kit/modal';
@@ -48,11 +47,7 @@ export class UsuarioListComponent {
         this.lista = lista;
       },
       error: (error) => {
-        Swal.fire({
-          title: 'Erro ao buscar usuários',
-          icon: 'error',
-          confirmButtonText: 'Ok',
-        });
+        this.alertService.showAlert('Erro ao buscar usuários', 'error');
       },
     });
   }
@@ -64,11 +59,7 @@ export class UsuarioListComponent {
         this.lista = [usuario];
       },
       error: (error) => {
-        Swal.fire({
-          title: 'Erro ao buscar usuário',
-          icon: 'error',
-          confirmButtonText: 'Ok',
-        });
+        this.alertService.showAlert('Erro ao buscar usuário', 'error');
       },
     });
   }
