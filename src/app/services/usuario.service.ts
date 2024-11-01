@@ -14,14 +14,14 @@ export class UsuarioService {
   //CRUD - Create - save
   saveUsuario(usuario: Usuario): Observable<string> {
     return this.http.post<string>(`${this.API}/save`, usuario, {
-      responseType: 'text' as 'json'
+      responseType: 'text' as 'json',
     });
   }
 
   //CRUD - Read - findAll
   findAll(ativo: boolean = true): Observable<Usuario[]> {
     return this.http.get<Usuario[]>(`${this.API}/findAll?ativo=${ativo}`);
-  }  
+  }
 
   //CRUD - Read - findById
   findById(id: number): Observable<Usuario> {
@@ -29,9 +29,9 @@ export class UsuarioService {
   }
 
   //CRUD - Update - update
-  updateUsuario( usuario: Usuario, id: number): Observable<string> {
+  updateUsuario(usuario: Usuario, id: number): Observable<string> {
     return this.http.put<string>(`${this.API}/update/${id}`, usuario, {
-      responseType: 'text' as 'json'
+      responseType: 'text' as 'json',
     });
   }
 
@@ -62,9 +62,5 @@ export class UsuarioService {
         responseType: 'text' as 'json',
       }
     );
-  }
-
-  verificarUsuarioExistente(usuario: Usuario): Observable<boolean> {
-    return this.http.post<boolean>(`${this.API}/verificar`, usuario);
   }
 }

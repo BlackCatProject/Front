@@ -11,6 +11,7 @@ import {
   MdbModalService,
 } from 'mdb-angular-ui-kit/modal';
 import { VendaComponent } from '../../vendas/venda/venda.component';
+import { AlertService } from '../../../services/alert.service'; // Import AlertService
 
 @Component({
   selector: 'app-dashboard',
@@ -24,7 +25,12 @@ export class DashboardComponent {
   modalService = inject(MdbModalService);
   @ViewChild('modalVenda') modalvendatemplate!: TemplateRef<any>;
   modalRef!: MdbModalRef<any>;
-  
+
+
+  alertService = inject(AlertService)
+  vendaService = inject(VendaService);
+  router = inject(Router);
+
   vendasPorMes: number | null = null;
   vendasPorUsuario: Venda[] = [];
   historicoVendas: Venda[] = [];
@@ -35,11 +41,8 @@ export class DashboardComponent {
   mes: number = new Date().getMonth() + 1;
   anoMensal: number = new Date().getFullYear();
   anoAnual: number= new Date().getFullYear();
-  
   usuarioId: number = 0;
 
-  vendaService = inject(VendaService);
-  router = inject(Router);
 
   constructor() {}
 
@@ -55,7 +58,7 @@ export class DashboardComponent {
       next: (vendas) => (this.historicoVendas = vendas),
       error: (erro) => {
         console.error('Erro ao buscar histórico de vendas', erro);
-        Swal.fire('Erro', 'Não foi possível buscar histórico de vendas', 'error');
+        this.alertService.showAlert('Não foi possível buscar histórico de vendas', 'error');
       },
     });
   }
@@ -65,7 +68,7 @@ export class DashboardComponent {
       next: (total) => (this.vendasPorMes = total),
       error: (erro) => {
         console.error('Erro ao buscar vendas mensais', erro);
-        Swal.fire('Erro', 'Não foi possível buscar vendas mensais', 'error');
+        this.alertService.showAlert('Não foi possível buscar vendas mensais', 'error');
       },
     });
   }
@@ -75,7 +78,7 @@ export class DashboardComponent {
       next: (total) => (this.vendasSemanais = total),
       error: (erro) => {
         console.error('Erro ao buscar vendas semanais', erro);
-        Swal.fire('Erro', 'Não foi possível buscar vendas semanais', 'error');
+        this.alertService.showAlert('Não foi possível buscar vendas semanais', 'error');
       },
     });
   }
@@ -85,18 +88,19 @@ export class DashboardComponent {
       next: (total) => (this.vendasAnuais = total),
       error: (erro) => {
         console.error('Erro ao buscar vendas anuais', erro);
-        Swal.fire('Erro', 'Não foi possível buscar vendas anuais', 'error');
+        this.alertService.showAlert('Não foi possível buscar vendas anuais', 'error');
       },
     });
   }
 
   openModal(venda: Venda): void {
-    this.selectVenda = Object.assign({}, venda); // Seleciona a venda
+    this.selectVenda = Object.assign({}, venda); 
 
     if (this.modalvendatemplate) {
       this.modalRef = this.modalService.open(this.modalvendatemplate);
     } else {
-      console.error('Template de modal não encontrado!');
+      console.error('Modal não encontrado!');
+      this.alertService.showAlert('Erro ao abrir o modal', 'error');
     }
   }
 

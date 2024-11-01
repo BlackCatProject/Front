@@ -70,7 +70,6 @@ export class UsuarioFormComponent {
         error: error => { //nessa parte, o toast exibe escurecido por causa do modal
           console.log(error);
           this.alertService.showToast('Erro ao salvar usuário', 'error');
-          this.retorno.emit();
         },
       });
     }

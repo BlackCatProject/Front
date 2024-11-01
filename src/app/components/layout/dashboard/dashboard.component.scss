@@ -280,6 +280,15 @@ h1, h3, h5 {
     color: #000000;
     border-top-right-radius: 10px; /* Arredonda o canto superior direito */
 }
+/* Torna a célula da segunda coluna um contêiner flexível */
+.product-table td:nth-child(2) {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;
+    height: 100%;            /* Ajusta para o conteúdo ocupar toda a célula */
+}
+
+
 .btn-close{
     color: #ffffff; /* Define a cor inicial */
     cursor: pointer;

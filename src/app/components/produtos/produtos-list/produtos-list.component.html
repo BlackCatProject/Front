@@ -4,7 +4,8 @@
     @if (!modoAddProduct) {
     <div class="card-header d-flex justify-content-between align-items-center">
       <div class="d-flex align-items-center">
-        <h2 class="mb-0 fw-bold">Lista de Produtos</h2>
+        <i class="fas fa-tags fa-2x me-3 ms-1 icon-color"></i>
+        <h2 class="mb-0 fw-bold">Produtos</h2>
         <div class="btn-group ms-3">
           <input
             mdbRadio
@@ -16,7 +17,7 @@
             [checked]="ativo === true"
             (change)="findAll(true)"
           />
-          <label class="btn btn-secondary" for="findEnabled">ATIVOS</label>
+          <label class="btn btn-secondary btn-sm" for="findEnabled">ATIVOS</label>
           <input
             mdbRadio
             type="radio"
@@ -27,12 +28,12 @@
             [checked]="ativo === false"
             (change)="findAll(false)"
           />
-          <label class="btn btn-secondary" for="findDisabled">INATIVOS</label>
+          <label class="btn btn-secondary btn-sm" for="findDisabled">INATIVOS</label>
         </div>
       </div>
-      <button type="button" class="btn btn-success " mdbRipple (click)="new()">
+      <button type="button" class="btn btn-success btn-sm " mdbRipple (click)="new()">
         Novo
-        <i class="fas fa-user-plus ms-1"></i>
+        <i class="fas fas fa-tag ms-1"></i>
       </button>
     </div>
     }
