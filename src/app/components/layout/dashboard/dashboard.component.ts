@@ -58,7 +58,7 @@ export class DashboardComponent {
       next: (vendas) => (this.historicoVendas = vendas),
       error: (erro) => {
         console.error('Erro ao buscar histórico de vendas', erro);
-        this.alertService.showAlert('Não foi possível buscar histórico de vendas', 'error');
+        this.alertService.showErrorToast(erro);
       },
     });
   }
@@ -68,7 +68,7 @@ export class DashboardComponent {
       next: (total) => (this.vendasPorMes = total),
       error: (erro) => {
         console.error('Erro ao buscar vendas mensais', erro);
-        this.alertService.showAlert('Não foi possível buscar vendas mensais', 'error');
+        this.alertService.showErrorToast(erro);
       },
     });
   }
@@ -78,7 +78,7 @@ export class DashboardComponent {
       next: (total) => (this.vendasSemanais = total),
       error: (erro) => {
         console.error('Erro ao buscar vendas semanais', erro);
-        this.alertService.showAlert('Não foi possível buscar vendas semanais', 'error');
+        this.alertService.showErrorToast(erro);
       },
     });
   }
@@ -88,7 +88,7 @@ export class DashboardComponent {
       next: (total) => (this.vendasAnuais = total),
       error: (erro) => {
         console.error('Erro ao buscar vendas anuais', erro);
-        this.alertService.showAlert('Não foi possível buscar vendas anuais', 'error');
+        this.alertService.showErrorToast(erro);
       },
     });
   }

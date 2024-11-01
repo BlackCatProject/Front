@@ -69,20 +69,28 @@ export class AlertService {
   showErrorToast(erro: HttpErrorResponse) {
     this.showToast(this.tratarErro(erro), 'error');
   }
+  showErrorAlert(erro: HttpErrorResponse) {
+    this.showAlert(this.tratarErro(erro), 'error');
+  }
 
   tratarErro(erro: HttpErrorResponse): string {
     let msg;
 
-    try {
-      const parsedError =
-        typeof erro.error === 'string' ? JSON.parse(erro.error) : erro.error;
-      if (typeof parsedError === 'object' && parsedError !== null) {
-        msg = Object.values(parsedError).join(' | ');
+    if (erro.status === 0) {
+      msg = 'Não foi possível se conectar ao servidor. Verifique sua conexão com a internet ou tente novamente mais tarde.';
+    }else{
+      try {
+        const parsedError =
+          typeof erro.error === 'string' ? JSON.parse(erro.error) : erro.error;
+        if (typeof parsedError === 'object' && parsedError !== null) {
+          msg = Object.values(parsedError).join(' | ');
+        }
+      } catch (e) {
+        // Caso erro.error não seja válido
+        msg = erro.error || 'Erro desconhecido';
       }
-    } catch (e) {
-      // Caso erro.error não seja válido
-      msg = erro.error || 'Erro desconhecido';
     }
+
 
     return msg;
   }
