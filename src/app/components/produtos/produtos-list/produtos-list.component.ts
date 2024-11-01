@@ -74,8 +74,8 @@ export class ProdutosListComponent {
         this.lista = lista;
         this.ordenarProdutosPorId();
       },
-      error: error => {
-        this.alertService.showErrorToast(error);
+      error: erro => {
+        this.alertService.showErrorToast(erro);
       },
     });
   }

@@ -19,7 +19,7 @@ export class ProdutosFormComponent {
 
   alertService = inject (AlertService);
 
-  produtoForm!: FormGroup;
+  produtoForm!: FormGroup; 
 
   constructor(private fb: FormBuilder, private produtoService: ProdutoService) {
     this.createForm();
@@ -77,7 +77,7 @@ export class ProdutosFormComponent {
           icon: 'error',
           confirmButtonText: 'Ok',
         });
-        this.retorno.emit();
+        this.alertService.showErrorToast(erro);;
       },
     });
   }
