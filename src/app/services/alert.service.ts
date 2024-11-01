@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import Swal, { SweetAlertIcon } from 'sweetalert2';
 
@@ -26,7 +27,7 @@ export class AlertService {
     message: string,
     txt: string,
     confirmButtonText: string,
-    img : string
+    img: string
   ) {
     return Swal.fire({
       imageUrl: 'https://unsplash.it/400/200',
@@ -38,7 +39,7 @@ export class AlertService {
       confirmButtonColor: '#84aadc',
       cancelButtonColor: '#d33',
       confirmButtonText: confirmButtonText,
-      cancelButtonText: 'Cancelar'
+      cancelButtonText: 'Cancelar',
     });
   }
 
@@ -63,5 +64,26 @@ export class AlertService {
       icon: icon,
       title: message,
     });
+  }
+
+  showErrorToast(erro: HttpErrorResponse) {
+    this.showToast(this.tratarErro(erro), 'error');
+  }
+
+  tratarErro(erro: HttpErrorResponse): string {
+    let msg;
+
+    try {
+      const parsedError =
+        typeof erro.error === 'string' ? JSON.parse(erro.error) : erro.error;
+      if (typeof parsedError === 'object' && parsedError !== null) {
+        msg = Object.values(parsedError).join(' | ');
+      }
+    } catch (e) {
+      // Caso erro.error não seja válido
+      msg = erro.error || 'Erro desconhecido';
+    }
+
+    return msg;
   }
 }

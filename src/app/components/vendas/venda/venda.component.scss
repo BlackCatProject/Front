@@ -85,11 +85,10 @@
   margin-top: 3vh;
 }
 
-.table-produtos td {
-  width: 100%;
+.table-produtos td,
+.table-produtos th {
   vertical-align: middle;
   white-space: nowrap;
-  overflow-x: auto;
 }
 
 .discount-container {
@@ -102,9 +101,7 @@
 
 .qnt-td {
   display: flex;
-  justify-content: space-between;
-  padding-left: 12vw;
-  padding-right: 12vw;
+  justify-content: center;
 }
 
 .total-td {
@@ -118,6 +115,7 @@
 }
 
 .number-field {
+  margin: 0vh 1vw 0vh 1vw;
   width: 5vw;
   text-align: center;
 }

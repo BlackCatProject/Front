@@ -6,8 +6,8 @@
   justify-content: right;
 }
 .center-aligned {
-  text-align: center;
-  justify-content: center;
+  text-align: center !important; 
+  justify-content: center 
 }
 .left-aligned {
   text-align: left;
@@ -64,9 +64,7 @@ body {
 }
 
 .table-scroll-grande::-webkit-scrollbar-thumb {
-
   background-color: #e98a7f; 
-
   border-radius: 2px;
 }
 

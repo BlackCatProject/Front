@@ -74,7 +74,6 @@ export class VendaComponent {
   }
 
   save() {
-
     this.vendaService.save(this.venda).subscribe({
       next: (msg) => {
         this.venda = new Venda();
@@ -85,7 +84,8 @@ export class VendaComponent {
         this.totalVendaText = "R$ 0,00"
       },
       error: (erro) => {
-        this.alertService.showToast(erro.error, 'error');
+        console.log(erro);
+        this.alertService.showErrorToast(erro);
       },
     });
   }
@@ -101,7 +101,6 @@ export class VendaComponent {
 
   addUser(user: Usuario) {
     if (user) {
-      console.log(user);
       this.venda.usuario = user;
       this.userName = user.nome;
     } else {
@@ -144,18 +143,23 @@ export class VendaComponent {
   }
 
   calcularTotal() {
-    let total = 0;
-    let prodsVenda = this.venda.produtosVenda;
-    if (prodsVenda.length > 0) {
-      for (let i = 0; i < prodsVenda.length; i++) {
-        total += prodsVenda[i].produto.preco * prodsVenda[i].quantidade;
+    if(this.venda.desconto <= 100){
+      let total = 0;
+      let prodsVenda = this.venda.produtosVenda;
+      if (prodsVenda.length > 0) {
+        for (let i = 0; i < prodsVenda.length; i++) {
+          total += prodsVenda[i].produto.preco * prodsVenda[i].quantidade;
+        }
+        if (this.venda.desconto > 0) {
+          total -= total * (this.venda.desconto / 100);
+        }
+        this.totalVendaText = `R$ ${total.toFixed(2)}`;
       }
-      if (this.venda.desconto > 0) {
-        total -= total * (this.venda.desconto / 100);
-      }
-      this.totalVendaText = `R$ ${total.toFixed(2)}`;
+      this.verificarVenda();
+    }else{
+      this.alertService.showToast("O desconto deve ser menor que 100%", "warning");
+      this.verificarVenda();
     }
-    this.verificarVenda();
   }
 
   verificarVenda() {
@@ -164,7 +168,8 @@ export class VendaComponent {
         this.venda.produtosVenda &&
         this.venda.produtosVenda.length > 0 &&
         this.venda.formaPagamento &&
-        this.venda.formaPagamento !== 'Forma de pagamento'
+        this.venda.formaPagamento !== 'Forma de pagamento' &&
+        this.venda.desconto <= 100
     );
   }
 
