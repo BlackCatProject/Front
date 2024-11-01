@@ -75,7 +75,7 @@ export class VendaComponent {
 
   save() {
     this.vendaService.save(this.venda).subscribe({
-      next: (msg) => {
+      next: msg => {
         this.venda = new Venda();
         this.venda.produtosVenda = [];
         this.venda.desconto = 0;
@@ -83,7 +83,7 @@ export class VendaComponent {
         this.setFormaPagamento("");
         this.totalVendaText = "R$ 0,00"
       },
-      error: (erro) => {
+      error: erro => {
         console.log(erro);
         this.alertService.showErrorToast(erro);
       },
