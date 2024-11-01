@@ -49,33 +49,33 @@ export class ProdutosListComponent {
   findByNome() {
     console.log(this.nomePesquisa)
     this.produtoService.findByNome(this.nomePesquisa).subscribe({
-      next: (lista) => {
+      next: lista => {
         this.lista = lista;
         this.ordenarProdutosPorId();
       },
-      error: (erro) => {
-        this.alertService.showToast(erro.error, "error");
+      error: erro => {
+        this.alertService.showErrorToast(erro);
       },
     });
   }
   findAll(ativo: boolean = true) {
     this.produtoService.findAll(ativo).subscribe({
-      next: (lista) => {
+      next: lista => {
         this.lista = lista;
       },
-      error: (erro) => {
-        this.alertService.showToast(erro.error, "error");
+      error: erro => {
+        this.alertService.showErrorToast(erro);
       },
     });
   }
   findAllAtivos() {
     this.produtoService.findAll(true).subscribe({
-      next: (lista) => {
+      next: lista => {
         this.lista = lista;
         this.ordenarProdutosPorId();
       },
-      error: (erro) => {
-        this.alertService.showToast(erro.error, "error");
+      error: error => {
+        this.alertService.showErrorToast(error);
       },
     });
   }
@@ -83,12 +83,12 @@ export class ProdutosListComponent {
     this.alertService.showConfirmDialog ("Atenção", `Tem certeza que deseja ativar o produto ${produto.nome}?`,"Sim", "warning").then((result) => {
       if (result.isConfirmed) {
         this.produtoService.enableProduto(produto.id).subscribe({
-          next: (mensagem) => {
+          next: mensagem => {
             this.alertService.showToast(mensagem, "success");
             this.findAll(false);
           },
-          error: (erro) => {
-            this.alertService.showToast(erro.error, "error");
+          error: erro => {
+            this.alertService.showErrorToast(erro);
           },
         });
       }
@@ -119,7 +119,7 @@ export class ProdutosListComponent {
             this.findAllAtivos();
           },
           error: (erro) => {
-            this.alertService.showToast(erro.error, "error");
+            this.alertService.showErrorToast(erro);
           },
         });
       }
