@@ -99,7 +99,7 @@ export class DashboardComponent {
     if (this.modalvendatemplate) {
       this.modalRef = this.modalService.open(this.modalvendatemplate);
     } else {
-      console.error('Template de modal não encontrado!');
+      console.error('Modal não encontrado!');
       this.alertService.showAlert('Erro ao abrir o modal', 'error');
     }
   }
