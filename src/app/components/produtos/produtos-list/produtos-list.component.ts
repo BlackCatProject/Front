@@ -54,7 +54,7 @@ export class ProdutosListComponent {
         this.ordenarProdutosPorId();
       },
       error: (erro) => {
-        this.alertService.showToast(erro.error, "error");
+        this.alertService.showErrorToast(erro);
       },
     });
   }
@@ -64,7 +64,7 @@ export class ProdutosListComponent {
         this.lista = lista;
       },
       error: (erro) => {
-        this.alertService.showToast(erro.error, "error");
+        this.alertService.showErrorToast(erro);
       },
     });
   }
@@ -75,7 +75,7 @@ export class ProdutosListComponent {
         this.ordenarProdutosPorId();
       },
       error: (erro) => {
-        this.alertService.showToast(erro.error, "error");
+        this.alertService.showErrorToast(erro);
       },
     });
   }
