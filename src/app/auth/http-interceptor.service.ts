@@ -1,14 +1,13 @@
 import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertService } from '../services/alert.service'; // Import do AlertService
 import { catchError, throwError } from 'rxjs';
 
 export const meuhttpInterceptor: HttpInterceptorFn = (request, next) => {
-  const router = inject(Router);
-  const alertService = inject(AlertService); // Injeção do AlertService
 
-  const token = localStorage.getItem('token');
+  let router = inject(Router);
+
+  let token = localStorage.getItem('token');
   if (token && !router.url.includes('/login')) {
     request = request.clone({
       setHeaders: { Authorization: 'Bearer ' + token },
@@ -18,15 +17,19 @@ export const meuhttpInterceptor: HttpInterceptorFn = (request, next) => {
   return next(request).pipe(
     catchError((err: any) => {
       if (err instanceof HttpErrorResponse) {
+	  
+	  
         if (err.status === 401) {
-          alertService.showAlert('Sessão Expirada', 'error'); 
+          alert('401 - tratar aqui');
           router.navigate(['/login']);
         } else if (err.status === 403) {
-          alertService.showAlert('Acesso Negado', 'error'); // Tratando o erro 403
-          router.navigate(['/login']);
+          alert('403 - tratar aqui');
+		  router.navigate(['/login']);
         } else {
-          alertService.showErrorToast(err); // Tratando outros erros
+          console.error('HTTP error:', err);
         }
+		
+		
       } else {
         console.error('An error occurred:', err);
       }

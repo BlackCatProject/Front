@@ -86,7 +86,6 @@ export class AlertService {
           msg = Object.values(parsedError).join(' | ');
         }
       } catch (e) {
-        // Caso erro.error não seja válido
         msg = erro.error || 'Erro desconhecido';
       }
     }
