@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { LoginService } from '../../../auth/login.service';
 import { T } from '@angular/cdk/keycodes';
 import { AlertService } from '../../../services/alert.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -26,22 +27,32 @@ export class LoginComponent {
 
   alertService = inject(AlertService);
 
-
-  logar(){
+  logar() {
+  
+    if (!this.login.username || !this.login.password) {
+      this.alertService.showAlert('Por favor, preencha todos os campos.', 'error');
+      return; 
+    }
+  
     this.loginService.logar(this.login).subscribe({
-      next : token =>{
-        if(token){
+      next: (token) => {
+        if (token) {
           this.loginService.addToken(token);
+          this.alertService.showToast('Login realizado com sucesso!', 'success');
           this.router.navigate(['funcionario/dashboard']);
         }
       },
-      error : erro =>{
-        this.alertService.showErrorToast(erro);
-      }
+      error: (erro) => {
+        if (erro.status === 401) {
+          this.alertService.showAlert('Usuário ou senha incorretos.', 'error');
+        } else {
+          this.alertService.showErrorAlert(erro);
+        }
+      },
     });
   }
-
-
+  
+  
   autenticar() {
     const Toast = Swal.mixin({
       toast: true,
@@ -55,27 +66,23 @@ export class LoginComponent {
       }
     });
 
-      // Verifica as credenciais e o tipo de usuário
-      if (this.login.username === 'admin' && this.login.password === 'admin') {
-        // Login como admin
-        Toast.fire({
-          icon: "success",
-          title: "Você logou como administrador com sucesso!"
-        });
-        this.router.navigate(['admin/dashboard']);
-      } else if (this.login.username === 'funcionario' && this.login.password === 'funcionario') {
-        // Login como funcionário
-        Toast.fire({
-          icon: "success",
-          title: "Você logou como funcionário com sucesso!"
-        });
-        this.router.navigate(['funcionario/dashboard']);
-      } else {
-        // Login incorreto
-        Toast.fire({
-          icon: "error",
-          title: "Usuário ou senha incorretos!"
-        });
-      }
+    if (this.login.username === 'admin' && this.login.password === 'admin') {
+      Toast.fire({
+        icon: "success",
+        title: "Você logou como administrador com sucesso!"
+      });
+      this.router.navigate(['admin/dashboard']);
+    } else if (this.login.username === 'funcionario' && this.login.password === 'funcionario') {
+      Toast.fire({
+        icon: "success",
+        title: "Você logou como funcionário com sucesso!"
+      });
+      this.router.navigate(['funcionario/dashboard']);
+    } else {
+      Toast.fire({
+        icon: "error",
+        title: "Usuário ou senha incorretos!"
+      });
     }
+  }
 }
