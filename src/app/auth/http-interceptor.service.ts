@@ -1,12 +1,12 @@
 import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertService } from '../services/alert.service'; // Import do AlertService
+import { AlertService } from '../services/alert.service'; 
 import { catchError, throwError } from 'rxjs';
 
 export const meuhttpInterceptor: HttpInterceptorFn = (request, next) => {
   const router = inject(Router);
-  const alertService = inject(AlertService); // Injeção do AlertService
+  const alertService = inject(AlertService);
 
   const token = localStorage.getItem('token');
   if (token && !router.url.includes('/login')) {
