@@ -35,7 +35,7 @@ export class UsuarioFormComponent {
         this.usuario = retorno;
       },
       error: error => {
-        this.alertService.showToast('Erro ao buscar usuário', 'error');
+        this.alertService.showErrorToast(error);
         this.retorno.emit();
       },
     });
@@ -55,8 +55,8 @@ export class UsuarioFormComponent {
           this.router2.navigate(['/usuarios'], {state: {usuarioEditado: this.usuario}});
           this.retorno.emit(this.usuario);
         },
-        error: error => {
-          this.alertService.showToast('Erro ao salvar usuário', 'error');
+        error: erro => {
+          this.alertService.showErrorToast(erro);
           this.retorno.emit();
         },
       });
@@ -67,9 +67,9 @@ export class UsuarioFormComponent {
           this.router2.navigate(['/usuarios'], {state: {usuarioNovo: this.usuario}});
           this.retorno.emit(this.usuario);
         },
-        error: error => { //nessa parte, o toast exibe escurecido por causa do modal
-          console.log(error);
-          this.alertService.showToast('Erro ao salvar usuário', 'error');
+        error: erro => { //nessa parte, o toast exibe escurecido por causa do modal
+          console.log(erro);
+          this.alertService.showErrorToast(erro);
         },
       });
     }
