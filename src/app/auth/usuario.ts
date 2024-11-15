@@ -1,4 +1,4 @@
-import { Venda } from "./venda";
+import { Venda } from "../models/venda";
 
 export class Usuario {
     id!: number;

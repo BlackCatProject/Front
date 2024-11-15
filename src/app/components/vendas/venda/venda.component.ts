@@ -16,13 +16,14 @@ import {
 import { VendaService } from '../../../services/venda.service';
 import { FormsModule } from '@angular/forms';
 import { UsuarioListComponent } from '../../usuarios/usuario-list/usuario-list.component';
-import { Usuario } from '../../../models/usuario';
 import Swal from 'sweetalert2';
 import { Produto } from '../../../models/produto';
 import { ProdutoVenda } from '../../../models/produto-venda';
 import { AlertService } from '../../../services/alert.service';
 import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
 import { CommonModule } from '@angular/common';
+import { Usuario } from '../../../auth/usuario';
+import { LoginService } from '../../../auth/login.service';
 
 @Component({
   selector: 'app-venda',
@@ -48,6 +49,8 @@ export class VendaComponent {
 
   alertService = inject(AlertService);
 
+  loginService = inject(LoginService);
+
   venda: Venda = new Venda();
 
   vendaService = inject(VendaService);
@@ -63,6 +66,7 @@ export class VendaComponent {
   constructor() {
     this.venda.produtosVenda = [];
     this.venda.desconto = 0;
+    this.venda.usuario = this.loginService.getUsuarioLogado();
   }
 
   onSearch() {
@@ -93,21 +97,6 @@ export class VendaComponent {
   closeList() {
     this.showResult = false;
     this.nomeSearch = '';
-  }
-
-  adicionarUser() {
-    this.modalRef = this.modalService.open(this.userList);
-  }
-
-  addUser(user: Usuario) {
-    if (user) {
-      this.venda.usuario = user;
-      this.userName = user.nome;
-    } else {
-      this.alertService.showToast('Usuário Nulo', "error");
-    }
-    this.verificarVenda();
-    this.modalRef.close();
   }
 
   addProduct(produto: Produto) {

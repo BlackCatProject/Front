@@ -102,6 +102,7 @@ export class ProdutosListComponent {
     this.produtoEdit = new Produto(); 
     this.modalRef = this.modalService.open(this.modalProdutoDetalhe);
   }
+  
   edit(produto: Produto) {
     this.produtoEdit = Object.assign({}, produto); 
     this.modalRef = this.modalService.open(this.modalProdutoDetalhe);

@@ -1,5 +1,5 @@
+import { Usuario } from "../auth/usuario";
 import { ProdutoVenda } from "./produto-venda";
-import { Usuario } from "./usuario";
 
 export class Venda{
 

@@ -1,11 +1,11 @@
 import { booleanAttribute, Component, EventEmitter, inject, Input, OnInit, Output, TemplateRef, ViewChild, viewChild } from '@angular/core';
-import { Usuario } from '../../../models/usuario';
 import { UsuarioService } from '../../../services/usuario.service';
 import { Router, RouterLink } from '@angular/router';
 import { MdbModalModule, MdbModalRef } from 'mdb-angular-ui-kit/modal';
 import { MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { UsuarioFormComponent } from '../usuario-form/usuario-form.component';
 import { AlertService } from '../../../services/alert.service';
+import { Usuario } from '../../../auth/usuario';
 
 @Component({
   selector: 'app-usuario-list',

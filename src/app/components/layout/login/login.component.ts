@@ -1,9 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
-import { Login } from '../../../models/login';
+import { Login } from '../../../auth/login';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { LoginService } from '../../../auth/login.service';
+import { T } from '@angular/cdk/keycodes';
+import { AlertService } from '../../../services/alert.service';
 
 
 @Component({
@@ -19,6 +22,26 @@ export class LoginComponent {
 
   router = inject(Router); 
 
+  loginService = inject(LoginService);
+
+  alertService = inject(AlertService);
+
+
+  logar(){
+    this.loginService.logar(this.login).subscribe({
+      next : token =>{
+        if(token){
+          this.loginService.addToken(token);
+          this.router.navigate(['funcionario/dashboard']);
+        }
+      },
+      error : erro =>{
+        this.alertService.showErrorToast(erro);
+      }
+    });
+  }
+
+
   autenticar() {
     const Toast = Swal.mixin({
       toast: true,
@@ -33,14 +56,14 @@ export class LoginComponent {
     });
 
       // Verifica as credenciais e o tipo de usuário
-      if (this.login.username === 'admin' && this.login.senha === 'admin') {
+      if (this.login.username === 'admin' && this.login.password === 'admin') {
         // Login como admin
         Toast.fire({
           icon: "success",
           title: "Você logou como administrador com sucesso!"
         });
         this.router.navigate(['admin/dashboard']);
-      } else if (this.login.username === 'funcionario' && this.login.senha === 'funcionario') {
+      } else if (this.login.username === 'funcionario' && this.login.password === 'funcionario') {
         // Login como funcionário
         Toast.fire({
           icon: "success",
