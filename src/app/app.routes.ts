@@ -28,7 +28,7 @@ export const routes: Routes = [
         ]
     },
     { 
-        path: 'funcionario', component: PrincipalComponent,
+        path: 'funcionario', component: PrincipalComponent, canActivate: [loginGuard],
         children: [
             { path: 'dashboard', component: DashboardComponent },
             { path: 'Produtos/new', component: ProdutosListComponent },

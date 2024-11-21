@@ -5,6 +5,7 @@ import { UsuarioService } from '../../../services/usuario.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from '../../../services/alert.service';
 import { Usuario } from '../../../auth/usuario';
+import { LoginService } from '../../../auth/login.service';
 
 @Component({
   selector: 'app-usuario-form',
@@ -21,6 +22,10 @@ export class UsuarioFormComponent {
   router2 = inject(Router);
   usuarioService = inject(UsuarioService);
   alertService = inject(AlertService);
+
+  loginService = inject(LoginService);
+
+  usuarioLogado: Usuario = this.loginService.getUsuarioLogado();
 
   constructor () { 
    let id = this.router.snapshot.params['id'];
@@ -54,6 +59,9 @@ export class UsuarioFormComponent {
           this.alertService.showToast(mensagem, 'success');
           this.router2.navigate(['/usuarios'], {state: {usuarioEditado: this.usuario}});
           this.retorno.emit(this.usuario);
+          if(this.usuario.id == this.usuarioLogado.id){
+            this.usuarioLogado = this.usuario;
+          }
         },
         error: erro => {
           this.alertService.showErrorToast(erro);
@@ -66,6 +74,9 @@ export class UsuarioFormComponent {
           this.alertService.showToast(mensagem, 'success');
           this.router2.navigate(['/usuarios'], {state: {usuarioNovo: this.usuario}});
           this.retorno.emit(this.usuario);
+          if(this.usuario.id == this.usuarioLogado.id){
+            this.usuarioLogado = this.usuario;
+          }
         },
         error: erro => { //nessa parte, o toast exibe escurecido por causa do modal
           console.log(erro);
