@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
-import Swal from 'sweetalert2';
 import { AlertService } from '../../../services/alert.service';
 import { LoginService } from '../../../auth/login.service';
 import { Usuario } from '../../../auth/usuario';
@@ -17,6 +16,7 @@ export class HeaderComponent {
   router = inject(Router);
   alertService = inject(AlertService);
   loginService = inject(LoginService); //auth 
+  currentRoute = this.router.url;
 
   usuario!: Usuario;
 
