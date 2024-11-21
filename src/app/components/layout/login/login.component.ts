@@ -42,7 +42,7 @@ export class LoginComponent {
             'Login realizado com sucesso!',
             'success'
           );
-          this.router.navigate(['admin/dashboard']);
+          this.router.navigate(['blackcat/dashboard']);
         }
       },
       error: (erro) => {
