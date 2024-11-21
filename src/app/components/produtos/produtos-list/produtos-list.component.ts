@@ -1,13 +1,12 @@
 import { Component, ViewChild, TemplateRef, OnInit, NgModule, Input, inject, Output, EventEmitter, input, SimpleChanges } from '@angular/core';
 import { Produto } from '../../../models/produto';
 import { ProdutoService } from '../../../services/produto.service';
-import Swal from 'sweetalert2';
 import { Router, RouterLink } from '@angular/router';
 import { MdbModalModule, MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { ProdutosFormComponent } from '../produtos-form/produtos-form.component';
-import { ProdutoVenda } from '../../../models/produto-venda';
 import { AlertService } from '../../../services/alert.service';
-import { M } from '@angular/cdk/keycodes';
+import { Title } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-produtos-list',

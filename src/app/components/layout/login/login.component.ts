@@ -9,37 +9,40 @@ import { T } from '@angular/cdk/keycodes';
 import { AlertService } from '../../../services/alert.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
-
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [MdbFormsModule, FormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-
   login: Login = new Login();
 
-  router = inject(Router); 
+  router = inject(Router);
 
   loginService = inject(LoginService);
 
   alertService = inject(AlertService);
 
   logar() {
-  
     if (!this.login.username || !this.login.password) {
-      this.alertService.showAlert('Por favor, preencha todos os campos.', 'error');
-      return; 
+      this.alertService.showAlert(
+        'Por favor, preencha todos os campos.',
+        'error'
+      );
+      return;
     }
-  
+
     this.loginService.logar(this.login).subscribe({
       next: (token) => {
         if (token) {
           this.loginService.addToken(token);
-          this.alertService.showToast('Login realizado com sucesso!', 'success');
-          this.router.navigate(['funcionario/dashboard']);
+          this.alertService.showToast(
+            'Login realizado com sucesso!',
+            'success'
+          );
+          this.router.navigate(['blackcat/dashboard']);
         }
       },
       error: (erro) => {
@@ -51,38 +54,18 @@ export class LoginComponent {
       },
     });
   }
-  
-  
+
   autenticar() {
     const Toast = Swal.mixin({
       toast: true,
-      position: "top-end",
+      position: 'top-end',
       showConfirmButton: false,
       timer: 3000,
       timerProgressBar: true,
       didOpen: (toast) => {
         toast.onmouseenter = Swal.stopTimer;
         toast.onmouseleave = Swal.resumeTimer;
-      }
+      },
     });
-
-    if (this.login.username === 'admin' && this.login.password === 'admin') {
-      Toast.fire({
-        icon: "success",
-        title: "Você logou como administrador com sucesso!"
-      });
-      this.router.navigate(['admin/dashboard']);
-    } else if (this.login.username === 'funcionario' && this.login.password === 'funcionario') {
-      Toast.fire({
-        icon: "success",
-        title: "Você logou como funcionário com sucesso!"
-      });
-      this.router.navigate(['funcionario/dashboard']);
-    } else {
-      Toast.fire({
-        icon: "error",
-        title: "Usuário ou senha incorretos!"
-      });
-    }
   }
 }
