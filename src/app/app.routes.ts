@@ -8,6 +8,7 @@ import { ProdutosListComponent } from './components/produtos/produtos-list/produ
 import { VendaComponent } from './components/vendas/venda/venda.component';
 import { loginGuard } from './auth/login.guard';
 import { InvalidAcessComponent } from './components/invalid-acess/invalid-acess.component';
+import { ProdutosFormComponent } from './components/produtos/produtos-form/produtos-form.component';
 
 
 export const routes: Routes = [
@@ -22,18 +23,10 @@ export const routes: Routes = [
             { path: 'usuarios/new', component: UsuarioFormComponent },
             { path: 'usuarios/edit/:id', component: UsuarioFormComponent },
             { path: 'produtos', component: ProdutosListComponent },
-            { path: 'produtos/new', component: ProdutosListComponent },
+            { path: 'produtos/new', component: ProdutosFormComponent },
             { path: 'produtos/edit/:id', component: ProdutosListComponent },
             { path: 'venda', component: VendaComponent },
         ]
     },
-    { 
-        path: 'funcionario', component: PrincipalComponent,
-        children: [
-            { path: 'dashboard', component: DashboardComponent },
-            { path: 'Produtos/new', component: ProdutosListComponent },
-            { path: 'Produtos/edit/:id', component: ProdutosListComponent },
-            { path: 'venda', component: VendaComponent }
-        ]
-    },
+   
 ];
