@@ -1,0 +1,40 @@
+.invalid-container {
+  background-color: #f8f9fa; /* Cor de fundo */
+  position: relative; /* Para alinhar corretamente a imagem */
+}
+
+.image-section {
+  height: 100%; /* Ocupar toda a altura da página */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* Encosta a imagem no rodapé */
+}
+
+.cat-image {
+  max-height: 100%; /* Garante proporção adequada da imagem */
+  object-fit: contain; /* Ajusta a imagem para caber no espaço */
+}
+
+.btn-section {
+  height: 100%; /* Garante que ocupa a altura total */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left; /* Centraliza o texto na seção */
+  padding: 2rem; /* Adiciona espaçamento interno */
+}
+
+.btn-container .btn-light {
+  border: 2px solid #000; /* Borda preta para o botão "Sair" */
+}
+
+h1 {
+  font-size: 2rem;
+  color: #333;
+}
+
+h6,
+p {
+  font-size: 1rem;
+  color: #555;
+}

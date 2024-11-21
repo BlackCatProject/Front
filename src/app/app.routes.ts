@@ -6,12 +6,16 @@ import { UsuarioFormComponent } from './components/usuarios/usuario-form/usuario
 import { UsuarioListComponent } from './components/usuarios/usuario-list/usuario-list.component';
 import { ProdutosListComponent } from './components/produtos/produtos-list/produtos-list.component';
 import { VendaComponent } from './components/vendas/venda/venda.component';
+import { loginGuard } from './auth/login.guard';
+import { InvalidAcessComponent } from './components/invalid-acess/invalid-acess.component';
 
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
-    { path: 'admin', component: PrincipalComponent, children: [
+    { path: 'invalid-access', component: InvalidAcessComponent },
+
+    { path: 'admin', component: PrincipalComponent, canActivate: [loginGuard], children: [
             { path: 'dashboard', component: DashboardComponent },
             
             { path: 'usuarios', component: UsuarioListComponent },

@@ -24,9 +24,11 @@
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="admin/dashboard">Home</a>
         </li>
-        <li class="nav-item" if="isAdmin()">
+        @if(loginService.hasPermission('GESTOR')) {
+        <li class="nav-item">
           <a class="nav-link" href="admin/usuarios">Usuários</a>
         </li>
+      }
         <li class="nav-item">
           <a class="nav-link" href="admin/produtos">Produtos</a>
         </li>
@@ -36,9 +38,11 @@
       
       </ul>
       
+   
+
        <ul class="navbar-nav ms-auto">
+          <span class="navbar-text me-2">{{usuario.role}}: {{ usuario.nome }} </span>
         <li class="nav-item">
-      
           <a type="button" class="nav-link" (click)="confirmLogout($event)">Sair</a>
         </li>
       </ul>
