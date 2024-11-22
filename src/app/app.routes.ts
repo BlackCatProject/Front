@@ -1,5 +1,3 @@
-// teste numero 27
-
 import { Routes } from '@angular/router';
 import { LoginComponent } from './components/layout/login/login.component';
 import { PrincipalComponent } from './components/layout/principal/principal.component';
@@ -12,6 +10,7 @@ import { loginGuard } from './auth/login.guard';
 import { InvalidAcessComponent } from './components/invalid-acess/invalid-acess.component';
 import { ProdutosFormComponent } from './components/produtos/produtos-form/produtos-form.component';
 import { Title } from '@angular/platform-browser';
+import { DashboardFuncionarioComponent } from './components/layout/dashboard-funcionario/dashboard-funcionario.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -54,6 +53,12 @@ export const routes: Routes = [
       },
 
       { path: 'venda', component: VendaComponent, data: { title: 'Blackcat - Vendas' } },
+
     ],
+  },
+  {
+    path: 'funcionario',
+    component: DashboardFuncionarioComponent,
+    data: { title: 'Blackcat - Dashboard Funcionário' }
   },
 ];

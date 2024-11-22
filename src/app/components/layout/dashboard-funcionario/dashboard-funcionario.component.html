@@ -1,1 +1,16 @@
-<p>dashboard-funcionario works!</p>
+<ng-template #modalVenda let-venda="venda">
+    <div class="modal-header">
+      <h5 class="modal-title">Detalhes da Venda</h5>
+      <button type="button" class="btn-close" (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body">
+      <div>
+        <p><strong>ID:</strong> {{ venda.id }}</p>
+        <p><strong>Produto:</strong> {{ venda.produto.nome }}</p>
+        <p><strong>Preço:</strong> {{ venda.produto.preco }}</p>
+        <p><strong>Quantidade:</strong> {{ venda.quantidade }}</p>
+        <p><strong>Total:</strong> {{ venda.total }}</p>
+      </div>
+    </div>
+  </ng-template>
+  
