@@ -10,7 +10,11 @@
   <div
     class="btn-section text-center d-flex flex-column justify-content-center align-items-start px-4"
   >
-    <h5 class="fw-bold mb-3">403 - Forbidden. Acesso Negado!</h5>
+    <h5 class="fw-bold mb-3">
+      <i class="fas fa-lg fa-shield-cat"></i>
+      403 - Forbidden.
+       Acesso Negado!
+    </h5>
     <h6 class="mb-2">Você não tem permissão para acessar esta página.</h6>
     <p class="mb-4">Retorne à dashboard ou entre com outro usuário.<br /></p>
 
@@ -27,7 +31,7 @@
         type="button"
         class="btn btn-dark"
         mdbRipple
-        (click)="router.navigate(['/blackcat/dashboard'])"
+        (click)="router.navigate(['/blackcat/funcionario'])"
       >
         Início
       </button>
