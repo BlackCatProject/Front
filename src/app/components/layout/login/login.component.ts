@@ -44,7 +44,8 @@ export class LoginComponent {
           if (usuario.role === 'GESTOR') {
             this.router.navigate(['blackcat/dashboard']);
           } else if (usuario.role === 'FUNCIONARIO') {
-            this.router.navigate(['funcionario']);
+            this.router.navigate(['blackcat/funcionario']);
+
           } else {
             this.alertService.showAlert('Acesso não autorizado', 'error');
             this.router.navigate(['invalid-access']);

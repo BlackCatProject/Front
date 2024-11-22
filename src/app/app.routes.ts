@@ -22,8 +22,15 @@ export const routes: Routes = [
     component: PrincipalComponent,
     canActivate: [loginGuard],
     children: [
-      { path: 'dashboard', component: DashboardComponent, data: { title: 'Blackcat - Home' } },
 
+      {
+        path: 'funcionario',
+        component: DashboardFuncionarioComponent,
+        data: { title: 'Blackcat - Dashboard Funcionario' }
+      },
+      
+      { path: 'dashboard', component: DashboardComponent, data: { title: 'Blackcat - Home' } },
+     
       {
         path: 'usuarios',
         data: { title: 'Blackcat - Usuários' },
@@ -56,10 +63,6 @@ export const routes: Routes = [
 
     ],
   },
-  {
-    path: 'funcionario',
-    component: DashboardFuncionarioComponent,
-    data: { title: 'Blackcat - Home' }
-  }
+
   
 ];

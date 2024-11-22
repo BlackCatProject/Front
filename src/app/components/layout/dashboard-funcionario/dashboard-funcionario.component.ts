@@ -6,6 +6,7 @@ import { Venda } from '../../../models/venda';
 import { Router } from '@angular/router';
 import { MdbModalModule, MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { CommonModule } from '@angular/common';
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
   selector: 'app-dashboard-funcionario',
@@ -40,7 +41,7 @@ export class DashboardFuncionarioComponent implements OnInit {
       this.alertService.showToast("Usuário não logado", "error");
     }
   }
-// DashboardFuncionarioComponent
+
 getVendasPorUsuario(usuarioId: number): void {
   this.vendaService.findByUsuario(usuarioId).subscribe({
     next: (vendas) => {
