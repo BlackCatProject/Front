@@ -5,11 +5,12 @@ import { AlertService } from '../../../services/alert.service';
 import { Venda } from '../../../models/venda';
 import { Router } from '@angular/router';
 import { MdbModalModule, MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard-funcionario',
   standalone: true,
-  imports: [MdbModalModule],
+  imports: [MdbModalModule, CommonModule, MdbModalModule],
   templateUrl: './dashboard-funcionario.component.html',
   styleUrls: ['./dashboard-funcionario.component.scss']
 })
@@ -39,18 +40,19 @@ export class DashboardFuncionarioComponent implements OnInit {
       this.alertService.showToast("Usuário não logado", "error");
     }
   }
+// DashboardFuncionarioComponent
+getVendasPorUsuario(usuarioId: number): void {
+  this.vendaService.findByUsuario(usuarioId).subscribe({
+    next: (vendas) => {
+      this.vendasPorUsuario = vendas;
+    },
+    error: (erro) => {
+      console.error('Erro ao buscar vendas do usuário', erro);
+      this.alertService.showErrorToast(erro);
+    },
+  });
+}
 
-  getVendasPorUsuario(usuarioId: number): void {
-    this.vendaService.findByUsuario(usuarioId).subscribe({
-      next: (vendas) => {
-        this.vendasPorUsuario = vendas;
-      },
-      error: (erro) => {
-        console.error('Erro ao buscar vendas do usuário', erro);
-        this.alertService.showErrorToast(erro);
-      },
-    });
-  }
 
   openModal(venda: Venda): void {
     this.selectVenda = venda;

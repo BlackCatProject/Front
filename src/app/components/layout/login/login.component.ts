@@ -5,24 +5,20 @@ import { Login } from '../../../auth/login';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { LoginService } from '../../../auth/login.service';
-import { T } from '@angular/cdk/keycodes';
 import { AlertService } from '../../../services/alert.service';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [MdbFormsModule, FormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
   login: Login = new Login();
 
   router = inject(Router);
-
   loginService = inject(LoginService);
-
   alertService = inject(AlertService);
 
   logar() {
@@ -37,12 +33,22 @@ export class LoginComponent {
     this.loginService.logar(this.login).subscribe({
       next: (token) => {
         if (token) {
+          // Armazena o token no localStorage
           this.loginService.addToken(token);
-          this.alertService.showToast(
-            'Login realizado com sucesso!',
-            'success'
-          );
-          this.router.navigate(['blackcat/dashboard']);
+          this.alertService.showToast('Login realizado com sucesso!', 'success');
+
+          // Recupera o usuário logado para verificar o papel (role)
+          const usuario = this.loginService.getUsuarioLogado();
+          
+          // Redireciona conforme o papel do usuário
+          if (usuario.role === 'GESTOR') {
+            this.router.navigate(['blackcat/dashboard']);
+          } else if (usuario.role === 'FUNCIONARIO') {
+            this.router.navigate(['funcionario']);
+          } else {
+            this.alertService.showAlert('Acesso não autorizado', 'error');
+            this.router.navigate(['invalid-access']);
+          }
         }
       },
       error: (erro) => {

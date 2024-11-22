@@ -59,6 +59,7 @@ export const routes: Routes = [
   {
     path: 'funcionario',
     component: DashboardFuncionarioComponent,
-    data: { title: 'Blackcat - Dashboard Funcionário' }
-  },
+    data: { title: 'Blackcat - Home' }
+  }
+  
 ];
