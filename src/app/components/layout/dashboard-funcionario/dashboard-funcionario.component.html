@@ -52,3 +52,52 @@
     </div>
 
    
+    <!-- Seção de Produtos Mais Vendidos -->
+    <div class="top-products">
+      <h3><i class="fas fa-star icon-color"></i> Top 3 Produtos Mais Vendidos</h3>
+     
+      </div>
+    </div>
+  </div>
+
+  <ng-template #modalVenda>
+    <div class="modal-header">
+      <h3 class="modal-title" id="modal-basic-title">Detalhes da Venda</h3>
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Fechar"
+        (click)="modalRef.close()"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <div class="sale-details">
+        <p class="sale-date"><strong>Data:</strong> {{ selectVenda?.data | date }}</p>
+        <p class="sale-user"><strong>Vendido por:</strong> {{ selectVenda?.usuario?.nome }}</p>
+        <p class="sale-payment"><strong>Forma de Pagamento:</strong> {{ selectVenda?.formaPagamento }}</p>
+        <p class="sale-payment"><strong>Desconto:</strong> {{ selectVenda?.desconto }}</p>
+        <p class="sale-total"><strong>Total:</strong> {{ selectVenda?.total | currency : "BRL" }}</p>
+  
+        <h6>Produtos:</h6>
+        <table class="product-table">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Quantidade</th>
+              <th>Preço</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (produto of selectVenda?.produtosVenda; track produto.id) {
+            <tr>
+              <td>{{ produto.produto.nome }}</td>
+              <td>{{ produto.quantidade }}</td>
+              <td>{{ produto.produto.preco | currency : "BRL" }}</td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </ng-template>
+  

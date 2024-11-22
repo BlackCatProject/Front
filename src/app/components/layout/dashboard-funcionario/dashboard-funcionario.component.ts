@@ -67,4 +67,6 @@ getVendasPorUsuario(usuarioId: number): void {
     this.modalRef.close();
     this.getVendasPorUsuario(this.usuarioId);
   }
+
+  
 }
