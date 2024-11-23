@@ -13,16 +13,16 @@ body {
     min-height: 100vh;
     padding: 20px; 
 }
-
 /* Dashboard */
 .dashboard {
     display: grid;
-    gap: 10px; 
+    gap: 10px;
     grid-template-areas:
         "welcome historico"
-        "sales sales";
+        "daily historico";
+    grid-template-columns: 1fr 2fr;
     max-width: 1200px;
-    width: 100%; 
+    width: 100%;
 }
 
 /* Seção de boas-vindas */
@@ -31,14 +31,36 @@ body {
     background-color: #2F3855;
     color: #e5f5e5;
     border-radius: 10px;
-    padding: 25px; 
+    padding: 25px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    height: 410px; 
-    width: 315px; 
-    max-width: 100%; 
-    overflow: hidden; 
+    height: 400px;
 }
+
+/* Histórico de Vendas */
+.historico-section {
+    grid-area: historico;
+    background: #fcfcfc;
+    color: #000000;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Adiciona rolagem vertical */
+    max-height: calc(100% - 20px); /* Ajusta a altura */
+}
+
+/* Vendas no Dia */
+.daily-sales {
+    grid-area: daily;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    height: 150px;
+}
+
+
 
 .mascot-image {
     width: 195px; 
@@ -61,6 +83,8 @@ body {
     width: 900px; 
     max-width: 100%; 
 }
+/* Ajuste da altura da seção de histórico */
+
 
 /* Tabela */
 .historico-section table {

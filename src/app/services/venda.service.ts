@@ -60,6 +60,8 @@ export class VendaService {
   getVendasAnuais(ano: number): Observable<number> {
     return this.http.get<number>(`${this.api}/anual/${ano}`);
   }
-
-
+  getNumeroVendasDia(usuarioId: number): Observable<number> {
+    return this.http.get<number>(`${this.api}/dia/quantidade?usuarioId=${usuarioId}`);
+  }
+  
 }
