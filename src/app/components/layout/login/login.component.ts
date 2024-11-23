@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, ViewChild, ElementRef, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { Login } from '../../../auth/login';
@@ -21,6 +21,9 @@ export class LoginComponent {
   loginService = inject(LoginService);
   alertService = inject(AlertService);
 
+  // ViewChild para capturar o campo de senha
+  @ViewChild('passwordField') passwordField!: ElementRef<HTMLInputElement>;
+
   logar() {
     if (!this.login.username || !this.login.password) {
       this.alertService.showAlert(
@@ -33,19 +36,14 @@ export class LoginComponent {
     this.loginService.logar(this.login).subscribe({
       next: (token) => {
         if (token) {
-          // Armazena o token no localStorage
           this.loginService.addToken(token);
           this.alertService.showToast('Login realizado com sucesso!', 'success');
 
-          // Recupera o usuário logado para verificar o papel (role)
           const usuario = this.loginService.getUsuarioLogado();
-          
-          // Redireciona conforme o papel do usuário
           if (usuario.role === 'GESTOR') {
             this.router.navigate(['blackcat/dashboard']);
           } else if (usuario.role === 'FUNCIONARIO') {
             this.router.navigate(['blackcat/funcionario']);
-
           } else {
             this.alertService.showAlert('Acesso não autorizado', 'error');
             this.router.navigate(['invalid-access']);
@@ -60,6 +58,11 @@ export class LoginComponent {
         }
       },
     });
+  }
+
+  // Função para avançar o foco para o próximo campo
+  focusNext(): void {
+    this.passwordField.nativeElement.focus();
   }
 
   autenticar() {
