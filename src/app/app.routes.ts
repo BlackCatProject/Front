@@ -13,21 +13,36 @@ import { Title } from '@angular/platform-browser';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent, data: { title: 'Blackcat - Login' } },
-  { path: 'invalid-access', component: InvalidAcessComponent, data: { title: 'Acesso Inválido - Blackcat' } },
-
+  {
+    path: 'login',
+    component: LoginComponent,
+    data: { title: 'Blackcat - Login' },
+  },
+  {
+    path: 'invalid-access',
+    component: InvalidAcessComponent,
+    data: { title: 'Acesso Inválido - Blackcat' },
+  },
 
   {
     path: 'blackcat',
     component: PrincipalComponent,
     canActivate: [loginGuard],
     children: [
-      { path: 'dashboard', component: DashboardComponent, data: { title: 'Blackcat - Home' } },
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+        data: { title: 'Blackcat - Home' },
+      },
       {
         path: 'usuarios',
         data: { title: 'Blackcat - Usuários' },
         children: [
-          { path: '', component: UsuarioListComponent, data: { title: 'Blackcat - Usuários' } },
+          {
+            path: '',
+            component: UsuarioListComponent,
+            data: { title: 'Blackcat - Usuários' },
+          },
           {
             path: 'new',
             component: UsuarioFormComponent,
@@ -45,13 +60,29 @@ export const routes: Routes = [
         path: 'produtos',
         data: { title: 'Blackcat - Produtos' },
         children: [
-          { path: '', component: ProdutosListComponent, data: { title: 'Blackcat - Produtos' } },
-          { path: 'new', component: ProdutosFormComponent, data: { title: 'Blackcat - Novo Produto' } },
-          { path: 'edit/:id', component: ProdutosFormComponent, data: { title: 'Blackcat - Editar Produto' } },
+          {
+            path: '',
+            component: ProdutosListComponent,
+            data: { title: 'Blackcat - Produtos' },
+          },
+          {
+            path: 'new',
+            component: ProdutosFormComponent,
+            data: { title: 'Blackcat - Novo Produto' },
+          },
+          {
+            path: 'edit/:id',
+            component: ProdutosFormComponent,
+            data: { title: 'Blackcat - Editar Produto' },
+          },
         ],
       },
 
-      { path: 'venda', component: VendaComponent, data: { title: 'Blackcat - Vendas' } },
+      {
+        path: 'venda',
+        component: VendaComponent,
+        data: { title: 'Blackcat - Vendas' },
+      },
     ],
   },
 ];
