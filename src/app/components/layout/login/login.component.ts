@@ -1,29 +1,28 @@
-import { Component, inject } from '@angular/core';
+import { Component, ViewChild, ElementRef, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { Login } from '../../../auth/login';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { LoginService } from '../../../auth/login.service';
-import { T } from '@angular/cdk/keycodes';
 import { AlertService } from '../../../services/alert.service';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [MdbFormsModule, FormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
   login: Login = new Login();
 
   router = inject(Router);
-
   loginService = inject(LoginService);
-
   alertService = inject(AlertService);
+
+  // ViewChild para capturar o campo de senha
+  @ViewChild('passwordField') passwordField!: ElementRef<HTMLInputElement>;
 
   logar() {
     if (!this.login.username || !this.login.password) {
@@ -38,11 +37,17 @@ export class LoginComponent {
       next: (token) => {
         if (token) {
           this.loginService.addToken(token);
-          this.alertService.showToast(
-            'Login realizado com sucesso!',
-            'success'
-          );
-          this.router.navigate(['blackcat/dashboard']);
+          this.alertService.showToast('Login realizado com sucesso!', 'success');
+
+          const usuario = this.loginService.getUsuarioLogado();
+          if (usuario.role === 'GESTOR') {
+            this.router.navigate(['blackcat/dashboard']);
+          } else if (usuario.role === 'FUNCIONARIO') {
+            this.router.navigate(['blackcat/funcionario']);
+          } else {
+            this.alertService.showAlert('Acesso não autorizado', 'error');
+            this.router.navigate(['invalid-access']);
+          }
         }
       },
       error: (erro) => {
@@ -53,6 +58,11 @@ export class LoginComponent {
         }
       },
     });
+  }
+
+  // Função para avançar o foco para o próximo campo
+  focusNext(): void {
+    this.passwordField.nativeElement.focus();
   }
 
   autenticar() {

@@ -10,6 +10,7 @@ import { loginGuard } from './auth/login.guard';
 import { InvalidAcessComponent } from './components/invalid-acess/invalid-acess.component';
 import { ProdutosFormComponent } from './components/produtos/produtos-form/produtos-form.component';
 import { Title } from '@angular/platform-browser';
+import { DashboardFuncionarioComponent } from './components/layout/dashboard-funcionario/dashboard-funcionario.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -30,10 +31,13 @@ export const routes: Routes = [
     canActivate: [loginGuard],
     children: [
       {
-        path: 'dashboard',
-        component: DashboardComponent,
-        data: { title: 'Blackcat - Home' },
+        path: 'funcionario',
+        component: DashboardFuncionarioComponent,
+        data: { title: 'Blackcat - Dashboard Funcionario' }
       },
+      
+      { path: 'dashboard', component: DashboardComponent, data: { title: 'Blackcat - Home' } },
+     
       {
         path: 'usuarios',
         data: { title: 'Blackcat - Usuários' },
@@ -78,11 +82,10 @@ export const routes: Routes = [
         ],
       },
 
-      {
-        path: 'venda',
-        component: VendaComponent,
-        data: { title: 'Blackcat - Vendas' },
-      },
+
+      { path: 'venda', component: VendaComponent, data: { title: 'Blackcat - Vendas' } },
     ],
   },
+
+  
 ];

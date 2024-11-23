@@ -16,7 +16,7 @@ import { AlertService } from '../../../services/alert.service'; // Import AlertS
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [FormsModule, CommonModule, MdbModalModule, VendaComponent],
+  imports: [FormsModule, CommonModule, MdbModalModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
@@ -110,3 +110,5 @@ export class DashboardComponent {
   }
 
 }
+
+

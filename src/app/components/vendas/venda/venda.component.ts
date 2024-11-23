@@ -34,7 +34,6 @@ import { LoginService } from '../../../auth/login.service';
     ProdutosListComponent,
     MdbModalModule,
     FormsModule,
-    UsuarioListComponent,
     CommonModule
   ],
   templateUrl: './venda.component.html',

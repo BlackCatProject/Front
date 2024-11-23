@@ -29,6 +29,9 @@ export class HeaderComponent {
   isAdmin(): boolean {
     return localStorage.getItem('userRole') === 'admin';
   }
+  isFuncionario(): boolean {
+    return localStorage.getItem('userRole') === 'funcionario';
+  }
 
   // Método que retorna os itens do menu
   getMenuItems() {
@@ -43,9 +46,15 @@ export class HeaderComponent {
       menuItems.push({ name: 'Usuários', link: 'blackcat/usuarios' });
     }
 
-    return menuItems;
+     // Adiciona o item "Funcionário" se o usuário tiver o papel adequado
+  if (this.isFuncionario()) {
+    menuItems.push({ name: 'Funcionário', link: 'funcionario' });
   }
 
+    return menuItems;
+  }
+  
+ 
   confirmLogout(event: Event) {
     event.preventDefault();
 

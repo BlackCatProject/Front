@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="dashboard">
+    <!-- Seção de Boas-Vindas -->
+    <div class="welcome-section">
+      <img src="imagens/image-removebg-preview (73).png" alt="Mascote" class="mascot-image">
+      <h1>Bem-vindo!</h1>
+      <div class="btn-container">
+        <a href="blackcat/venda" class="btn">Realizar Vendas</a>
+      </div>
+    </div>
+    <div class="card-group">
+      <!-- Vendas no Dia -->
+      <div class="card daily-sales">
+        <h5><i class="fas fa-calendar-day icon-color"></i> Vendas no Dia</h5>
+        <p>Total de Vendas: {{ numeroVendasDia }}</p>
+      </div>
+      <!--  -->
+      <div class="card another-card">
+        <h5><i class="fas fa-wallet icon-color"></i> Vendas na Semana</h5>
+        <p>Total de Vendas: {{ numeroVendasDia }}</p>
+      </div>
+    </div>
+    
+    <!-- Histórico de Vendas -->
+    <div class="historico-section">
+      <div class="historico-header">
+        <h3><i class="fas fa-shopping-cart icon-color"></i> Histórico de Vendas</h3>
+      </div>
+      <div class="table-scroll-grande">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Data</th>
+              <th scope="col">Total</th>
+              <th scope="col">Forma de Pagamento</th>
+              <th scope="col">Usuário</th>
+              <th scope="col">Detalhes</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (venda of vendasPorUsuario; track $index) {
+              <tr>
+                <td>{{ venda.data | date: 'shortDate' }}</td>
+                <td>{{ venda.total | currency:'BRL' }}</td>
+                <td>{{ venda.formaPagamento }}</td>
+                <td>{{ venda.usuario.nome }}</td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-md btn-rounded mt-2"
+                    mdbRipple
+                    (click)="openModal(venda)">
+                    +
+                  </button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

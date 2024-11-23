@@ -43,10 +43,9 @@ export class VendaService {
 
 
   findByUsuario(id : number) : Observable<Venda[]>{
-    return this.http.get<Venda[]>(`${this.api}/findByMonth/${id}`)
+    return this.http.get<Venda[]>(`${this.api}/findByUsuario/${id}`);
   }
-
-
+  
   // Método para vendas mensais
   getVendasMensais(ano: number, mes: number): Observable<number> {
     return this.http.get<number>(`${this.api}/mensal/${ano}/${mes}`);
@@ -61,6 +60,8 @@ export class VendaService {
   getVendasAnuais(ano: number): Observable<number> {
     return this.http.get<number>(`${this.api}/anual/${ano}`);
   }
-
-
+  getNumeroVendasDia(usuarioId: number): Observable<number> {
+    return this.http.get<number>(`${this.api}/dia/quantidade?usuarioId=${usuarioId}`);
+  }
+  
 }
