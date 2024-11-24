@@ -37,7 +37,7 @@ export class DashboardFuncionarioComponent implements OnInit {
     if (usuario) {
       this.usuarioId = usuario.id;
       this.getVendasPorUsuario(this.usuarioId);
-      this.getVendasDia();  // Chame aqui para buscar o número de vendas do dia
+      this.getVendasDia(); 
     } else {
       this.alertService.showToast("Usuário não logado", "error");
     }
@@ -59,11 +59,11 @@ export class DashboardFuncionarioComponent implements OnInit {
   }
   
 getVendasDia(): void {
-  const usuarioId = this.loginService.getUsuarioLogado().id;  // Supondo que você tenha o usuário logado
+  const usuarioId = this.loginService.getUsuarioLogado().id; 
   this.vendaService.getNumeroVendasDia(usuarioId).subscribe({
     next: (numeroVendas) => {
       console.log('Número de vendas no dia:', numeroVendas);
-      this.numeroVendasDia = numeroVendas;  // Armazena o número de vendas no dia
+      this.numeroVendasDia = numeroVendas;  
     },
     error: (erro) => {
       console.error('Erro ao buscar o número de vendas do dia', erro);
@@ -71,7 +71,6 @@ getVendasDia(): void {
     },
   });
 }
-
 
   openModal(venda: Venda): void {
     this.selectVenda = venda;
