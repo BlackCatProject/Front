@@ -34,8 +34,6 @@ export class UsuarioListComponent {
   modalRef!: MdbModalRef<any>;
   
 
-
-
   constructor( private alertService: AlertService) {
     this.findAll();
   }
@@ -46,8 +44,8 @@ export class UsuarioListComponent {
       next: (lista) => {
         this.lista = lista;
       },
-      error: (error) => {
-        this.alertService.showAlert('Erro ao buscar usuários', 'error');
+      error: (erro) => {
+        this.alertService.showErrorToast(erro); // Alerta de erro
       },
     });
   }
@@ -58,8 +56,8 @@ export class UsuarioListComponent {
       next: (usuario) => {
         this.lista = [usuario];
       },
-      error: (error) => {
-        this.alertService.showAlert('Erro ao buscar usuário', 'error');
+      error: (erro) => {
+        this.alertService.showErrorToast(erro); // Alerta de erro
       },
     });
   }
@@ -79,7 +77,7 @@ export class UsuarioListComponent {
             this.findAll();
           },
           error: erro => {
-            this.alertService.showAlert('Erro ao desativar usuário', 'error'); // Alerta de erro
+            this.alertService.showErrorToast(erro); // Alerta de erro
           },
         });
       }
@@ -101,7 +99,7 @@ export class UsuarioListComponent {
             this.findAll(false);
           },
           error: erro => {
-            this.alertService.showAlert('Erro ao ativar usuário', 'error'); // Alerta de erro
+            this.alertService.showErrorToast(erro); // Alerta de erro
           },
         });
       }
