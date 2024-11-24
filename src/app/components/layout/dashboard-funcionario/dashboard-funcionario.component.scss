@@ -1,9 +1,10 @@
+/* Reset Geral */
 * {
     margin-top: 7px;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
-/* Estilos gerais */
+/* Estilos Gerais */
 body {
     font-family: Arial, sans-serif;
     background-color: #f5f8fb;
@@ -11,11 +12,37 @@ body {
     justify-content: center;
     align-items: flex-start;
     min-height: 100vh;
-    padding: 20px; 
+    padding: 20px;
 }
+
+h1, h3, h5 {
+    color: #2F3855;
+}
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    padding: 8px 12px;
+    background-color: #84AADC;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-size: 0.9em;
+}
+
+.btn:hover {
+    background-color: #F8F3FC;
+    color: #84AADC;
+}
+
+/* Dashboard Layout */
 .dashboard {
     display: grid;
-    gap: 10px; /* Reduzindo o espaçamento entre os elementos */
+    gap: 10px;
     grid-template-areas:
         "welcome historico"
         "daily historico";
@@ -24,8 +51,7 @@ body {
     width: 100%;
 }
 
-
-/* Seção de boas-vindas */
+/* Seção de Boas-Vindas */
 .welcome-section {
     grid-area: welcome;
     background-color: #2F3855;
@@ -36,7 +62,18 @@ body {
     text-align: center;
     height: 400px;
 }
-/* Seção de histórico */
+
+.welcome-section h1 {
+    font-size: 1.2em;
+    color: #ebebeb;
+}
+
+.mascot-image {
+    width: 195px;
+    margin-bottom: 20px;
+}
+
+/* Seção de Histórico */
 .historico-section {
     grid-area: historico;
     background: #fcfcfc;
@@ -44,320 +81,108 @@ body {
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;  /* Garante que a largura seja 100% do seu contêiner pai */
-    height: 100%; /* Garante que a altura ocupe 100% do espaço disponível */
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Garante que o conteúdo ocupe o restante do espaço */
+    flex-grow: 1;
 }
 
-/* Ajuste para a tabela */
+.historico-header {
+    display: flex;
+    align-items: center;
+}
+
+.historico-header h3 {
+    margin: 0;
+}
+
 .historico-section table {
-    width: 100%; /* Garante que a tabela ocupe toda a largura disponível */
-    height: 100%; /* Garante que a tabela ocupe toda a altura disponível */
+    width: 100%;
     border-collapse: collapse;
     margin-top: 0;
-    flex-grow: 1; /* Faz a tabela crescer para ocupar o restante do espaço */
-    overflow-y: auto; /* Adiciona rolagem vertical se necessário */
+    overflow-y: auto;
 }
 
-/* Células da tabela */
 .historico-section th, .historico-section td {
     padding: 10px;
     text-align: left;
-    color: #000000; 
+    color: #000000;
 }
 
-/* Seção de histórico - mantendo o cabeçalho fixo com rolagem */
 .historico-section table thead {
     position: sticky;
     top: 0;
     background-color: #e27569;
     color: #F8F3FC;
-    z-index: 10; /* Garante que o cabeçalho fique acima das linhas da tabela */
+    z-index: 10;
 }
 
-.historico-section table {
-    width: 100%; 
-    max-width: 100%;  /* Limita a largura da tabela para não ultrapassar o container */
-}
-.daily-sales {
-    grid-area: daily;
-    background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-    height: 150px;
-    margin-top: -0px; /* Ajusta a margem superior para aproximar da seção de boas-vindas */
-}
-
-.historico-section table {
-    width: 100%;
-    max-width: 100%; /* Garante que a tabela não ultrapasse o container */
-    max-height: 400px; /* Limita a altura da tabela */
-    overflow-y: auto; /* Habilita a rolagem vertical se o conteúdo ultrapassar a altura definida */
-    border-collapse: collapse;
-}
-
-.mascot-image {
-    width: 195px; 
-    margin-bottom: 20px; 
-}
-
-.welcome-section h1 {
-    font-size: 1.2em; 
-    color: #333;
-}
-
-/* Seção de histórico */
-.historico-section {
-    grid-area: historico;
-    background: #fcfcfc;
-    color: #000000;
-    border-radius: 10px;
-    padding: 20px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 900px; 
-    max-width: 100%; 
-}
-/* Ajuste da altura da seção de histórico */
-
-
-/* Tabela */
-.historico-section table {
-    width: 100%; 
-    border-collapse: collapse;
-}
-
-/* Células da tabela */
-.historico-section th, .historico-section td {
-    padding: 10px;
-    text-align: left;
-    color: #000000; 
-}
-
-/* Painéis de vendas */
+/* Painéis de Vendas */
 .sales-panels {
-    grid-area: sales; 
+    grid-area: sales;
     display: flex;
     gap: 20px;
     padding: 1rem;
-    justify-content: space-between; 
-    flex-wrap: wrap; 
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
-/* Ajustando os cartões */
 .card {
-    background: #ffffff; 
+    background: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 1rem;
-    flex: 1 1 30%; 
-    min-width: 250px; /* Define a largura mínima para dispositivos menores */
-    max-width: 400px; /* Define a largura máxima */
+    flex: 1 1 30%;
+    min-width: 250px;
+    max-width: 400px;
     text-align: center;
-    display: flex; 
+    display: flex;
     flex-direction: column;
-    justify-content: space-between; 
-    height: 150px; 
+    justify-content: space-between;
+    height: 150px;
     color: #000000;
 }
 
-.input-group {
-    display: flex;
-    gap: 5px; 
-    flex-wrap: wrap; 
-    justify-content: center;
-    align-items: center;
+.card h5 {
+    margin: 0;
 }
 
-.input-small {
-    border: 1px solid #ccc;
-    padding: 5px 8px; 
-    width: 80px; 
-    margin: 5px;
-    border-radius: 20px;
-    text-align: center;
-    font-size: 0.9em;
-    background-color: #ffffff;
-    transition: box-shadow 0.3s ease; 
-    border: 1px solid #e27569; 
-    background-color: #e27569; 
-    color: #ffffff;
-}
-/* Ajuste para o cartão de Vendas Mensais */
-.monthly-sales h5 {
-    margin-top: 0;
-}
-
-.monthly-sales .input-group {
-    margin-top: 1px;
-}
-
-.monthly-sales p {
-    margin-top: 9px; 
-}
-
-.card.weekly-sales p {
-    font-size: 1.5em; 
-    text-align: center; 
-    margin-top: 10px; 
-}
-
-.card.weekly-sales {
-    display: flex;
-    flex-direction: column;
-}
-
-.input-small:focus {
-    outline: none;
-    box-shadow: 0 0 5px #e27569; 
-    align-items: center;
-}
-
-/* Estilo específico para o cartão de Vendas Anuais */
-.annual-sales-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.annual-sales-card .input-small {
-    margin-top: 10px; 
-}
-
-h1, h3, h5 {
-    color: #2F3855; 
-}
-
-/* Título de boas-vindas específico */
-.welcome-section h1 {
-    color: #ebebeb; 
-}
-
-
-.historico-section table th,
-.historico-section table td {
-    color: #000000; 
-    
-}
-.historico-section table th{
-    background-color: #e27569;
-    color: #F8F3FC;
-}
-
-/* Estilos para os botões */
-.btn {
-    display: inline-flex; 
-    justify-content: center; 
-    align-items: center;
-    margin: 5px; 
-    padding: 8px 12px;
-    background-color: #84AADC; 
-    color: white;
-    border: none;
-    border-radius: 5px; 
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    font-size: 0.9em;
-}
-
-/* Efeito de hover para os botões */
-.btn:hover {
-    background-color: #F8F3FC;
-    color: #84AADC;
-}
-
-/* Seção de histórico */
-.historico-header {
-    display: flex;
-}
-
-.historico-header h3 {
-    margin: 0;            
-}
-
-.historico-header .btn {
-    margin-left: 15px;       
-}
-
-.historico-section table {/*deixando o cabeçario estatico*/
-    width: 100%; 
-    border-collapse: collapse; 
-    margin-top: 0; 
-}
-
-
-.icon-color {
-    color: #84AADC; 
-}
-
-/* Estilos do Modal */
-.modal-header {
-    margin-top: auto;
-    background-color: #2F3855; 
-    color: #ffffff; 
-    padding: 15x;
-    border-bottom: 1px solid #e0e0e0; 
-    border-top: 10px;
-}
-.modal-header h3{
-    color: #ffffff;
-}
-.modal-body {
-    padding: 20px;
-}
-/* Estilos da tabela de produtos */
+/* Tabela de Produtos no Modal */
 .product-table {
-    width: 100%; 
-    border-collapse: collapse; 
-    margin-top: 10px; 
-    border-radius: 15px; /* Aplica o arredondamento de todos os cantos */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    border: none;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .product-table th, .product-table td {
-    padding: 10px; 
-    text-align: left; 
-    border: none; /* Remove a borda das células */
-    color: #000000; 
+    padding: 10px;
+    text-align: left;
+    color: #000000;
 }
 
 .product-table th {
     background-color: #d3d3da;
-    color: #000000; 
-    
-}
-.product-table th:first-child {
-    background-color: #d3d3da;
-    color: #000000;
-    border-top-left-radius: 10px; /* Arredonda o canto superior esquerdo */
 }
 
-.product-table th:last-child {
-    background-color: #d3d3da;
-    color: #000000;
-    border-top-right-radius: 10px; /* Arredonda o canto superior direito */
-}
-/* Torna a célula da segunda coluna um contêiner flexível */
-.product-table td:nth-child(2) {
-    display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center;
-    height: 100%;            /* Ajusta para o conteúdo ocupar toda a célula */
+/* Modal */
+.modal-header {
+    background-color: #2F3855;
+    color: #ffffff;
+    padding: 15px;
 }
 
-
-.btn-close{
-    color: #ffffff; /* Define a cor inicial */
-    cursor: pointer;
-    transition: color 0.3s ease;
+.modal-header h3 {
+    color: #ffffff;
 }
 
-/* Responsividade */
+.modal-body {
+    padding: 20px;
+}
+
+/* Estilos Responsivos */
 @media screen and (max-width: 1024px) {
     .dashboard {
         display: flex;
@@ -370,18 +195,11 @@ h1, h3, h5 {
         max-width: 95vw;
     }
 
-    .historico-section table th,
-    .historico-section table td {
-        font-size: 0.85em;
-    }
-
     .card {
         min-width: 80vw;
         margin-bottom: 20px;
     }
 }
-
-
 
 @media screen and (max-width: 480px) {
     .welcome-section h1 {

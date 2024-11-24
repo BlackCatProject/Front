@@ -28,7 +28,7 @@
           <tbody>
             @for (venda of historicoVendas; track $index) {
               <tr>
-                <td>{{ venda.data | date: 'shortDate' }}</td>
+                <td>{{ venda.data | date: 'dd/MM/yy' }}</td>
                 <td>{{ venda.total | currency:'BRL' }}</td>
                 <td>{{ venda.formaPagamento }}</td>
                 <td>{{ venda.usuario.nome }}</td>
