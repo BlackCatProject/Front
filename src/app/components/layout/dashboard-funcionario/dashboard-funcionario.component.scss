@@ -72,7 +72,12 @@ h1, h3, h5 {
     width: 195px;
     margin-bottom: 20px;
 }
-
+.table-scroll {
+    max-height: 480px; /* Aumente este valor para permitir mais altura */
+    overflow-y: auto;
+    background-color: #ffffff;
+    border-radius: 5px;
+  }
 /* Seção de Histórico */
 .historico-section {
     grid-area: historico;
@@ -87,6 +92,7 @@ h1, h3, h5 {
     flex-direction: column;
     flex-grow: 1;
 }
+
 
 .historico-header {
     display: flex;
