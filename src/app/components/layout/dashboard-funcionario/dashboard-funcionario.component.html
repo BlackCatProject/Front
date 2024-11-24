@@ -27,14 +27,14 @@
               <th scope="col">Data</th>
               <th scope="col">Total</th>
               <th scope="col">Forma de Pagamento</th>
-              <th scope="col">Usuário</th>
+              <th scope="col">Usuário</th>  
               <th scope="col">Detalhes</th>
             </tr>
           </thead>
           <tbody>
             @for (venda of vendasPorUsuario; track $index) {
               <tr>
-                <td>{{ venda.data | date: 'dd/MM/yy' }}</td>
+              <td>{{ venda.data | date: 'dd/MM/yy' }}</td>
                 <td>{{ venda.total | currency:'BRL' }}</td>
                 <td>{{ venda.formaPagamento }}</td>
                 <td>{{ venda.usuario.nome }}</td>

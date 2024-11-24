@@ -43,17 +43,21 @@ export class DashboardFuncionarioComponent implements OnInit {
     }
   }
   
-getVendasPorUsuario(usuarioId: number): void {
-  this.vendaService.findByUsuario(usuarioId).subscribe({
-    next: (vendas) => {
-      this.vendasPorUsuario = vendas;
-    },
-    error: (erro) => {
-      console.error('Erro ao buscar vendas do usuário', erro);
-      this.alertService.showErrorToast(erro);
-    },
-  });
-}
+  getVendasPorUsuario(usuarioId: number): void {
+    this.vendaService.findByUsuario(usuarioId).subscribe({
+      next: (vendas) => {
+        // Ordena as vendas por data de forma decrescente (mais recente primeiro)
+        this.vendasPorUsuario = vendas.sort((a, b) => {
+          return new Date(b.data).getTime() - new Date(a.data).getTime();
+        });
+      },
+      error: (erro) => {
+        console.error('Erro ao buscar vendas do usuário', erro);
+        this.alertService.showErrorToast(erro);
+      },
+    });
+  }
+  
 getVendasDia(): void {
   const usuarioId = this.loginService.getUsuarioLogado().id;  // Supondo que você tenha o usuário logado
   this.vendaService.getNumeroVendasDia(usuarioId).subscribe({

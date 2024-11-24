@@ -55,14 +55,19 @@ export class DashboardComponent {
 
   getHistoricoVendas(): void {
     this.vendaService.findAll().subscribe({
-      next: (vendas) => (this.historicoVendas = vendas),
+      next: (vendas) => {
+        // Ordena as vendas por data de forma decrescente (mais recente primeiro)
+        this.historicoVendas = vendas.sort((a, b) => {
+          return new Date(b.data).getTime() - new Date(a.data).getTime();
+        });
+      },
       error: (erro) => {
         console.error('Erro ao buscar histórico de vendas', erro);
         this.alertService.showErrorToast(erro);
       },
     });
   }
-
+  
   getVendasMensais(): void {
     this.vendaService.getVendasMensais(this.anoMensal, this.mes).subscribe({
       next: (total) => (this.vendasPorMes = total),
