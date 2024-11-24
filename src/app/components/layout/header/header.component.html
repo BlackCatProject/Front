@@ -3,7 +3,7 @@
     <!-- Logotipo -->
     <a
       class="navbar-brand d-flex align-items-center"
-      href="/blackcat/dashboard"
+      [href]="usuario.role === 'GESTOR' ? '/blackcat/dashboard' : '/blackcat/funcionario'"
     >
       <i class="fas fa-cat fa-lg logo-icon me-2"></i>
       BlackCat
