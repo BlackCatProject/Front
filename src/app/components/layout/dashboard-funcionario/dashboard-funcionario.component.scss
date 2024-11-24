@@ -13,10 +13,9 @@ body {
     min-height: 100vh;
     padding: 20px; 
 }
-/* Dashboard */
 .dashboard {
     display: grid;
-    gap: 10px;
+    gap: 10px; /* Reduzindo o espaçamento entre os elementos */
     grid-template-areas:
         "welcome historico"
         "daily historico";
@@ -24,6 +23,7 @@ body {
     max-width: 1200px;
     width: 100%;
 }
+
 
 /* Seção de boas-vindas */
 .welcome-section {
@@ -36,8 +36,7 @@ body {
     text-align: center;
     height: 400px;
 }
-
-/* Histórico de Vendas */
+/* Seção de histórico */
 .historico-section {
     grid-area: historico;
     background: #fcfcfc;
@@ -45,11 +44,43 @@ body {
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow-y: auto; /* Adiciona rolagem vertical */
-    max-height: calc(100% - 20px); /* Ajusta a altura */
+    width: 100%;  /* Garante que a largura seja 100% do seu contêiner pai */
+    height: 100%; /* Garante que a altura ocupe 100% do espaço disponível */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Garante que o conteúdo ocupe o restante do espaço */
 }
 
-/* Vendas no Dia */
+/* Ajuste para a tabela */
+.historico-section table {
+    width: 100%; /* Garante que a tabela ocupe toda a largura disponível */
+    height: 100%; /* Garante que a tabela ocupe toda a altura disponível */
+    border-collapse: collapse;
+    margin-top: 0;
+    flex-grow: 1; /* Faz a tabela crescer para ocupar o restante do espaço */
+    overflow-y: auto; /* Adiciona rolagem vertical se necessário */
+}
+
+/* Células da tabela */
+.historico-section th, .historico-section td {
+    padding: 10px;
+    text-align: left;
+    color: #000000; 
+}
+
+/* Seção de histórico - mantendo o cabeçalho fixo com rolagem */
+.historico-section table thead {
+    position: sticky;
+    top: 0;
+    background-color: #e27569;
+    color: #F8F3FC;
+    z-index: 10; /* Garante que o cabeçalho fique acima das linhas da tabela */
+}
+
+.historico-section table {
+    width: 100%; 
+    max-width: 100%;  /* Limita a largura da tabela para não ultrapassar o container */
+}
 .daily-sales {
     grid-area: daily;
     background: #ffffff;
@@ -58,9 +89,16 @@ body {
     padding: 20px;
     text-align: center;
     height: 150px;
+    margin-top: -0px; /* Ajusta a margem superior para aproximar da seção de boas-vindas */
 }
 
-
+.historico-section table {
+    width: 100%;
+    max-width: 100%; /* Garante que a tabela não ultrapasse o container */
+    max-height: 400px; /* Limita a altura da tabela */
+    overflow-y: auto; /* Habilita a rolagem vertical se o conteúdo ultrapassar a altura definida */
+    border-collapse: collapse;
+}
 
 .mascot-image {
     width: 195px; 
