@@ -68,8 +68,10 @@
 }
 
 .dropdown-menu {
-  width: 20vw;
-  background-color: lightgrey;
+  border-radius: 10px;
+  width: 18vw;
+  background-color: #f6f6f6;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .inputs-container {
@@ -193,10 +195,10 @@
 }
 
 .btn-forma-pagamento {
-  width: 14vw;
   font-size: 22px;
-  min-height: 15vh;
-  min-width: 20vw;
+  height: 15vh;
+  width: 18vw;
+  border-radius: 10px;
 }
 
 .icon-color {
