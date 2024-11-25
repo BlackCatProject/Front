@@ -69,7 +69,7 @@
 
 .dropdown-menu {
   border-radius: 10px;
-  width: 18vw;
+  width: 14vw;
   background-color: #f6f6f6;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
@@ -196,8 +196,8 @@
 
 .btn-forma-pagamento {
   font-size: 22px;
-  height: 15vh;
-  width: 18vw;
+  height: 16vh;
+  width: 14vw;
   border-radius: 10px;
 }
 
@@ -205,7 +205,8 @@
   color: #84aadc;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1200px) //telas medianas
+{
   .btn-dropdown {
     width: 25vw;
   }
@@ -224,9 +225,25 @@
     width: 30vw;
     margin-bottom: 50px;
   }
+
+  .btn-forma-pagamento {
+    font-size: 22px;
+    height: 14vh;
+    width: 18vw;
+    border-radius: 10px;
+  }
+
+  .small-card {
+    height: 14vh;
+  }
+
+  .dropdown-menu {
+    width: 18vw;
+  }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 950px) //telas pequenas
+{
   .container-sm,
   .container {
     max-width: 100% !important;
@@ -259,9 +276,9 @@
     align-items: center;
     justify-content: center;
   }
-  .table-produtos {
-    width: 80vw;
-  }
+  // .table-produtos {
+  //   width: 80vw;
+  // }
   .venda-card {
     width: 85vw;
   }
@@ -282,9 +299,33 @@
     width: 90%;
   }
 
+  .small-card {
+    height: 16vh;
+  }
+
   .table-produtos th,
   .table-produtos td {
     font-size: 0.9em;
     white-space: nowrap;
   }
+
+  .btn-forma-pagamento {
+    font-size: 22px;
+    height: 16vh;
+    width: 60vw;
+    border-radius: 10px;
+  }
+
+  .dropdown-menu {
+    width: 60vw;
+  }
+  
+  .table-produtos {
+    overflow-x: auto;
+    width: 90%;
+  }
+
+  .custom-input-width {
+    width: 6vw; /* Ajuste para o tamanho que preferir */
+  }  
 }

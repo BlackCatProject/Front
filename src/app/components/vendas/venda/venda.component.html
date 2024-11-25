@@ -83,7 +83,7 @@
                         [(ngModel)]="prodVenda.quantidade"
                         type="number"
                         min="0"
-                        class="form-control number-field no-spin-input"
+                        class="form-control number-field no-spin-input custom-input-width"
                       />
                       <button
                         class="btn btn-primary"
@@ -182,7 +182,7 @@
           </div>
 
           <!-- Desconto -->
-          <div class="col-12 col-md-6 col-lg-3 small-card-column">
+          <div class="col-12 col-md-6 col-lg-4 small-card-column">
             <div class="card small-card">
               <div class="card-body">
                 <h5>Desconto (%):</h5>
@@ -207,10 +207,10 @@
           </div>
 
           <!-- Total -->
-          <div class="col-12 col-md-6 col-lg-3 small-card-column">
+          <div class="col-12 col-md-6 col-lg-2 small-card-column">
             <div class="card small-card">
               <div class="card-body">
-                <h5>Total:</h5>
+                <h4>Total:</h4>
                 <p class="text">{{ totalVendaText }}</p>
               </div>
             </div>
