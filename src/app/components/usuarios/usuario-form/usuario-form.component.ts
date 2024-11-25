@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from '../../../services/alert.service';
 import { Usuario } from '../../../auth/usuario';
 import { LoginService } from '../../../auth/login.service';
+import { Login } from '../../../auth/login';
 
 @Component({
   selector: 'app-usuario-form',
@@ -24,8 +25,6 @@ export class UsuarioFormComponent {
   alertService = inject(AlertService);
 
   loginService = inject(LoginService);
-
-  usuarioLogado: Usuario = this.loginService.getUsuarioLogado();
 
   constructor () { 
    let id = this.router.snapshot.params['id'];
@@ -55,28 +54,25 @@ export class UsuarioFormComponent {
 
     if (this.usuario.id > 0) {
       this.usuarioService.updateUsuario(this.usuario, this.usuario.id).subscribe({
-        next: mensagem => {
-          this.alertService.showToast(mensagem, 'success');
-          this.router2.navigate(['/usuarios'], {state: {usuarioEditado: this.usuario}});
-          this.retorno.emit(this.usuario);
-          if(this.usuario.id == this.usuarioLogado.id){
-            this.usuarioLogado = this.usuario;
+        next: response => {
+          if(response.token){
+            this.loginService.addToken(response.token);
           }
+          this.alertService.showToast(response.message, 'success');
+          this.retorno.emit(this.usuario);
+
         },
         error: erro => {
           this.alertService.showErrorToast(erro);
           this.retorno.emit();
-        },
+        }
       });
+
     } else {
       this.usuarioService.saveUsuario(this.usuario).subscribe({
         next: mensagem => {
           this.alertService.showToast(mensagem, 'success');
-          this.router2.navigate(['/usuarios'], {state: {usuarioNovo: this.usuario}});
           this.retorno.emit(this.usuario);
-          if(this.usuario.id == this.usuarioLogado.id){
-            this.usuarioLogado = this.usuario;
-          }
         },
         error: erro => { //nessa parte, o toast exibe escurecido por causa do modal
           console.log(erro);

@@ -30,17 +30,6 @@
 
                             </ul>
                         </div>
-                        <!-- "Cartão de Débito", "Cartão de Crédito", "Dinheiro", "Pix" -->
-
-                        <!-- <div class="select-container">
-                            <select (change)="setFormaPagamento()" name="forma-pagamento" class="form-select" [(ngModel)]="formaPagamento">
-                                <option value="formaPagamento" hidden selected>Forma de Pagamento</option>
-                                <option value="Cartão de Débito">Cartão de Débito</option>
-                                <option value="Cartão de Crédito">Cartão de Crédito</option>
-                                <option value="Dinheiro">Dinheiro</option>
-                                <option value="Pix">Pix</option>
-                            </select>
-                        </div> -->
                     </div>
                     <div class="result-container">
                         @if(showResult){
@@ -97,17 +86,10 @@
             </div>
             <div class="container center-aligned">
                 <div class="row cards-container">
-                    <div class="col-12 col-md-6 col-lg-3 small-card-column">
-                        <div class="card small-card">
-                            <div class="card-body">
-                                <div class="user-container">
-                                    <h5>Usuario: </h5>
-                                </div>
-                                <p class="text">{{venda.usuario.nome}}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3 small-card-column">
+                    
+                    <div class="col-md-0 col-lg-1"></div>
+
+                    <div class="col-12 col-md-6 col-lg-4 small-card-column">
                         <div class="card small-card">
                             <div class="card-body">
                                 <h5>Desconto (%): </h5>
@@ -132,13 +114,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-3 small-card-column">
+                    <div class="col-12 col-md-12 col-lg-3 small-card-column">
                         <div class="btn-venda-container">
                             <button [disabled]="!vendaValida" (click)="save()" class="btn btn-finalizar-venda">
                                 <i class="fas fa-cart-shopping"></i> Finalizar Venda
                             </button>
                         </div>
                     </div>
+                    <div class="col-md-0 col-lg-1"></div>
                 </div>
             </div>
         </div>

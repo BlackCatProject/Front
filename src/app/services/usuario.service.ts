@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Usuario } from '../auth/usuario';
+import { UserUpdateResponse } from '../models/user-update-response';
 
 @Injectable({
   providedIn: 'root',
@@ -29,10 +30,8 @@ export class UsuarioService {
   }
 
   //CRUD - Update - update
-  updateUsuario(usuario: Usuario, id: number): Observable<string> {
-    return this.http.put<string>(`${this.API}/update/${id}`, usuario, {
-      responseType: 'text' as 'json',
-    });
+  updateUsuario(usuario: Usuario, id: number): Observable<UserUpdateResponse> {
+    return this.http.put<UserUpdateResponse>(`${this.API}/update/${id}`, usuario);
   }
 
   //CRUD - Delete - delete

@@ -56,7 +56,7 @@ export class LoginComponent {
         } else {
           this.alertService.showErrorAlert(erro);
         }
-      },
+      }
     });
   }
 
