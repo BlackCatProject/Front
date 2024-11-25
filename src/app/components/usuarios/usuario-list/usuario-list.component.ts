@@ -10,7 +10,7 @@ import { Usuario } from '../../../auth/usuario';
 @Component({
   selector: 'app-usuario-list',
   standalone: true,
-  imports: [RouterLink , MdbModalModule, UsuarioFormComponent],
+  imports: [MdbModalModule, UsuarioFormComponent],
   templateUrl: './usuario-list.component.html',
   styleUrls: ['./usuario-list.component.scss'],
 })

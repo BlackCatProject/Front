@@ -162,6 +162,14 @@ body {
     text-align: center;
 }
 
+.sales-panels input:hover {
+    cursor: pointer;
+}
+.sales-panels input:active {
+    cursor: text;
+    background-color: #d93422;    
+}
+
 .annual-sales-card .input-small {
     margin-top: 10px; 
 }
