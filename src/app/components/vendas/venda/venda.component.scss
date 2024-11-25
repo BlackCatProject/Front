@@ -45,7 +45,7 @@
 }
 
 .btn-dropdown {
-  background-color: #6284b0;
+  background-color: #84aadc;
   color: #ffffff;
   height: 100%;
   width: 20vw;
@@ -69,6 +69,7 @@
 
 .dropdown-menu {
   width: 20vw;
+  background-color: lightgrey;
 }
 
 .inputs-container {
@@ -181,7 +182,7 @@
 .btn-finalizar-venda {
   border-radius: 10px;
   color: #ffffff;
-  background-color: #2f3855;
+  background-color: green;
   width: 14vw;
   font-size: 16px;
   min-height: 10vh;
@@ -191,11 +192,22 @@
   background-color: #2f3855;
 }
 
+.btn-forma-pagamento {
+  width: 14vw;
+  font-size: 22px;
+  min-height: 15vh;
+  min-width: 20vw;
+}
+
+.icon-color {
+  color: #84aadc;
+}
+
 @media screen and (max-width: 992px) {
-  .btn-dropdown{
+  .btn-dropdown {
     width: 25vw;
   }
-  .btn-dropdown-selected{
+  .btn-dropdown-selected {
     width: 25vw;
   }
   .small-card {
@@ -210,7 +222,6 @@
     width: 30vw;
     margin-bottom: 50px;
   }
-
 }
 
 @media screen and (max-width: 768px) {
