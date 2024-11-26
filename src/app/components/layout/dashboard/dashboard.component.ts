@@ -25,8 +25,6 @@ export class DashboardComponent {
   modalService = inject(MdbModalService);
   @ViewChild('modalVenda') modalvendatemplate!: TemplateRef<any>;
   modalRef!: MdbModalRef<any>;
-
-
   alertService = inject(AlertService)
   vendaService = inject(VendaService);
   router = inject(Router);
@@ -43,7 +41,8 @@ export class DashboardComponent {
   anoAnual: number= new Date().getFullYear();
   usuarioId: number = 0;
 
-
+  filteredVendas: Venda[] = []; 
+  usuarioNome: string = ''; 
   constructor() {}
 
   ngOnInit(): void {
@@ -56,10 +55,10 @@ export class DashboardComponent {
   getHistoricoVendas(): void {
     this.vendaService.findAll().subscribe({
       next: (vendas) => {
-        // Ordena as vendas por data de forma decrescente (mais recente primeiro)
         this.historicoVendas = vendas.sort((a, b) => {
           return new Date(b.data).getTime() - new Date(a.data).getTime();
         });
+        this.filteredVendas = [...this.historicoVendas]; 
       },
       error: (erro) => {
         console.error('Erro ao buscar histórico de vendas', erro);
@@ -114,6 +113,18 @@ export class DashboardComponent {
     this.getHistoricoVendas();
   }
 
+  buscarNaTabela(): void {
+    const termo = this.usuarioNome?.toLowerCase().trim();
+  
+    if (termo) {
+      this.filteredVendas = this.historicoVendas.filter((venda) =>
+        venda.usuario?.nome?.toLowerCase().includes(termo)
+      );
+    } else {
+      this.filteredVendas = [...this.historicoVendas]; 
+    }
+  }
+  
 }
 
 
