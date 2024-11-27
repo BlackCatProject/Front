@@ -3,12 +3,13 @@ import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Usuario } from '../auth/usuario';
 import { UserUpdateResponse } from '../models/user-update-response';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsuarioService {
-  API = 'http://localhost:8080/api/usuario';
+  API = environment.SERVIDOR+'/api/usuario';
 
   constructor(private http: HttpClient) {}
 
