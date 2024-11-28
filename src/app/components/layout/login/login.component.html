@@ -12,14 +12,15 @@
     <h6>Login</h6>
     <p>Seja bem-vindo de volta ao BlackCat, realize o login para entrar.</p>
 
+    <!-- Usuário -->
     <div class="input-container">
+      <i class="fas fa-user"></i>
       <input
         type="text"
         placeholder="Usuário"
         [(ngModel)]="login.username"
         (keydown.enter)="focusNext()"
       />
-      <i class="fas fa-user"></i>
     </div>
 
     <div class="input-container">

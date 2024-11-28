@@ -7,7 +7,6 @@
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
 }
-
 .image-section {
   flex: 1.5;
   background-color: #ffffff;
@@ -98,15 +97,15 @@
   width: 80%;
   margin: 2% auto;
 }
-
 .input-container input {
-  padding-left: 40px;
-  margin-bottom: 15px;
-
+  width: 100%; /* O input ocupará toda a largura do container */
+  padding: 10px 10px 10px 40px; /* Mantém espaço para o ícone à esquerda */
   border-radius: 5px;
-  width: 100%;
-  transition: border-color 0.3s;
+  background-color: #ffffff;
+  color: #000000;
   border: none;
+  box-sizing: border-box; /* Garante que o padding não aumente a largura */
+  transition: border-color 0.3s;
 }
 
 .input-container i {
@@ -123,4 +122,75 @@
   outline: none;
   border: 1px solid #84aadc;
   box-shadow: 0 0 5px rgba(48, 222, 172, 0.5);
+}
+
+@media screen and (max-width: 600px) {
+  .login-container {
+    width: 90%; 
+    height: auto; 
+    flex-direction: column; 
+  }
+
+  .image-section {
+    flex: none; 
+    width: 100%; 
+    border-radius: 15px 15px 0 0; 
+  }
+
+  .form-section {
+    flex: none; 
+    width: 100%; 
+    border-radius: 0 0 15px 15px; 
+    padding: 20px; 
+  }
+
+  .form-section input,
+  .form-section button {
+    width: 50%; 
+  }
+
+  .form-section h6 {
+    font-size: 20px; 
+  }
+
+  .form-section p {
+    font-size: 12px; 
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .form-section h6 {
+    font-size: 18px; 
+  }
+
+  .form-section p {
+    font-size: 12px; 
+  }
+
+  .input-container {
+    position: relative;
+    width: 80%; 
+    margin: 2% auto;
+  }
+
+  .input-container input {
+    width: 100%; 
+    padding: 10px 10px 10px 40px; 
+    font-size: 14px; 
+    box-sizing: border-box; 
+  }
+
+  .input-container i {
+    font-size: 14px; 
+    left: 10px;
+    top: 50%; 
+    transform: translateY(-50%); 
+  }
+ .input-container {
+    width: 100%; 
+  }
+
+  .image-section img {
+    max-height: 200px; 
+  }
 }

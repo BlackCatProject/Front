@@ -222,3 +222,13 @@ h1, h3, h5 {
         font-size: 0.8em;
     }
 }
+@media screen and (max-width: 768px) {
+    .search-container {
+      flex-direction: column;
+      gap: 5px;
+    }
+  
+    .search-bar, .search-btn {
+      width: 100%;
+    }
+  }
